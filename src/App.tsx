@@ -7,6 +7,8 @@ import ProcessPage from './pages/ProcessPage';
 import WorkPage from './pages/WorkPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import SplitReveal from './components/SplitReveal';
+import { LoadingProvider } from './context/LoadingContext';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -69,10 +71,16 @@ function AnimatedRoutes() {
 
 function App() {
     return (
-        <Router>
-            <AnimatedRoutes />
-        </Router>
+        <LoadingProvider>
+            <SplitReveal>
+                <Router>
+                    <AnimatedRoutes />
+                </Router>
+            </SplitReveal>
+        </LoadingProvider>
     );
 }
 
 export default App;
+
+

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
+import { useLoading } from '@/context/LoadingContext';
 
 // Use all 300 frames available in public/hero-frames-video/ (00001.png to 00300.png)
 const TOTAL_FRAMES = 240;
@@ -55,29 +56,29 @@ const SCROLL_TEXTS = [
     {
         start: 0,
         end: 0.25,
-        title: 'Design systems.',
-        subtitle: 'Not just websites.',
+        title: 'We build websites.',
+        subtitle: 'Custom. Pixel-perfect.',
         align: 'center' as const,
     },
     {
         start: 0.25,
         end: 0.5,
-        title: 'Depth & Structure.',
-        subtitle: 'Built to scale.',
+        title: 'Design + Code.',
+        subtitle: 'From concept to launch.',
         align: 'left' as const,
     },
     {
         start: 0.5,
         end: 0.75,
-        title: 'Infinite by design.',
-        subtitle: 'Maintain. Evolve.',
+        title: 'Your brand.',
+        subtitle: 'Our craft.',
         align: 'right' as const,
     },
     {
         start: 0.75,
         end: 1,
-        title: 'Loop forever.',
-        subtitle: 'Scroll back to continue.',
+        title: "Let's create.",
+        subtitle: 'Together.',
         align: 'center' as const,
     },
 ];
@@ -88,6 +89,7 @@ export default function EndlessScroll() {
     const [images, setImages] = useState<HTMLImageElement[]>([]);
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [currentFrame, setCurrentFrame] = useState(0);
+    const { setContentReady } = useLoading();
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -111,8 +113,12 @@ export default function EndlessScroll() {
                 const loadedImages = await Promise.all(imagePromises);
                 setImages(loadedImages);
                 setImagesLoaded(true);
+                // Notify SplitReveal that content is ready
+                setContentReady();
             } catch (error) {
                 console.error('Error loading images:', error);
+                // Still trigger reveal on error so site isn't stuck
+                setContentReady();
             }
         };
 
@@ -127,61 +133,61 @@ export default function EndlessScroll() {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        const render = () => {
+        const render = (forceFrame?: number) => {
             const progress = scrollYProgress.get();
-            const frameIndex = Math.min(
-                TOTAL_FRAMES - 1,
-                Math.floor(progress * TOTAL_FRAMES)
-            );
+            const frameIndex = forceFrame !== undefined
+                ? forceFrame
+                : Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES));
 
-            if (frameIndex !== currentFrame) {
-                setCurrentFrame(frameIndex);
-                const img = images[frameIndex];
+            // Skip if same frame (but not for forced renders)
+            if (forceFrame === undefined && frameIndex === currentFrame) return;
 
-                if (img && img.complete) {
-                    // Set canvas size with device pixel ratio for sharp rendering
-                    const dpr = window.devicePixelRatio || 1;
-                    const rect = canvas.getBoundingClientRect();
+            setCurrentFrame(frameIndex);
+            const img = images[frameIndex];
 
-                    canvas.width = rect.width * dpr;
-                    canvas.height = rect.height * dpr;
+            if (img && img.complete) {
+                // Set canvas size with device pixel ratio for sharp rendering
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
 
-                    ctx.scale(dpr, dpr);
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
 
-                    // Clear canvas
-                    ctx.clearRect(0, 0, rect.width, rect.height);
+                ctx.scale(dpr, dpr);
 
-                    // Calculate scaling to maintain aspect ratio (cover - fills entire viewport)
-                    const canvasAspect = rect.width / rect.height;
-                    const imgAspect = img.width / img.height;
+                // Clear canvas
+                ctx.clearRect(0, 0, rect.width, rect.height);
 
-                    let drawWidth = rect.width;
-                    let drawHeight = rect.height;
-                    let offsetX = 0;
-                    let offsetY = 0;
+                // Calculate scaling to maintain aspect ratio (cover - fills entire viewport)
+                const canvasAspect = rect.width / rect.height;
+                const imgAspect = img.width / img.height;
 
-                    if (canvasAspect > imgAspect) {
-                        // Canvas is wider than image - scale to fill width
-                        drawWidth = rect.width;
-                        drawHeight = rect.width / imgAspect;
-                        offsetY = (rect.height - drawHeight) / 2;
-                    } else {
-                        // Canvas is taller than image - scale to fill height
-                        drawHeight = rect.height;
-                        drawWidth = rect.height * imgAspect;
-                        offsetX = (rect.width - drawWidth) / 2;
-                    }
+                let drawWidth = rect.width;
+                let drawHeight = rect.height;
+                let offsetX = 0;
+                let offsetY = 0;
 
-                    // Draw image centered with contain scaling
-                    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+                if (canvasAspect > imgAspect) {
+                    // Canvas is wider than image - scale to fill width
+                    drawWidth = rect.width;
+                    drawHeight = rect.width / imgAspect;
+                    offsetY = (rect.height - drawHeight) / 2;
+                } else {
+                    // Canvas is taller than image - scale to fill height
+                    drawHeight = rect.height;
+                    drawWidth = rect.height * imgAspect;
+                    offsetX = (rect.width - drawWidth) / 2;
                 }
+
+                // Draw image centered with contain scaling
+                ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
             }
         };
 
-        const unsubscribe = scrollYProgress.on('change', render);
+        const unsubscribe = scrollYProgress.on('change', () => render());
 
-        // Initial render
-        render();
+        // Force render first frame immediately
+        render(0);
 
         // Handle resize
         const handleResize = () => {
