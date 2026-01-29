@@ -17,6 +17,7 @@ interface Project {
     color: string
     tags: string[]
     icon: React.ComponentType<{ className?: string }>
+    image?: string
 }
 
 const projects: Project[] = [
@@ -30,6 +31,7 @@ const projects: Project[] = [
         color: 'from-primary/20 to-secondary/20',
         tags: ['React', 'Node.js', 'PostgreSQL', 'Socket.io', 'Redis'],
         icon: Layers,
+        image: '/work-page/academix.png',
     },
     {
         id: 'ecofit',
@@ -130,9 +132,26 @@ export default function WorkPage() {
                         >
                             <TiltCard tiltAmount={6} scale={1.01}>
                                 <Card className="h-full overflow-hidden group border-zinc-800 hover:border-primary/30">
-                                    {/* Project Hero */}
-                                    <div className={`h-56 relative overflow-hidden bg-gradient-to-br ${project.color}`}>
-                                        <div className="absolute inset-0 hex-pattern" />
+                                    {/* Project Hero - Image with Icon */}
+                                    <div className="h-56 relative overflow-hidden">
+                                        {/* Project Image Background */}
+                                        {project.image ? (
+                                            <div
+                                                className="absolute inset-0"
+                                                style={{
+                                                    backgroundImage: `url(${project.image})`,
+                                                    backgroundSize: 'cover',
+                                                    backgroundPosition: 'center',
+                                                }}
+                                            />
+                                        ) : (
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
+                                        )}
+                                        {/* Dark overlay for readability */}
+                                        <div className="absolute inset-0 bg-black/40" />
+                                        <div className="absolute inset-0 hex-pattern opacity-30" />
+
+                                        {/* Centered Icon */}
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <motion.div
                                                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -153,33 +172,39 @@ export default function WorkPage() {
                                         </div>
                                     </div>
 
-                                    <CardHeader>
-                                        <CardTitle className="flex items-center justify-between text-2xl">
-                                            {project.title}
-                                        </CardTitle>
-                                        <CardDescription className="text-base">{project.description}</CardDescription>
-                                    </CardHeader>
+                                    {/* Card Content with Gradient Overlay */}
+                                    <div className="relative">
+                                        {/* Gradient overlay (inverse of hero) */}
+                                        <div className={`absolute inset-0 bg-gradient-to-tl ${project.color} opacity-20`} />
 
-                                    <CardContent className="space-y-4">
-                                        <div className="p-4 rounded-lg bg-zinc-800/30 border border-zinc-800">
-                                            <h4 className="text-sm font-semibold mb-2 text-primary">Challenge</h4>
-                                            <p className="text-sm text-gray-400">{project.challenge}</p>
-                                        </div>
-                                        <div className="p-4 rounded-lg bg-zinc-800/30 border border-zinc-800">
-                                            <h4 className="text-sm font-semibold mb-2 text-secondary">Architecture</h4>
-                                            <p className="text-sm text-gray-400">{project.architecture}</p>
-                                        </div>
-                                    </CardContent>
+                                        <CardHeader className="relative">
+                                            <CardTitle className="flex items-center justify-between text-2xl">
+                                                {project.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-base">{project.description}</CardDescription>
+                                        </CardHeader>
 
-                                    <CardFooter>
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags.map((tag) => (
-                                                <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">
-                                                    {tag}
-                                                </Badge>
-                                            ))}
-                                        </div>
-                                    </CardFooter>
+                                        <CardContent className="space-y-4 relative">
+                                            <div className="p-4 rounded-lg bg-zinc-800/30 border border-zinc-800">
+                                                <h4 className="text-sm font-semibold mb-2 text-primary">Challenge</h4>
+                                                <p className="text-sm text-gray-400">{project.challenge}</p>
+                                            </div>
+                                            <div className="p-4 rounded-lg bg-zinc-800/30 border border-zinc-800">
+                                                <h4 className="text-sm font-semibold mb-2 text-secondary">Architecture</h4>
+                                                <p className="text-sm text-gray-400">{project.architecture}</p>
+                                            </div>
+                                        </CardContent>
+
+                                        <CardFooter className="relative">
+                                            <div className="flex flex-wrap gap-2">
+                                                {project.tags.map((tag) => (
+                                                    <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">
+                                                        {tag}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        </CardFooter>
+                                    </div>
                                 </Card>
                             </TiltCard>
                         </motion.div>
