@@ -8,6 +8,7 @@ import WorkPage from './pages/WorkPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import SplitReveal from './components/SplitReveal';
+import TopGlowOverlay from './components/TopGlowOverlay';
 import { LoadingProvider } from './context/LoadingContext';
 
 function AnimatedRoutes() {
@@ -74,6 +75,7 @@ function App() {
         <LoadingProvider>
             <SplitReveal>
                 <Router>
+                    <TopGlowOverlay />
                     <AnimatedRoutes />
                 </Router>
             </SplitReveal>

@@ -250,9 +250,9 @@ export default function EndlessScroll() {
                     />
                 ))}
 
-                {/* Bottom gradient overlay for smooth transition to next section */}
+                {/* Bottom gradient for smooth transition to next section */}
                 <div
-                    className="absolute bottom-0 left-0 right-0 h-32 md:h-48 pointer-events-none"
+                    className="absolute bottom-0 left-0 right-0 h-48 md:h-64 pointer-events-none"
                     style={{
                         background: 'linear-gradient(to bottom, transparent 0%, rgb(9, 9, 11) 100%)'
                     }}
