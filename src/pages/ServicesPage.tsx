@@ -209,7 +209,7 @@ function ServiceSection({
 }
 
 /* ─── Partner Logo Placeholder ─── */
-function LogoPlaceholder({ index }: { index: number }) {
+function LogoPlaceholder({ index: _index }: { index: number }) {
     return (
         <div className="w-24 h-12 rounded-lg bg-[#1a1a1c] border border-border flex items-center justify-center">
             <Award className="w-5 h-5 text-white/20" />
