@@ -1,22 +1,24 @@
 /**
  * Script to fetch all image URLs from Cloudinary
- * Run: node scripts/fetch-cloudinary-urls.js
+ * Run: node --env-file=.env scripts/fetch-cloudinary-urls.js
  * 
  * Reads credentials from .env file
  */
 
-require('dotenv').config();
+import https from 'https';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'dbmetyesk';
 const API_KEY = process.env.CLOUDINARY_API_KEY;
 const API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
 if (!API_KEY || !API_SECRET) {
-    console.error('❌ Please set CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET environment variables');
+    console.error('Please set CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET environment variables');
     console.log('\nExample:');
     console.log('CLOUDINARY_API_KEY=your_key CLOUDINARY_API_SECRET=your_secret node scripts/fetch-cloudinary-urls.js');
     process.exit(1);
@@ -60,7 +62,7 @@ function fetchResources(nextCursor = null) {
 }
 
 async function main() {
-    console.log('🔄 Fetching images from Cloudinary...');
+    console.log(' Fetching images from Cloudinary...');
 
     let allResources = [];
     let nextCursor = null;
@@ -69,13 +71,13 @@ async function main() {
         const response = await fetchResources(nextCursor);
 
         if (response.error) {
-            console.error('❌ Error:', response.error.message);
+            console.error('Error:', response.error.message);
             process.exit(1);
         }
 
         allResources = allResources.concat(response.resources || []);
         nextCursor = response.next_cursor;
-        console.log(`📦 Fetched ${allResources.length} images...`);
+        console.log(` Fetched ${allResources.length} images...`);
     } while (nextCursor);
 
     // Filter and sort earth sequence images (those with frame numbers)
@@ -87,7 +89,7 @@ async function main() {
             return numA - numB;
         });
 
-    console.log(`\n✅ Found ${earthImages.length} earth sequence images`);
+    console.log(`\n Found ${earthImages.length} earth sequence images`);
 
     // Generate URLs array
     const urls = earthImages.map(r => r.secure_url);
@@ -111,8 +113,8 @@ export const TOTAL_FRAMES = ${urls.length};
     }
 
     fs.writeFileSync(outputPath, configContent);
-    console.log(`\n💾 Saved to: ${outputPath}`);
-    console.log(`📊 Total frames: ${urls.length}`);
+    console.log(`\n Saved to: ${outputPath}`);
+    console.log(` Total frames: ${urls.length}`);
 }
 
 main().catch(console.error);
