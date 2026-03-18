@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { GlowButton } from '@/components/ui/GlowButton'
 import { SplitText, ScrollReveal, StaggerList, PulsingDot } from '@/components/animations'
+import { usePageMeta } from '@/lib/usePageMeta'
 
 interface Phase {
     number: number
@@ -87,6 +88,25 @@ jobs:
 ]
 
 export default function ProcessPage() {
+    usePageMeta({
+        title: 'Our Process — SaaS Development Blueprint',
+        description:
+            'Battle-tested 3-phase SaaS development methodology: Architecture ✔, Development ✔, DevOps & Scale ✔. See exactly how we transform your vision into a production-ready platform.',
+        canonical: '/process',
+        keywords: 'SaaS development process, software development methodology, architecture, DevOps, CI/CD, scalable platform',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'Our SaaS Development Process',
+            description: 'A battle-tested methodology to build production-ready SaaS platforms.',
+            step: [
+                { '@type': 'HowToStep', position: 1, name: 'Architecture', text: 'Define the foundation: clean contracts, scalable data models, and technology validation.' },
+                { '@type': 'HowToStep', position: 2, name: 'Development', text: 'Modular, component-driven UI, typed APIs, and rigorous Git workflow.' },
+                { '@type': 'HowToStep', position: 3, name: 'DevOps & Scale', text: 'Automated pipelines, containerized deployment, and proactive monitoring.' },
+            ],
+        },
+    });
+
     return (
         <main className="pt-32 pb-24 relative">
             <div className="absolute inset-0 glow-bg-purple" />

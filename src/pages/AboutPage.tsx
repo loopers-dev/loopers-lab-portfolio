@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { GlowButton } from '@/components/ui/GlowButton'
 import { GradientText } from '@/components/custom/GradientText'
+import { usePageMeta } from '@/lib/usePageMeta'
 
 interface EngineCylinder {
     id: number
@@ -115,6 +116,21 @@ const values = [
 ]
 
 export default function AboutPage() {
+    usePageMeta({
+        title: 'About Us — Strategy, Systems & Product',
+        description:
+            'Meet the Loopers Lab team: a remote-first group of engineers, architects, and designers united by a passion for building exceptional software. Strategy, Systems, and Product — firing on all cylinders.',
+        canonical: '/about',
+        keywords: 'about loopers lab, software team, remote developers, strategy systems product',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'AboutPage',
+            name: 'About Loopers Lab',
+            description: 'Remote-first team of engineers, architects and designers building exceptional software.',
+            url: 'https://loopers.studio/about',
+        },
+    });
+
     return (
         <main className="pt-32 pb-24 relative">
             <div className="absolute inset-0 glow-bg-mixed" />

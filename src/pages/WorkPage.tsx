@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge'
 import { GlowButton } from '@/components/ui/GlowButton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { SplitText, ScrollReveal, TiltCard } from '@/components/animations'
+import { usePageMeta } from '@/lib/usePageMeta'
 
 interface Project {
     id: string
@@ -71,6 +72,21 @@ const projects: Project[] = [
 const categories = ['All', 'FinTech', 'EdTech', 'E-commerce', 'Infrastructure']
 
 export default function WorkPage() {
+    usePageMeta({
+        title: 'Our Work — Case Studies & Portfolio',
+        description:
+            'Explore Loopers Lab case studies: from Academix LMS (10k+ users) to FinFlow real-time payments and SecureStack enterprise identity. Real projects, real impact.',
+        canonical: '/work',
+        keywords: 'portfolio, case studies, SaaS development, LMS, fintech, e-commerce, infrastructure projects',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Our Work — Case Studies',
+            description: 'Portfolio of web development and SaaS projects by Loopers Lab.',
+            url: 'https://loopers.studio/work',
+        },
+    });
+
     const [activeCategory, setActiveCategory] = useState('All')
 
     const filteredProjects = activeCategory === 'All'

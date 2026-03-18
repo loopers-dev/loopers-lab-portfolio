@@ -4,8 +4,24 @@ import { Button } from '@/components/ui/Button';
 import { Input, Textarea, Label } from '@/components/ui/Input';
 import { ScrollReveal, StaggerList, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
+import { usePageMeta } from '@/lib/usePageMeta';
 
 export default function ContactPage() {
+    usePageMeta({
+        title: 'Contact Us — Start Your Project',
+        description:
+            'Get in touch with Loopers Lab. Have a project in mind? We respond within 2 business days. Let\'s discuss how we can build your e-commerce platform or SaaS product.',
+        canonical: '/contact',
+        keywords: 'contact loopers lab, hire web developers, start project, e-commerce consultation, SaaS development inquiry',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ContactPage',
+            name: 'Contact Loopers Lab',
+            description: 'Get in touch to start your web development project.',
+            url: 'https://loopers.studio/contact',
+        },
+    });
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',

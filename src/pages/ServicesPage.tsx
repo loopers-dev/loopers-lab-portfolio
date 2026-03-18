@@ -14,6 +14,7 @@ import {
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
+import { usePageMeta } from '@/lib/usePageMeta';
 
 /* ─── Service Data ─── */
 const services = [
@@ -219,6 +220,28 @@ function LogoPlaceholder({ index: _index }: { index: number }) {
 
 /* ─── Main Page ─── */
 export default function ServicesPage() {
+    usePageMeta({
+        title: 'Complete E-commerce Development Services',
+        description:
+            'Full-stack e-commerce solutions: persuasive UI/UX design, solid web development, high-speed hosting, AI agent integration, sales analytics, and long-term maintenance. Get a free consultation today.',
+        canonical: '/services',
+        keywords: 'e-commerce development services, UI UX design, web development, AI agent integration, cloud hosting, maintenance, sales analytics',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'E-commerce Development Services',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Persuasive Web Design (UI/UX Design)' },
+                { '@type': 'ListItem', position: 2, name: 'Solid Platform Development (Web Development)' },
+                { '@type': 'ListItem', position: 3, name: 'High-Speed Hosting & Infrastructure' },
+                { '@type': 'ListItem', position: 4, name: 'Long-Term Optimization & Maintenance' },
+                { '@type': 'ListItem', position: 5, name: 'AI Agent Integration' },
+                { '@type': 'ListItem', position: 6, name: 'Sales Data Analysis' },
+                { '@type': 'ListItem', position: 7, name: 'Technical Documentation & Knowledge Warranty' },
+            ],
+        },
+    });
+
     return (
         <div className="pt-32 pb-20 relative overflow-hidden">
             {/* Background effects */}
