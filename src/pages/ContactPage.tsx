@@ -18,7 +18,7 @@ export default function ContactPage() {
             '@type': 'ContactPage',
             name: 'Contact Loopers Lab',
             description: 'Get in touch to start your web development project.',
-            url: 'https://loopers.studio/contact',
+            url: 'https://looperslab.com/contact',
         },
     });
 

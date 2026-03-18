@@ -10,7 +10,7 @@ interface PageMetaOptions {
 }
 
 const SITE_NAME = 'Loopers Lab';
-const BASE_URL = 'https://loopers.studio';
+const BASE_URL = 'https://looperslab.com';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export function usePageMeta({

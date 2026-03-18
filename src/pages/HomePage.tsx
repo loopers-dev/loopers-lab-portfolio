@@ -16,7 +16,7 @@ export default function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'ProfessionalService',
             name: 'Loopers Lab',
-            url: 'https://loopers.studio',
+            url: 'https://looperslab.com',
             description: 'E-commerce web development, UI/UX design, AI integration, and cloud infrastructure.',
             serviceType: 'Web Development',
             areaServed: 'Worldwide',

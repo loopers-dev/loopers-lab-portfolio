@@ -127,7 +127,7 @@ export default function AboutPage() {
             '@type': 'AboutPage',
             name: 'About Loopers Lab',
             description: 'Remote-first team of engineers, architects and designers building exceptional software.',
-            url: 'https://loopers.studio/about',
+            url: 'https://looperslab.com/about',
         },
     });
 

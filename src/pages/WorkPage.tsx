@@ -83,7 +83,7 @@ export default function WorkPage() {
             '@type': 'CollectionPage',
             name: 'Our Work — Case Studies',
             description: 'Portfolio of web development and SaaS projects by Loopers Lab.',
-            url: 'https://loopers.studio/work',
+            url: 'https://looperslab.com/work',
         },
     });
 
