@@ -26,6 +26,19 @@ const COLOR_THEMES: ColorTheme[] = [
     { name: 'gold', label: 'Golden Yellow', emoji: '🌟' },
 ]
 
+const DEFAULT_COLOR_THEME = COLOR_THEMES[0].name
+
+const getInitialColorTheme = () => {
+    if (typeof window === 'undefined') {
+        return DEFAULT_COLOR_THEME
+    }
+
+    const savedTheme = window.localStorage.getItem('colorTheme')
+    const isValidTheme = COLOR_THEMES.some(theme => theme.name === savedTheme)
+
+    return isValidTheme && savedTheme ? savedTheme : DEFAULT_COLOR_THEME
+}
+
 export const useTheme = () => {
     const context = useContext(ThemeContext)
     if (!context) {
@@ -35,13 +48,7 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [colorTheme, setColorTheme] = useState('red');
-
-    useEffect(() => {
-        // Read saved theme from localStorage after mount (client only)
-        const saved = localStorage.getItem('colorTheme');
-        if (saved) setColorTheme(saved);
-    }, []);
+    const [colorTheme, setColorTheme] = useState(getInitialColorTheme);
 
     useEffect(() => {
         // Apply color theme to document

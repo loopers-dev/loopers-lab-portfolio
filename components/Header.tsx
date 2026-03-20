@@ -27,11 +27,12 @@ export default function Header() {
     const activeIndicatorRef = useRef<HTMLDivElement>(null);
     const linksContainerRef = useRef<HTMLDivElement>(null);
     const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [mobileMenuRoute, setMobileMenuRoute] = useState<string | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const pathname = usePathname();
     const navigate = useRouter();
     const { cycleColorTheme } = useTheme();
+    const isMobileMenuOpen = mobileMenuRoute === pathname;
 
     // GSAP ScrollTrigger for navbar shrink effect
     useEffect(() => {
@@ -73,11 +74,6 @@ export default function Header() {
         return () => ctx.revert();
     }, []);
 
-    // Close mobile menu on route change
-    useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [pathname]);
-
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
@@ -89,6 +85,14 @@ export default function Header() {
             document.body.style.overflow = '';
         };
     }, [isMobileMenuOpen]);
+
+    const closeMobileMenu = () => {
+        setMobileMenuRoute(null);
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuRoute(current => (current === pathname ? null : pathname));
+    };
 
     // Get offset left for indicator positioning
     const getOffsetLeft = (element: HTMLElement) => {
@@ -286,7 +290,7 @@ export default function Header() {
 
                                 {/* Mobile menu button */}
                                 <button
-                                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                    onClick={toggleMobileMenu}
                                     className={cn(
                                         "md:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-colors",
                                         isMobileMenuOpen ? "bg-white/10" : "hover:bg-white/5"
@@ -321,7 +325,7 @@ export default function Header() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={closeMobileMenu}
                         />
                     )
                 }
@@ -350,7 +354,7 @@ export default function Header() {
                                         >
                                             <Link
                                                 href={link.href}
-                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                onClick={closeMobileMenu}
                                                 className={cn(
                                                     'block py-4 text-lg font-medium border-b border-white/5 transition-colors',
                                                     isActive ? 'text-primary' : 'text-white/60 hover:text-white hover:pl-2'
@@ -368,7 +372,7 @@ export default function Header() {
                                 >
                                     <Link
                                         href="/contact"
-                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        onClick={closeMobileMenu}
                                         className="mt-8 block"
                                     >
                                         <GlowButton size="md" rounded="md" className="w-full">

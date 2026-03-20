@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useScroll, useTransform, motion, type MotionValue } from 'framer-motion';
 import { useLoading } from '@/context/LoadingContext';
 
 // ============================================================
@@ -26,7 +26,7 @@ interface ScrollTextProps {
         subtitle: string;
         align: 'left' | 'center' | 'right';
     };
-    scrollYProgress: any;
+    scrollYProgress: MotionValue<number>;
 }
 
 // Separate component for text overlays to fix hooks violation
@@ -115,8 +115,6 @@ export default function EndlessScroll() {
     useEffect(() => {
         // If already cached, use cached images
         if (imagesPreloaded && imageCache.length > 0) {
-            setImages(imageCache);
-            setImagesLoaded(true);
             setContentReady();
             return;
         }
@@ -153,7 +151,7 @@ export default function EndlessScroll() {
         };
 
         loadImages();
-    }, []);
+    }, [setContentReady]);
 
     // Handle scroll and canvas rendering - optimized for smooth 60fps
     useEffect(() => {

@@ -114,7 +114,7 @@ export default function HomeHeroSection() {
                             <br />
                             <span className="text-white/75">deploy</span> {'->'} monitor
                             <br />
-                            <span className="text-white/40">// content ops included</span>
+                            <span className="text-white/40">{'// content ops included'}</span>
                         </div>
                     </motion.div>
 

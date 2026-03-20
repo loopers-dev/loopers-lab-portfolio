@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 
 interface LoadingContextType {
     isContentReady: boolean;
@@ -25,14 +25,14 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
         };
     }, []);
 
-    const setContentReady = () => {
+    const setContentReady = useCallback(() => {
         // Cancel the auto-timeout and set ready immediately
         if (timerRef.current) {
             clearTimeout(timerRef.current);
             timerRef.current = null;
         }
         setIsContentReady(true);
-    };
+    }, []);
 
     return (
         <LoadingContext.Provider value={{ isContentReady, setContentReady }}>

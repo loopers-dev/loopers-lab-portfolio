@@ -74,7 +74,7 @@ export default function AboutPageClient() {
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6">
                             Powered by <GradientText>Expertise</GradientText>
                         </h1>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">We're a remote-first team of engineers, architects, and designers united by a passion for building exceptional software.</p>
+                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">We&apos;re a remote-first team of engineers, architects, and designers united by a passion for building exceptional software.</p>
                     </motion.div>
                     <div className="mb-28">
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">

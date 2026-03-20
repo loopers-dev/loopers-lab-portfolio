@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLoading } from '@/context/LoadingContext';
 
 // Cinematic studio reveal animation
@@ -11,21 +11,11 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     const [isRevealed, setIsRevealed] = useState(false);
     const [shouldRender, setShouldRender] = useState(true);
     const { isContentReady } = useLoading();
-
-    // Check for reduced motion preference
-    useEffect(() => {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (prefersReducedMotion) {
-            setIsRevealed(true);
-            setShouldRender(false);
-            return;
-        }
-    }, []);
+    const prefersReducedMotion = useReducedMotion();
 
     // Trigger reveal when content is ready
     useEffect(() => {
-        if (!isContentReady) return;
+        if (!isContentReady || prefersReducedMotion) return;
 
         // Phase 1: Hold for brand moment (~700ms) after content is ready
         const holdTimer = setTimeout(() => {
@@ -41,10 +31,12 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
             clearTimeout(holdTimer);
             clearTimeout(cleanupTimer);
         };
-    }, [isContentReady]);
+    }, [isContentReady, prefersReducedMotion]);
 
     // Hard fallback so the site never stays hidden if the loading signal fails.
     useEffect(() => {
+        if (prefersReducedMotion) return;
+
         const revealFallback = setTimeout(() => {
             setIsRevealed(true);
         }, 1200);
@@ -57,7 +49,7 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
             clearTimeout(revealFallback);
             clearTimeout(cleanupFallback);
         };
-    }, []);
+    }, [prefersReducedMotion]);
 
     // Custom easing curve - confident, controlled motion
     const splitEasing = [0.65, 0, 0.35, 1];
@@ -65,13 +57,13 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     return (
         <>
             {/* Main content - always rendered underneath */}
-            <div style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
+            <div style={{ visibility: prefersReducedMotion || isRevealed ? 'visible' : 'hidden' }}>
                 {children}
             </div>
 
             {/* Split reveal overlay */}
             <AnimatePresence>
-                {shouldRender && (
+                {shouldRender && !prefersReducedMotion && (
                     <div
                         className="fixed inset-0 z-[9999] pointer-events-none"
                         style={{ pointerEvents: isRevealed ? 'none' : 'auto' }}
