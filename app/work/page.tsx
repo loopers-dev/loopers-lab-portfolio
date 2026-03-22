@@ -1,27 +1,66 @@
 import type { Metadata } from 'next';
 import WorkPageClient from '@/components/pages/WorkPageClient';
+import { JsonLd } from '@/components/seo/JsonLd';
+import {
+    absoluteUrl,
+    createBreadcrumbJsonLd,
+    createPageMetadata,
+    createWebPageJsonLd,
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-    title: 'Our Work — Case Studies & Portfolio',
-    description:
-        'Explore Loopers Lab case studies: from Academix LMS (10k+ users) to FinFlow real-time payments and SecureStack enterprise identity. Real projects, real impact.',
+const title = 'Case Studies and Selected Work';
+const description =
+    'Explore Loopers Lab case studies across EdTech, FinTech, e-commerce, and infrastructure systems. Real projects, real architecture, and real delivery outcomes.';
+
+export const metadata: Metadata = createPageMetadata({
+    title,
+    description,
+    path: '/work',
     keywords: [
-        'portfolio',
+        'software portfolio',
         'case studies',
-        'SaaS development',
-        'LMS',
-        'fintech',
-        'e-commerce projects',
-        'infrastructure',
+        'saas development portfolio',
+        'edtech projects',
+        'fintech projects',
+        'infrastructure case studies',
     ],
-    alternates: { canonical: 'https://looperslab.com/work' },
-    openGraph: {
-        url: 'https://looperslab.com/work',
-        title: 'Our Work — Case Studies & Portfolio | Loopers Lab',
-        description: 'Real SaaS projects: Academix LMS, FinFlow payments, EcoFit e-commerce, SecureStack IAM.',
-    },
+});
+
+const workCollectionJsonLd = createWebPageJsonLd({
+    title,
+    description,
+    path: '/work',
+    type: 'CollectionPage',
+});
+
+const workItemsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': absoluteUrl('/work#projects'),
+    name: 'Loopers Lab case studies',
+    itemListElement: [
+        { name: 'Academix', path: '/work#academix', category: 'EdTech' },
+        { name: 'EcoFit', path: '/work#ecofit', category: 'E-commerce' },
+        { name: 'FinFlow', path: '/work#finflow', category: 'FinTech' },
+        { name: 'SecureStack', path: '/work#securestack', category: 'Infrastructure' },
+    ].map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: absoluteUrl(project.path),
+        name: `${project.name} ${project.category} case study`,
+    })),
 };
 
+const workBreadcrumbJsonLd = createBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Work', path: '/work' },
+]);
+
 export default function WorkPage() {
-    return <WorkPageClient />;
+    return (
+        <>
+            <JsonLd data={[workCollectionJsonLd, workItemsJsonLd, workBreadcrumbJsonLd]} />
+            <WorkPageClient />
+        </>
+    );
 }

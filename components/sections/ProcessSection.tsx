@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -372,10 +373,12 @@ const ImplementBlock = () => {
                     <StatItem icon={Shield} value="CI/CD" label="Safer Deploys" />
                 </div>
 
-                <GlowButton size="md" rounded="md" className="inline-flex items-center gap-2">
-                    Discuss Support
-                    <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
-                </GlowButton>
+                <Link href="/contact">
+                    <GlowButton size="md" rounded="md" className="inline-flex items-center gap-2">
+                        Discuss Support
+                        <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
+                    </GlowButton>
+                </Link>
             </div>
         </div>
     );
