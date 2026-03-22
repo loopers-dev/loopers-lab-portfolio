@@ -1,12 +1,7 @@
 'use client';
 
-<<<<<<< HEAD
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-=======
 import { memo, useState, useEffect, useMemo, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
->>>>>>> Another
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLoading } from '@/context/LoadingContext';
 
 // ─────────────────────────────────────────────────────────────
@@ -135,87 +130,33 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     const [shouldRender, setShouldRender] = useState(true);
     const [showFlash, setShowFlash] = useState(false);
     const { isContentReady } = useLoading();
-<<<<<<< HEAD
     const prefersReducedMotion = useReducedMotion();
-=======
-
     const letters = useMemo(() => BRAND_TEXT.split(''), []);
-
-    // Skip animation entirely for users who prefer reduced motion
-    useEffect(() => {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            setIsRevealed(true);
-            setShouldRender(false);
-        }
-    }, []);
->>>>>>> Another
 
     // Orchestrate the reveal sequence once content is ready
     useEffect(() => {
-<<<<<<< HEAD
         if (!isContentReady || prefersReducedMotion) return;
-
-        // Phase 1: Hold for brand moment (~700ms) after content is ready
-        const holdTimer = setTimeout(() => {
-            setIsRevealed(true);
-        }, 700);
-
-        // Phase 3: Cleanup after animation completes
-        const cleanupTimer = setTimeout(() => {
-            setShouldRender(false);
-        }, 2200);
-
-        return () => {
-            clearTimeout(holdTimer);
-            clearTimeout(cleanupTimer);
-        };
-    }, [isContentReady, prefersReducedMotion]);
-=======
-        if (!isContentReady) return;
         const t1 = setTimeout(() => setShowFlash(true), TIMING.flash);
         const t2 = setTimeout(() => setIsRevealed(true), TIMING.reveal);
         const t3 = setTimeout(() => setShouldRender(false), TIMING.cleanup);
         return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-    }, [isContentReady]);
->>>>>>> Another
+    }, [isContentReady, prefersReducedMotion]);
 
     // Hard fallback so the site is never permanently hidden
     useEffect(() => {
-<<<<<<< HEAD
         if (prefersReducedMotion) return;
-
-        const revealFallback = setTimeout(() => {
-            setIsRevealed(true);
-        }, 1200);
-
-        const cleanupFallback = setTimeout(() => {
-            setShouldRender(false);
-        }, 2700);
-
-        return () => {
-            clearTimeout(revealFallback);
-            clearTimeout(cleanupFallback);
-        };
-    }, [prefersReducedMotion]);
-=======
         const t1 = setTimeout(() => setShowFlash(true), TIMING.fallbackFlash);
         const t2 = setTimeout(() => setIsRevealed(true), TIMING.fallbackReveal);
         const t3 = setTimeout(() => setShouldRender(false), TIMING.fallbackCleanup);
         return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-    }, []);
->>>>>>> Another
+    }, [prefersReducedMotion]);
 
     return (
         <>
-<<<<<<< HEAD
-            {/* Main content - always rendered underneath */}
+            {/* Site content – hidden behind overlay until reveal */}
             <div style={{ visibility: prefersReducedMotion || isRevealed ? 'visible' : 'hidden' }}>
                 {children}
             </div>
-=======
-            {/* Site content – hidden behind overlay until reveal */}
-            <div style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>{children}</div>
->>>>>>> Another
 
             <AnimatePresence>
                 {shouldRender && !prefersReducedMotion && (
