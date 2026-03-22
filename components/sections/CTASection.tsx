@@ -16,11 +16,11 @@ export default function CTASection() {
                 <ScrollReveal animation="scale">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-8">
                         <SplitText animation="fadeUp" splitBy="words">
-                            Let's Build Something That Lasts
+                            Let&apos;s Build Something That Lasts
                         </SplitText>
                     </h2>
                     <p className="text-lg text-white/50 max-w-xl mx-auto mb-12">
-                        If you're ready to invest in structure over shortcuts — we should talk.
+                        If you&apos;re ready to invest in structure over shortcuts, we should talk.
                     </p>
                     <Link href="/contact">
                         <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">

@@ -104,7 +104,7 @@ export default function ProcessPageClient() {
                             <div className="absolute inset-0 glow-bg-mixed opacity-30" />
                             <div className="relative">
                                 <h2 className="text-3xl sm:text-4xl font-black mb-4">Ready to Start Your Project?</h2>
-                                <p className="text-gray-400 mb-8 max-w-xl mx-auto">Let's discuss how our process can bring your SaaS vision to life.</p>
+                                <p className="text-gray-400 mb-8 max-w-xl mx-auto">Let&apos;s discuss how our process can bring your SaaS vision to life.</p>
                                 <Link href="/contact">
                                     <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">
                                         Schedule a Call <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

@@ -39,7 +39,7 @@ export default function ContactPageClient() {
                         </ScrollReveal>
                         <ScrollReveal animation="fadeUp" delay={0.1}>
                             <p className="text-xl text-white/50 leading-relaxed mb-2">Have a project in mind? Or just a question?</p>
-                            <p className="text-xl text-white/50 leading-relaxed">We'd like to hear from you.</p>
+                            <p className="text-xl text-white/50 leading-relaxed">We&apos;d like to hear from you.</p>
                         </ScrollReveal>
                     </div>
                 </section>
@@ -58,8 +58,8 @@ export default function ContactPageClient() {
                                         <h3 className="text-lg font-bold text-white/90 mb-6">What to Expect</h3>
                                         <StaggerList className="space-y-4" staggerDelay={0.1}>
                                             <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />We respond within 2 business days.</div>
-                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />If there's a fit, we'll schedule a short discovery call.</div>
-                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />From there, we'll determine next steps together.</div>
+                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />If there&apos;s a fit, we&apos;ll schedule a short discovery call.</div>
+                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />From there, we&apos;ll determine next steps together.</div>
                                         </StaggerList>
                                     </CardContent>
                                 </Card>
@@ -74,7 +74,7 @@ export default function ContactPageClient() {
                                                 </svg>
                                             </div>
                                             <h3 className="text-2xl font-bold text-white mb-3">Message sent</h3>
-                                            <p className="text-white/50">We'll be in touch within 2 business days.</p>
+                                            <p className="text-white/50">We&apos;ll be in touch within 2 business days.</p>
                                         </CardContent>
                                     </Card>
                                 ) : (

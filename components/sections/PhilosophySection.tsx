@@ -23,7 +23,7 @@ export default function PhilosophySection() {
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-white/70 leading-relaxed">
                             Most web projects are built to launch. Ours are built to last.
-                            We approach every system with longevity in mind — designing
+                            We approach every system with longevity in mind, designing
                             structures that adapt to change, not collapse under it.
                         </p>
                     </div>
@@ -31,8 +31,8 @@ export default function PhilosophySection() {
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-white/70 leading-relaxed">
-                            A website is not a brochure. It's infrastructure. We treat design
-                            decisions as architectural ones — every component, every convention
+                            A website is not a brochure. It&apos;s infrastructure. We treat design
+                            decisions as architectural ones, every component, every convention
                             must survive updates, scale with content, and remain stable under maintenance.
                         </p>
                     </div>
@@ -40,8 +40,8 @@ export default function PhilosophySection() {
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-white/70 leading-relaxed">
-                            We don't chase trends. We build systems that stay coherent over
-                            years — not weeks. The goal isn't novelty. It's durability.
+                            We don&apos;t chase trends. We build systems that stay coherent over
+                            years, not weeks. The goal isn&apos;t novelty. It&apos;s durability.
                         </p>
                     </div>
                 </StaggerList>
@@ -54,4 +54,3 @@ export default function PhilosophySection() {
         </section>
     );
 }
-

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useScroll, useTransform, motion, type MotionValue } from 'framer-motion';
 import { Paintbrush, Database, Cloud, Shield, Bot, BarChart3 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { ScrollReveal, StaggerList, TiltCard, PulsingDot } from '@/components/animations';
@@ -40,7 +40,7 @@ const services = [
     },
 ];
 
-function AbstractSystemVideo({ scrollYProgress }: { scrollYProgress: any }) {
+function AbstractSystemVideo({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
     const opacity = useTransform(
         scrollYProgress,
         [0, 0.15, 0.3, 0.7, 0.9],

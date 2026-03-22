@@ -157,7 +157,7 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
     );
 }
 
-function LogoPlaceholder({ index: _index }: { index: number }) {
+function LogoPlaceholder() {
     return (
         <div className="w-24 h-12 rounded-lg bg-[#1a1a1c] border border-border flex items-center justify-center">
             <Award className="w-5 h-5 text-white/20" />
@@ -223,7 +223,7 @@ export default function ServicesPageClient() {
                             <div className="mt-16">
                                 <p className="text-xs text-white/25 uppercase tracking-widest mb-6">Systems We Commonly Support</p>
                                 <div className="flex flex-wrap items-center justify-center gap-4">
-                                    {[1, 2, 3, 4, 5].map((i) => <LogoPlaceholder key={i} index={i} />)}
+                                    {[1, 2, 3, 4, 5].map((i) => <LogoPlaceholder key={i} />)}
                                 </div>
                             </div>
                         </ScrollReveal>

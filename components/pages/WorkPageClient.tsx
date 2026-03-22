@@ -213,7 +213,7 @@ export default function WorkPageClient() {
                             <div className="absolute inset-0 glow-bg-red opacity-30" />
                             <div className="relative">
                                 <h2 className="text-3xl sm:text-4xl font-black mb-4">Want to see your project here?</h2>
-                                <p className="text-gray-400 mb-8 max-w-md mx-auto">Let's discuss how we can bring your SaaS vision to life.</p>
+                                <p className="text-gray-400 mb-8 max-w-md mx-auto">Let&apos;s discuss how we can bring your SaaS vision to life.</p>
                                 <GlowButton size="lg" rounded="md">Start Your Project</GlowButton>
                             </div>
                         </div>
