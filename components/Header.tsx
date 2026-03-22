@@ -226,14 +226,14 @@ export default function Header() {
                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="fixed top-0 left-0 right-0 z-50"
             >
-                <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <nav aria-label="Primary" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div
                         ref={navInnerRef}
                         className="nav-inner mt-4 rounded px-6 py-4"
                     >
                         <div className="flex items-center justify-between">
                             {/* Logo */}
-                            <Link href="/" className="flex items-center gap-3 group" onClick={(e) => { e.preventDefault(); cycleColorTheme(); navigate.push('/'); }}>
+                            <Link aria-label="Loopers Lab home" href="/" className="flex items-center gap-3 group" onClick={(e) => { e.preventDefault(); cycleColorTheme(); navigate.push('/'); }}>
                                 <motion.div
                                     className="relative h-10 w-10"
                                     whileHover={{ rotate: 180, scale: 1.1 }}
@@ -244,7 +244,7 @@ export default function Header() {
                                         <span className="text-xl font-black text-primary">∞</span>
                                     </div>
                                 </motion.div>
-                                <span className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Studio</span>
+                                <span className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Loopers Lab</span>
                             </Link>
 
                             {/* Desktop Navigation */}

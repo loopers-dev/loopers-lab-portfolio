@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
 import './globals.css';
 import ClientProviders from '@/components/ClientProviders';
+import { JsonLd } from '@/components/seo/JsonLd';
+import {
+    absoluteUrl,
+    createOrganizationJsonLd,
+    createWebsiteJsonLd,
+    siteConfig,
+} from '@/lib/seo';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -11,26 +19,29 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://looperslab.com'),
+    metadataBase: new URL(siteConfig.url),
+    applicationName: siteConfig.name,
     title: {
-        default: 'Loopers Lab - Software Systems, Automation & Web Development',
-        template: '%s | Loopers Lab',
+        default: 'Loopers Lab - Software Systems, Automation, and Web Development',
+        template: `%s | ${siteConfig.name}`,
     },
-    description:
-        'Loopers Lab designs, builds, hosts, automates, and maintains websites, web apps, data workflows, and AI-assisted operations.',
-    keywords: [
-        'web development',
-        'system architecture',
-        'database design',
-        'workflow automation',
-        'AI agent integration',
-        'hosting and ci cd',
-        'maintenance and scalability',
-        'content operations',
-    ],
-    authors: [{ name: 'Loopers Lab', url: 'https://looperslab.com' }],
-    creator: 'Loopers Lab',
-    publisher: 'Loopers Lab',
+    description: siteConfig.description,
+    keywords: [...siteConfig.defaultKeywords],
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    category: 'technology',
+    manifest: '/manifest.webmanifest',
+    formatDetection: {
+        address: false,
+        email: false,
+        telephone: false,
+    },
+    icons: {
+        icon: '/favicon.svg',
+        shortcut: '/favicon.svg',
+        apple: '/favicon.svg',
+    },
     robots: {
         index: true,
         follow: true,
@@ -44,58 +55,38 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: 'website',
-        locale: 'en_US',
-        url: 'https://looperslab.com',
-        siteName: 'Loopers Lab',
-        title: 'Loopers Lab - Software Systems, Automation & Web Development',
-        description:
-            'Web development, system architecture, hosting, automation, analytics, and long-term software support.',
+        locale: siteConfig.locale,
+        url: siteConfig.url,
+        siteName: siteConfig.name,
+        title: 'Loopers Lab - Software Systems, Automation, and Web Development',
+        description: siteConfig.description,
         images: [
             {
-                url: '/og-image.png',
+                url: absoluteUrl(siteConfig.ogImagePath),
                 width: 1200,
                 height: 630,
-                alt: 'Loopers Lab - Software Systems Studio',
+                alt: `${siteConfig.name} social preview`,
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Loopers Lab - Software Systems, Automation & Web Development',
-        description:
-            'Web development, system architecture, hosting, automation, analytics, and long-term software support.',
-        images: ['/og-image.png'],
+        title: 'Loopers Lab - Software Systems, Automation, and Web Development',
+        description: siteConfig.description,
+        images: [absoluteUrl(siteConfig.twitterImagePath)],
     },
     alternates: {
-        canonical: 'https://looperslab.com',
+        canonical: siteConfig.url,
     },
 };
 
-const organizationJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Loopers Lab',
-    url: 'https://looperslab.com',
-    logo: 'https://looperslab.com/favicon.svg',
-    description:
-        'Loopers Lab is a software systems studio specializing in web development, UX, architecture, hosting, automation, AI integration, and maintenance.',
-    email: 'hello@looperslab.com',
-    sameAs: [],
-    serviceArea: { '@type': 'Place', name: 'Worldwide' },
-};
-
-const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Loopers Lab',
-    url: 'https://looperslab.com',
-    description: 'Web development, automation, infrastructure, and software support studio',
-};
+const organizationJsonLd = createOrganizationJsonLd();
+const websiteJsonLd = createWebsiteJsonLd();
 
 export default function RootLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
 }) {
     return (
         <html
@@ -104,21 +95,12 @@ export default function RootLayout({
             data-scroll-behavior="smooth"
             suppressHydrationWarning
         >
-            <head>
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-                />
-            </head>
             <body
                 className="relative min-h-screen bg-[#0B0B0C] text-white antialiased"
                 suppressHydrationWarning
             >
+                <JsonLd data={organizationJsonLd} />
+                <JsonLd data={websiteJsonLd} />
                 <ClientProviders>{children}</ClientProviders>
             </body>
         </html>

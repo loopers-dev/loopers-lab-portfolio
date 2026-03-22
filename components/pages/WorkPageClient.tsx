@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layers, Database, Zap, Shield, ArrowUpRight } from 'lucide-react';
@@ -154,12 +156,18 @@ export default function WorkPageClient() {
 
                     <motion.div layout className="grid md:grid-cols-2 gap-8">
                         {filteredProjects.map((project, index) => (
-                            <motion.div key={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }}>
+                            <motion.div key={project.id} id={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }}>
                                 <TiltCard tiltAmount={6} scale={1.01}>
                                     <Card className="h-full overflow-hidden group border-zinc-800 hover:border-primary/30">
                                         <div className="h-56 relative overflow-hidden">
                                             {project.image ? (
-                                                <div className="absolute inset-0" style={{ backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                                                <Image
+                                                    src={project.image}
+                                                    alt={`${project.title} ${project.category} case study preview`}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(min-width: 768px) 50vw, 100vw"
+                                                />
                                             ) : (
                                                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
                                             )}
@@ -214,7 +222,9 @@ export default function WorkPageClient() {
                             <div className="relative">
                                 <h2 className="text-3xl sm:text-4xl font-black mb-4">Want to see your project here?</h2>
                                 <p className="text-gray-400 mb-8 max-w-md mx-auto">Let&apos;s discuss how we can bring your SaaS vision to life.</p>
-                                <GlowButton size="lg" rounded="md">Start Your Project</GlowButton>
+                                <Link href="/contact">
+                                    <GlowButton size="lg" rounded="md">Start Your Project</GlowButton>
+                                </Link>
                             </div>
                         </div>
                     </ScrollReveal>

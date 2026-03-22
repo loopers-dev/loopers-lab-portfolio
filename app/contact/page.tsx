@@ -1,25 +1,46 @@
 import type { Metadata } from 'next';
 import ContactPageClient from '@/components/pages/ContactPageClient';
+import { JsonLd } from '@/components/seo/JsonLd';
+import {
+    createBreadcrumbJsonLd,
+    createPageMetadata,
+    createWebPageJsonLd,
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-    title: 'Contact Us - Start Your Project',
-    description:
-        "Get in touch with Loopers Lab. Have a project in mind? We respond within 2 business days. Let's discuss your website, software stack, automation plan, or long-term support needs.",
+const title = 'Contact and Project Inquiries';
+const description =
+    "Get in touch with Loopers Lab. We respond within 2 business days to discuss your website, software stack, automation plan, or long-term support needs.";
+
+export const metadata: Metadata = createPageMetadata({
+    title,
+    description,
+    path: '/contact',
     keywords: [
         'contact loopers lab',
         'hire web developers',
-        'start project',
         'software consultation',
-        'web development inquiry',
+        'project inquiry',
+        'technical seo support contact',
     ],
-    alternates: { canonical: 'https://looperslab.com/contact' },
-    openGraph: {
-        url: 'https://looperslab.com/contact',
-        title: 'Contact Us - Start Your Project | Loopers Lab',
-        description: 'Have a project in mind? We respond within 2 business days.',
-    },
-};
+});
+
+const contactPageJsonLd = createWebPageJsonLd({
+    title,
+    description,
+    path: '/contact',
+    type: 'ContactPage',
+});
+
+const contactBreadcrumbJsonLd = createBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Contact', path: '/contact' },
+]);
 
 export default function ContactPage() {
-    return <ContactPageClient />;
+    return (
+        <>
+            <JsonLd data={[contactPageJsonLd, contactBreadcrumbJsonLd]} />
+            <ContactPageClient />
+        </>
+    );
 }

@@ -1,26 +1,63 @@
 import type { Metadata } from 'next';
 import ProcessPageClient from '@/components/pages/ProcessPageClient';
+import { JsonLd } from '@/components/seo/JsonLd';
+import {
+    absoluteUrl,
+    createBreadcrumbJsonLd,
+    createPageMetadata,
+    createWebPageJsonLd,
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-    title: 'Our Process — SaaS Development Blueprint',
-    description:
-        'Battle-tested 3-phase SaaS development methodology: Architecture, Development, DevOps & Scale. See exactly how we transform your vision into a production-ready platform.',
+const title = 'Our Delivery Process';
+const description =
+    'See how Loopers Lab scopes, designs, builds, and supports websites, platforms, and automation systems from architecture through operations.';
+
+export const metadata: Metadata = createPageMetadata({
+    title,
+    description,
+    path: '/process',
     keywords: [
-        'SaaS development process',
-        'software development methodology',
-        'architecture',
-        'DevOps',
-        'CI/CD',
-        'scalable platform',
+        'software delivery process',
+        'web development process',
+        'system architecture workflow',
+        'devops delivery',
+        'software support process',
     ],
-    alternates: { canonical: 'https://looperslab.com/process' },
-    openGraph: {
-        url: 'https://looperslab.com/process',
-        title: 'Our Process — SaaS Development Blueprint | Loopers Lab',
-        description: '3-phase methodology: Architecture → Development → DevOps & Scale.',
-    },
+});
+
+const processStepsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': absoluteUrl('/process#steps'),
+    name: 'Loopers Lab delivery process',
+    itemListElement: [
+        'Audit and Scope',
+        'Design the System',
+        'Build and Integrate',
+        'Support and Improve',
+    ].map((step, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: step,
+    })),
 };
 
+const processPageJsonLd = createWebPageJsonLd({
+    title,
+    description,
+    path: '/process',
+});
+
+const processBreadcrumbJsonLd = createBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Process', path: '/process' },
+]);
+
 export default function ProcessPage() {
-    return <ProcessPageClient />;
+    return (
+        <>
+            <JsonLd data={[processPageJsonLd, processStepsJsonLd, processBreadcrumbJsonLd]} />
+            <ProcessPageClient />
+        </>
+    );
 }
