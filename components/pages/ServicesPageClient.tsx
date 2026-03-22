@@ -2,6 +2,7 @@
 
 import type { ComponentType } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
     ArrowRight,
     Paintbrush,
@@ -109,15 +110,18 @@ function ImagePlaceholder({
     className?: string;
 }) {
     return (
-        <div className={`relative rounded-xl bg-[#1a1a1c] border border-border overflow-hidden flex flex-col items-center justify-center min-h-[320px] lg:min-h-[400px] ${className}`}>
-            <div className="absolute inset-0 grid-pattern opacity-40" />
-            <div className="relative mb-6">
-                <div className="absolute inset-0 rounded-full blur-2xl opacity-20" style={{ background: 'var(--accent-primary)' }} />
-                <div className="relative w-20 h-20 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
-                    <Icon className="w-10 h-10 text-white/40" />
+        <div className={`group relative rounded-[2rem] bg-black/40 backdrop-blur-xl border border-white/10 overflow-hidden flex flex-col items-center justify-center min-h-[320px] lg:min-h-[400px] transition-all duration-700 hover:-translate-y-2 card-glow ${className}`}>
+            <div className="absolute inset-0 grid-pattern opacity-30" />
+            <div className="absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: 'linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-primary) 50%, transparent), transparent)' }} />
+            <div className="relative mb-8 z-10 transition-transform duration-700 group-hover:scale-110">
+                <div className="absolute inset-0 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700" style={{ background: 'var(--accent-primary)' }} />
+                <div className="relative w-24 h-24 rounded-[1.8rem] bg-white/[0.02] border border-white/10 flex items-center justify-center transition-all duration-700 group-hover:border-white/20 group-hover:bg-white/[0.05] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                    <div style={{ filter: 'drop-shadow(0 0 10px var(--accent-primary))' }}>
+                        <Icon className="w-10 h-10 text-white/40 transition-colors duration-700 group-hover:text-white" />
+                    </div>
                 </div>
             </div>
-            <p className="text-white/30 text-xs text-center max-w-[260px] leading-relaxed px-4">Image: {description}</p>
+            <p className="relative z-10 text-white/30 text-[10px] uppercase font-mono tracking-[0.2em] text-center max-w-[260px] leading-relaxed px-4 transition-colors duration-700 group-hover:text-white/50">{description}</p>
         </div>
     );
 }
@@ -132,21 +136,42 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
 
     const contentBlock = (
         <ScrollReveal animation="fadeUp" delay={0.2}>
-            <div className="flex flex-col justify-center h-full">
-                <span className="text-sm font-mono text-primary/60 mb-3 tracking-widest">{service.number}</span>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight mb-3 leading-tight">
+            <div className="flex flex-col justify-center h-full group/content cursor-default">
+                <div className="flex items-center gap-3 mb-5">
+                    <span className="w-8 h-px bg-white/20 transition-all duration-500 group-hover/content:w-16" style={{ background: 'linear-gradient(90deg, var(--accent-primary), transparent)' }} />
+                    <span className="text-sm font-black text-transparent bg-clip-text tracking-[0.2em]" style={{ backgroundImage: 'var(--accent-gradient)' }}>{service.number}</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-black text-white tracking-[-0.03em] mb-4 leading-[1.15] transition-colors duration-500">
                     {service.title}
                 </h2>
-                <p className="text-sm italic text-primary/80 mb-6">{service.slogan}</p>
-                <p className="text-white/50 leading-relaxed text-[15px]">{service.content}</p>
+                <p className="text-base font-medium italic mb-6 shadow-sm" style={{ color: 'var(--accent-secondary)' }}>
+                    {service.slogan}
+                </p>
+                <p className="text-white/55 leading-relaxed text-[16px] md:text-[18px]">
+                    {service.content}
+                </p>
             </div>
         </ScrollReveal>
     );
 
     return (
-        <section className="relative px-6 lg:px-8" id={`service-${index + 1}`}>
-            {index % 3 === 0 && <div className="absolute inset-0 glow-bg-red opacity-30 pointer-events-none" />}
-            {index % 3 === 1 && <div className="absolute inset-0 glow-bg-purple opacity-20 pointer-events-none" />}
+        <section className="relative px-6 lg:px-8 py-10" id={`service-${index + 1}`}>
+            {index % 2 === 0 && (
+                <motion.div
+                    animate={{ opacity: [0.1, 0.3, 0.1], x: [-50, 0, -50] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute left-[-10rem] top-[50%] h-[40rem] w-[40rem] rounded-full blur-[120px] pointer-events-none -translate-y-1/2"
+                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-primary) 15%, transparent) 0%, transparent 70%)' }}
+                />
+            )}
+            {index % 2 === 1 && (
+                <motion.div
+                    animate={{ opacity: [0.1, 0.3, 0.1], x: [50, 0, 50] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute right-[-10rem] top-[50%] h-[40rem] w-[40rem] rounded-full blur-[120px] pointer-events-none -translate-y-1/2"
+                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-tertiary) 15%, transparent) 0%, transparent 70%)' }}
+                />
+            )}
             <div className="max-w-6xl mx-auto">
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${!isImageLeft ? 'lg:[direction:rtl]' : ''}`}>
                     <div className={!isImageLeft ? 'lg:[direction:ltr]' : ''}>{isImageLeft ? imageBlock : contentBlock}</div>
@@ -159,7 +184,7 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
 
 function LogoPlaceholder() {
     return (
-        <div className="w-24 h-12 rounded-lg bg-[#1a1a1c] border border-border flex items-center justify-center">
+        <div className="w-24 h-12 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/20">
             <Award className="w-5 h-5 text-white/20" />
         </div>
     );
@@ -168,9 +193,21 @@ function LogoPlaceholder() {
 export default function ServicesPageClient() {
     return (
         <Layout>
-            <div className="pt-32 pb-20 relative overflow-hidden">
-                <div className="absolute inset-0 glow-bg-red" />
-                <div className="absolute inset-0 grid-pattern" />
+            <div className="pt-32 pb-20 relative overflow-hidden bg-[#09090B]">
+                <div className="absolute inset-0 glow-bg-red opacity-30" />
+                <div className="absolute inset-0 grid-pattern opacity-40" />
+                <motion.div
+                    animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute left-[-20rem] top-[-10rem] h-[50rem] w-[50rem] rounded-full blur-[100px] pointer-events-none"
+                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-tertiary) 15%, transparent) 0%, transparent 70%)' }}
+                />
+                <motion.div
+                    animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.05, 1] }}
+                    transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                    className="absolute right-[-10rem] top-[40rem] h-[40rem] w-[40rem] rounded-full blur-[100px] pointer-events-none"
+                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-primary) 15%, transparent) 0%, transparent 70%)' }}
+                />
 
                 <section className="relative px-6 lg:px-8 mb-24 lg:mb-32">
                     <div className="max-w-6xl mx-auto">
