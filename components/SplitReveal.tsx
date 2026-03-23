@@ -162,14 +162,14 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     return (
         <>
             {/* Site content – hidden behind overlay until reveal */}
-            <div style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
+            <div className="split-reveal-content" style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
                 {children}
             </div>
 
             <AnimatePresence>
                 {shouldRender && (
                     <div
-                        className="fixed inset-0 z-[9999]"
+                        className="split-reveal-overlay fixed inset-0 z-[9999]"
                         style={{ pointerEvents: isRevealed ? 'none' : 'auto' }}
                         role="status"
                         aria-label="Loading Loopers Studio"

@@ -256,3 +256,27 @@
   85%  { opacity: 0.25; }
   100% { transform: translateX(100%); opacity: 0; }
 }
+
+/* ===== REDUCED MOTION ===== */
+/* Pure CSS override — works instantly, no JS delay, no hydration mismatch */
+@media (prefers-reduced-motion: reduce) {
+  /* Immediately show site content */
+  .split-reveal-content {
+    visibility: visible !important;
+  }
+
+  /* Immediately hide the loading overlay */
+  .split-reveal-overlay {
+    display: none !important;
+  }
+
+  /* Kill all animations globally to prevent jank */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
