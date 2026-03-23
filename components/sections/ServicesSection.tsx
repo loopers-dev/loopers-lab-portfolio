@@ -67,25 +67,25 @@ function AbstractSystemVideo({ scrollYProgress }: { scrollYProgress: MotionValue
             <div
                 className="absolute inset-x-0 top-0 h-48 z-10"
                 style={{
-                    background: 'linear-gradient(to bottom, rgb(9, 9, 11) 0%, transparent 100%)'
+                    background: 'linear-gradient(to bottom, var(--color-background) 0%, transparent 100%)'
                 }}
             />
             <div
                 className="absolute inset-x-0 bottom-0 h-32 z-10"
                 style={{
-                    background: 'linear-gradient(to top, rgb(9, 9, 11) 0%, transparent 100%)'
+                    background: 'linear-gradient(to top, var(--color-background) 0%, transparent 100%)'
                 }}
             />
             <div
                 className="absolute inset-y-0 left-0 w-32 z-10"
                 style={{
-                    background: 'linear-gradient(to right, rgb(9, 9, 11) 0%, transparent 100%)'
+                    background: 'linear-gradient(to right, var(--color-background) 0%, transparent 100%)'
                 }}
             />
             <div
                 className="absolute inset-y-0 right-0 w-32 z-10"
                 style={{
-                    background: 'linear-gradient(to left, rgb(9, 9, 11) 0%, transparent 100%)'
+                    background: 'linear-gradient(to left, var(--color-background) 0%, transparent 100%)'
                 }}
             />
 
@@ -113,17 +113,17 @@ export default function ServicesSection() {
         <section
             ref={sectionRef}
             className="py-32 px-6 lg:px-8 relative overflow-hidden"
-            style={{ backgroundColor: 'rgb(9, 9, 11)' }}
+            style={{ backgroundColor: 'var(--color-background)' }}
         >
             <div className="absolute inset-0 grid-pattern opacity-30" />
             <AbstractSystemVideo scrollYProgress={scrollYProgress} />
 
             <div className="relative max-w-6xl mx-auto z-10">
                 <ScrollReveal animation="fadeUp" className="mb-20">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-6">
                         Services We <GradientText>Deliver</GradientText>
                     </h2>
-                    <p className="text-lg text-white/50 max-w-2xl">
+                    <p className="text-lg text-foreground/50 max-w-2xl">
                         Design, engineering, hosting, automation, and long-term support for software teams that need more than a one-time launch.
                     </p>
                 </ScrollReveal>
@@ -135,7 +135,7 @@ export default function ServicesSection() {
                 >
                     {services.map((service) => (
                         <TiltCard key={service.title} className="h-full" tiltAmount={5} scale={1.02}>
-                            <Card className="flex h-full min-h-[18rem] flex-col bg-zinc-900/80 p-8 backdrop-blur-sm" hoverable>
+                            <Card className="flex h-full min-h-[18rem] flex-col bg-card/80 p-8 backdrop-blur-sm" hoverable>
                                 <CardContent className="flex h-full p-0">
                                     <div className="flex h-full items-start gap-5">
                                         <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 relative">
@@ -143,10 +143,10 @@ export default function ServicesSection() {
                                             <PulsingDot className="absolute -top-1 -right-1" size="sm" />
                                         </div>
                                         <div className="flex min-w-0 flex-1 flex-col">
-                                            <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                                            <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
                                                 {service.title}
                                             </h3>
-                                            <p className="text-white/40 leading-relaxed">
+                                            <p className="text-foreground/40 leading-relaxed">
                                                 {service.description}
                                             </p>
                                         </div>

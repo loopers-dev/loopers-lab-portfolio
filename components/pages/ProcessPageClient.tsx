@@ -76,7 +76,7 @@ function PhaseCard({ phase, index }: { phase: any, index: number }) {
             {/* 3D Glass Card */}
             <motion.div 
                 style={{ opacity, scale, rotateY, rotateX, filter, transformOrigin: index % 2 === 0 ? 'right center' : 'left center', borderColor: cardBorder }}
-                className={`group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/40 backdrop-blur-2xl z-20 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'}`}
+                className={`group relative overflow-hidden rounded-[1.4rem] border border-border bg-background/40 backdrop-blur-2xl z-20 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'}`}
             >
                 {/* Intense Internal Glow directly mapped to active center scroll state */}
                 <motion.div style={{ opacity: glowOpacity, background: 'radial-gradient(circle at top right, var(--accent-primary) 0%, transparent 60%)' }} className="absolute inset-x-0 top-0 h-[200px] pointer-events-none mix-blend-screen" />
@@ -91,14 +91,14 @@ function PhaseCard({ phase, index }: { phase: any, index: number }) {
                             <h3 className="text-2xl font-black mb-2 flex items-center gap-3 justify-start ${index % 2 === 0 ? 'lg:justify-end' : ''}">
                                 Phase {phase.number}: {phase.title}
                             </h3>
-                            <p className="text-gray-400">{phase.description}</p>
+                            <p className="text-muted-foreground">{phase.description}</p>
                         </div>
                     </div>
                     <div className={`mb-6 ${index % 2 === 0 ? 'lg:text-right' : ''}`}>
                         <h4 className="text-sm font-semibold text-primary mb-4">Deliverables</h4>
                         <StaggerList staggerDelay={0.08}>
                             {phase.deliverables.map((item: string) => (
-                                <div key={item} className={`group/item flex items-center gap-3 text-sm text-gray-400 mb-2 transition-colors duration-300 hover:text-white ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
+                                <div key={item} className={`group/item flex items-center gap-3 text-sm text-muted-foreground mb-2 transition-colors duration-300 hover:text-foreground ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
                                     onMouseEnter={(e) => {
                                         const svg = e.currentTarget.querySelector('svg');
                                         if (svg) {
@@ -121,7 +121,7 @@ function PhaseCard({ phase, index }: { phase: any, index: number }) {
                         </StaggerList>
                     </div>
                     {phase.codeExample && (
-                        <motion.div className="rounded-xl bg-[#0d0d0d] border border-white/5 overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative">
+                        <motion.div className="rounded-xl bg-card border border-border overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative">
                             <div className="flex items-center gap-1.5 px-4 py-3 bg-white/[0.02] border-b border-white/[0.05]">
                                 <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
@@ -154,7 +154,7 @@ export default function ProcessPageClient() {
 
     return (
         <Layout>
-            <main className="pt-32 pb-24 relative overflow-hidden bg-[#09090B]">
+            <main className="pt-32 pb-24 relative overflow-hidden bg-background">
                 <div className="absolute inset-0 glow-bg-purple opacity-50" />
                 <div className="absolute inset-0 grid-pattern opacity-40" />
                 <motion.div
@@ -178,12 +178,12 @@ export default function ProcessPageClient() {
                             Our <GradientText className="inline-block">Process</GradientText>
                         </h1>
                         <ScrollReveal delay={0.3} animation="fadeUp">
-                            <p className="text-gray-400 max-w-2xl mx-auto text-lg">A battle-tested methodology that transforms your vision into a production-ready, scalable SaaS platform.</p>
+                            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">A battle-tested methodology that transforms your vision into a production-ready, scalable SaaS platform.</p>
                         </ScrollReveal>
                     </div>
                     <div ref={containerRef} className="relative max-w-4xl mx-auto z-10">
                         {/* Static subtle track */}
-                        <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-white/[0.05] hidden sm:block" />
+                        <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-foreground/[0.05] hidden sm:block" />
                         {/* Animated Glowing Line */}
                         <motion.div
                             style={{ 
@@ -198,11 +198,11 @@ export default function ProcessPageClient() {
                         ))}
                     </div>
                     <ScrollReveal animation="scale" delay={0.2}>
-                        <div className="text-center mt-24 p-16 rounded-2xl border border-zinc-800 bg-zinc-900 relative overflow-hidden">
+                        <div className="text-center mt-24 p-16 rounded-2xl border border-border bg-card relative overflow-hidden">
                             <div className="absolute inset-0 glow-bg-mixed opacity-30" />
                             <div className="relative">
                                 <h2 className="text-3xl sm:text-4xl font-black mb-4">Ready to Start Your Project?</h2>
-                                <p className="text-gray-400 mb-8 max-w-xl mx-auto">Let&apos;s discuss how our process can bring your SaaS vision to life.</p>
+                                <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Let&apos;s discuss how our process can bring your SaaS vision to life.</p>
                                 <Link href="/contact">
                                     <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">
                                         Schedule a Call <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

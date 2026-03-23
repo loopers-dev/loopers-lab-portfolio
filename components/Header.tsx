@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useTheme } from '@/context/ThemeContext';
 import { GlowButton } from '@/components/ui/GlowButton';
+import { Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,7 +32,7 @@ export default function Header() {
     const [isAnimating, setIsAnimating] = useState(false);
     const pathname = usePathname();
     const navigate = useRouter();
-    const { cycleColorTheme } = useTheme();
+    const { cycleColorTheme, mode, toggleMode } = useTheme();
     const isMobileMenuOpen = mobileMenuRoute === pathname;
 
     // GSAP ScrollTrigger for navbar shrink effect
@@ -240,7 +241,7 @@ export default function Header() {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-secondary glow-red" />
-                                    <div className="absolute inset-[2px] rounded-[10px] bg-[#0B0B0C] flex items-center justify-center">
+                                    <div className="absolute inset-[2px] rounded-[10px] bg-background flex items-center justify-center">
                                         <span className="text-xl font-black text-primary">∞</span>
                                     </div>
                                 </motion.div>
@@ -259,7 +260,7 @@ export default function Header() {
                                             onClick={() => handleNavClick(index)}
                                             className={cn(
                                                 'nav-link relative px-4 py-2 text-sm font-medium transition-colors duration-300',
-                                                isActive ? 'text-primary' : 'text-white/60 hover:text-white'
+                                                isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                                             )}
                                         >
                                             <span className="nav-link-text" data-text={link.label}>
@@ -272,7 +273,7 @@ export default function Header() {
                                 {/* Active indicator */}
                                 <div
                                     ref={activeIndicatorRef}
-                                    className="absolute left-0 bottom-0 h-[3px] w-[36px] rounded-full bg-white opacity-0"
+                                    className="absolute left-0 bottom-0 h-[3px] w-[36px] rounded-full bg-foreground opacity-0"
                                     style={{
                                         boxShadow: '0 0 10px color-mix(in srgb, var(--accent-primary), transparent 40%), 0 0 20px color-mix(in srgb, var(--accent-primary), transparent 60%)',
                                     }}
@@ -281,6 +282,15 @@ export default function Header() {
 
                             {/* Right side */}
                             <div className="flex items-center gap-3">
+                                {/* Theme Toggle */}
+                                <button
+                                    onClick={toggleMode}
+                                    className="p-2 rounded-full hover:bg-foreground/10 transition-colors"
+                                    aria-label="Toggle theme"
+                                >
+                                    {mode === 'light' ? <Moon className="h-5 w-5 text-foreground" /> : <Sun className="h-5 w-5 text-foreground" />}
+                                </button>
+
                                 {/* CTA Button using GlowButton component */}
                                 <Link href="/contact" className="hidden sm:block">
                                     <GlowButton size="sm" rounded="sm">
@@ -293,20 +303,20 @@ export default function Header() {
                                     onClick={toggleMobileMenu}
                                     className={cn(
                                         "md:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-colors",
-                                        isMobileMenuOpen ? "bg-white/10" : "hover:bg-white/5"
+                                        isMobileMenuOpen ? "bg-foreground/10" : "hover:bg-foreground/5"
                                     )}
                                     aria-label="Toggle menu"
                                 >
                                     <span className={cn(
-                                        "block w-5 h-0.5 bg-white rounded transition-all duration-300",
+                                        "block w-5 h-0.5 bg-foreground rounded transition-all duration-300",
                                         isMobileMenuOpen && "rotate-45 translate-y-2"
                                     )} />
                                     <span className={cn(
-                                        "block w-5 h-0.5 bg-white rounded transition-all duration-300",
+                                        "block w-5 h-0.5 bg-foreground rounded transition-all duration-300",
                                         isMobileMenuOpen && "opacity-0 -translate-x-2"
                                     )} />
                                     <span className={cn(
-                                        "block w-5 h-0.5 bg-white rounded transition-all duration-300",
+                                        "block w-5 h-0.5 bg-foreground rounded transition-all duration-300",
                                         isMobileMenuOpen && "-rotate-45 -translate-y-2"
                                     )} />
                                 </button>
@@ -324,7 +334,7 @@ export default function Header() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+                            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
                             onClick={closeMobileMenu}
                         />
                     )
@@ -340,7 +350,7 @@ export default function Header() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 w-[85%] max-w-[350px] h-full bg-zinc-900 border-l border-white/10 z-50 overflow-y-auto"
+                            className="fixed top-0 right-0 w-[85%] max-w-[350px] h-full bg-card border-l border-border z-50 overflow-y-auto"
                         >
                             <div className="pt-24 px-8 pb-10">
                                 {navLinks.map((link, index) => {
@@ -356,8 +366,8 @@ export default function Header() {
                                                 href={link.href}
                                                 onClick={closeMobileMenu}
                                                 className={cn(
-                                                    'block py-4 text-lg font-medium border-b border-white/5 transition-colors',
-                                                    isActive ? 'text-primary' : 'text-white/60 hover:text-white hover:pl-2'
+                                                    'block py-4 text-lg font-medium border-b border-border transition-colors',
+                                                    isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground hover:pl-2'
                                                 )}
                                             >
                                                 {link.label}

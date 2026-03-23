@@ -54,10 +54,10 @@ function ScrollTextOverlay({ text, scrollYProgress }: ScrollTextProps) {
             style={{ opacity, y }}
             className={`absolute inset-0 flex flex-col justify-center ${alignmentClasses[text.align]} pointer-events-none px-4`}
         >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white/90 mb-2 leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground/90 mb-2 leading-tight tracking-tight">
                 {text.title}
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-white/60 tracking-tight">
+            <p className="text-lg md:text-xl lg:text-2xl text-foreground/60 tracking-tight">
                 {text.subtitle}
             </p>
         </motion.div>
@@ -243,8 +243,8 @@ export default function EndlessScroll() {
                 {!imagesLoaded && (
                     <div className="absolute inset-0 flex items-center justify-center z-10">
                         <div className="text-center">
-                            <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-white/80 mx-auto"></div>
-                            <p className="text-sm text-white/60 tracking-tight">Loading experience...</p>
+                            <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-foreground/20 border-t-foreground/80 mx-auto"></div>
+                            <p className="text-sm text-foreground/60 tracking-tight">Loading experience...</p>
                         </div>
                     </div>
                 )}
@@ -268,7 +268,7 @@ export default function EndlessScroll() {
                 <div
                     className="absolute bottom-0 left-0 right-0 h-48 md:h-64 pointer-events-none"
                     style={{
-                        background: 'linear-gradient(to bottom, transparent 0%, rgb(9, 9, 11) 100%)'
+                        background: 'linear-gradient(to bottom, transparent 0%, var(--color-background) 100%)'
                     }}
                 />
             </div>

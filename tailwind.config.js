@@ -1,4 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+
+// Helper: Tailwind v3 resolves var() at build time into static values.
+// This function returns a color function that keeps the CSS variable reference
+// at runtime, enabling dynamic theme switching via data-theme attributes.
+function withOpacity(variableName) {
+    return ({ opacityValue }) => {
+        if (opacityValue !== undefined) {
+            return `rgba(var(${variableName}), ${opacityValue})`;
+        }
+        return `rgb(var(${variableName}))`;
+    };
+}
+
 const config = {
     content: [
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +22,7 @@ const config = {
     theme: {
         extend: {
             colors: {
-                // Primary Brand Colors - Inspired by Mokn.io
+                // Primary Brand Colors
                 'primary': 'var(--accent-primary)',
                 'primary-foreground': '#ffffff',
                 'secondary': 'var(--accent-secondary)',
@@ -17,19 +30,20 @@ const config = {
                 'accent': 'var(--accent-tertiary)',
                 'accent-foreground': '#ffffff',
 
-                // Dark Mode First - Black Background
-                'background': '#0B0B0C',
-                'foreground': '#fafafa',
-                'muted': '#1a1a1a',
-                'muted-foreground': '#888888',
+                // Dynamic Theme Variables — use function syntax so Tailwind
+                // keeps the var() reference at runtime instead of resolving to static RGB.
+                'background': withOpacity('--color-background-rgb'),
+                'foreground': withOpacity('--color-foreground-rgb'),
+                'muted': 'var(--color-muted)',
+                'muted-foreground': 'var(--color-muted-foreground)',
 
                 // Surface & Cards
-                'card': '#111111',
-                'card-foreground': '#fafafa',
-                'border': '#2a2a2a',
+                'card': 'var(--color-card)',
+                'card-foreground': 'var(--color-card-foreground)',
+                'border': 'var(--color-border)',
 
                 // Legacy support
-                'dark-base': '#0B0B0C',
+                'dark-base': 'var(--color-background)',
             },
             fontFamily: {
                 sans: ['Inter', 'SF Pro', 'system-ui', 'sans-serif'],

@@ -14,12 +14,12 @@ export default function CTASection() {
 
             <div className="relative max-w-4xl mx-auto text-center">
                 <ScrollReveal animation="scale">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-8">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-8">
                         <SplitText animation="fadeUp" splitBy="words">
                             Let&apos;s Build Something That Lasts
                         </SplitText>
                     </h2>
-                    <p className="text-lg text-white/50 max-w-xl mx-auto mb-12">
+                    <p className="text-lg text-foreground/50 max-w-xl mx-auto mb-12">
                         If you&apos;re ready to invest in structure over shortcuts, we should talk.
                     </p>
                     <Link href="/contact">

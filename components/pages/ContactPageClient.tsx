@@ -33,13 +33,13 @@ export default function ContactPageClient() {
                 <section className="relative px-6 lg:px-8 mb-16">
                     <div className="max-w-4xl mx-auto">
                         <ScrollReveal animation="fadeUp">
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-8">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground tracking-tight mb-8">
                                 <GradientText>Contact</GradientText>
                             </h1>
                         </ScrollReveal>
                         <ScrollReveal animation="fadeUp" delay={0.1}>
-                            <p className="text-xl text-white/50 leading-relaxed mb-2">Have a project in mind? Or just a question?</p>
-                            <p className="text-xl text-white/50 leading-relaxed">We&apos;d like to hear from you.</p>
+                            <p className="text-xl text-foreground/50 leading-relaxed mb-2">Have a project in mind? Or just a question?</p>
+                            <p className="text-xl text-foreground/50 leading-relaxed">We&apos;d like to hear from you.</p>
                         </ScrollReveal>
                     </div>
                 </section>
@@ -48,18 +48,18 @@ export default function ContactPageClient() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                             <ScrollReveal animation="fadeRight" delay={0.2}>
                                 <div className="mb-12">
-                                    <h2 className="text-lg font-bold text-white/90 mb-4">Email</h2>
+                                    <h2 className="text-lg font-bold text-foreground/90 mb-4">Email</h2>
                                     <a href="mailto:hello@looperslab.com" className="text-2xl gradient-text hover:opacity-80 transition-opacity">
                                         hello@looperslab.com
                                     </a>
                                 </div>
                                 <Card className="p-8" hoverable glow>
                                     <CardContent className="p-0">
-                                        <h3 className="text-lg font-bold text-white/90 mb-6">What to Expect</h3>
+                                        <h3 className="text-lg font-bold text-foreground/90 mb-6">What to Expect</h3>
                                         <StaggerList className="space-y-4" staggerDelay={0.1}>
-                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />We respond within 2 business days.</div>
-                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />If there&apos;s a fit, we&apos;ll schedule a short discovery call.</div>
-                                            <div className="flex items-start gap-3 text-white/50"><PulsingDot className="mt-1.5" size="sm" />From there, we&apos;ll determine next steps together.</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />We respond within 2 business days.</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />If there&apos;s a fit, we&apos;ll schedule a short discovery call.</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />From there, we&apos;ll determine next steps together.</div>
                                         </StaggerList>
                                     </CardContent>
                                 </Card>
@@ -73,8 +73,8 @@ export default function ContactPageClient() {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
-                                            <h3 className="text-2xl font-bold text-white mb-3">Message sent</h3>
-                                            <p className="text-white/50">We&apos;ll be in touch within 2 business days.</p>
+                                            <h3 className="text-2xl font-bold text-foreground mb-3">Message sent</h3>
+                                            <p className="text-foreground/50">We&apos;ll be in touch within 2 business days.</p>
                                         </CardContent>
                                     </Card>
                                 ) : (
@@ -88,7 +88,7 @@ export default function ContactPageClient() {
                                             <Input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="you@company.com" className="mt-2" />
                                         </div>
                                         <div>
-                                            <Label htmlFor="company">Company <span className="text-white/30">(optional)</span></Label>
+                                            <Label htmlFor="company">Company <span className="text-foreground/30">(optional)</span></Label>
                                             <Input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company" className="mt-2" />
                                         </div>
                                         <div>

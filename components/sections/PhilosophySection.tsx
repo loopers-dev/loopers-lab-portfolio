@@ -5,14 +5,14 @@ import { GradientText } from '@/components/custom/GradientText';
 
 export default function PhilosophySection() {
     return (
-        <section className="py-32 px-6 lg:px-8 border-t border-white/5 relative overflow-hidden">
+        <section className="py-32 px-6 lg:px-8 border-t border-border relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 glow-bg-mixed" />
 
             <div className="relative max-w-4xl mx-auto">
                 {/* Header */}
                 <ScrollReveal animation="fadeUp" className="mb-16">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight">
                         Built for <GradientText>Time</GradientText>
                     </h2>
                 </ScrollReveal>
@@ -21,7 +21,7 @@ export default function PhilosophySection() {
                 <StaggerList className="space-y-8" staggerDelay={0.15} animation="fadeUp">
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
-                        <p className="text-lg text-white/70 leading-relaxed">
+                        <p className="text-lg text-foreground/70 leading-relaxed">
                             Most web projects are built to launch. Ours are built to last.
                             We approach every system with longevity in mind, designing
                             structures that adapt to change, not collapse under it.
@@ -30,7 +30,7 @@ export default function PhilosophySection() {
 
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
-                        <p className="text-lg text-white/70 leading-relaxed">
+                        <p className="text-lg text-foreground/70 leading-relaxed">
                             A website is not a brochure. It&apos;s infrastructure. We treat design
                             decisions as architectural ones, every component, every convention
                             must survive updates, scale with content, and remain stable under maintenance.
@@ -39,7 +39,7 @@ export default function PhilosophySection() {
 
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
-                        <p className="text-lg text-white/70 leading-relaxed">
+                        <p className="text-lg text-foreground/70 leading-relaxed">
                             We don&apos;t chase trends. We build systems that stay coherent over
                             years, not weeks. The goal isn&apos;t novelty. It&apos;s durability.
                         </p>

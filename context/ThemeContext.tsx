@@ -13,6 +13,8 @@ interface ThemeContextType {
     cycleColorTheme: () => void
     getCurrentColorTheme: () => ColorTheme
     colorThemes: ColorTheme[]
+    mode: 'light' | 'dark'
+    toggleMode: () => void
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -39,6 +41,12 @@ const getInitialColorTheme = () => {
     return isValidTheme && savedTheme ? savedTheme : DEFAULT_COLOR_THEME
 }
 
+const getInitialMode = (): 'light' | 'dark' => {
+    if (typeof window === 'undefined') return 'dark';
+    const savedMode = window.localStorage.getItem('themeMode');
+    return savedMode === 'light' ? 'light' : 'dark';
+}
+
 export const useTheme = () => {
     const context = useContext(ThemeContext)
     if (!context) {
@@ -49,12 +57,19 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [colorTheme, setColorTheme] = useState(getInitialColorTheme);
+    const [mode, setMode] = useState<'light' | 'dark'>(getInitialMode);
 
     useEffect(() => {
         // Apply color theme to document
         document.documentElement.setAttribute('data-color-theme', colorTheme);
         localStorage.setItem('colorTheme', colorTheme);
     }, [colorTheme]);
+
+    useEffect(() => {
+        // Apply light/dark mode to document
+        document.documentElement.setAttribute('data-theme', mode);
+        localStorage.setItem('themeMode', mode);
+    }, [mode]);
 
     // Cycle through color themes
     const cycleColorTheme = () => {
@@ -64,6 +79,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             return COLOR_THEMES[nextIndex].name
         })
     }
+
+    const toggleMode = () => setMode(m => m === 'light' ? 'dark' : 'light');
 
     // Get current theme info
     const getCurrentColorTheme = () => {
@@ -75,7 +92,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
             colorTheme,
             cycleColorTheme,
             getCurrentColorTheme,
-            colorThemes: COLOR_THEMES
+            colorThemes: COLOR_THEMES,
+            mode,
+            toggleMode
         }}>
             {children}
         </ThemeContext.Provider>

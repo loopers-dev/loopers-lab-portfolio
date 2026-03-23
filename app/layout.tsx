@@ -96,7 +96,7 @@ export default function RootLayout({
             suppressHydrationWarning
         >
             <body
-                className="relative min-h-screen bg-[#0B0B0C] text-white antialiased"
+                className="relative min-h-screen bg-background text-foreground antialiased"
                 suppressHydrationWarning
             >
                 <JsonLd data={organizationJsonLd} />

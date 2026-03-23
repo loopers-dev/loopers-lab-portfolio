@@ -37,7 +37,7 @@ function TabsList({ children, className }: { children: React.ReactNode; classNam
     return (
         <div
             className={cn(
-                'inline-flex items-center justify-center rounded-lg bg-zinc-900 p-1 text-gray-400',
+                'inline-flex items-center justify-center rounded-lg bg-card p-1 text-muted-foreground',
                 className
             )}
         >
@@ -65,14 +65,14 @@ function TabsTrigger({ value, children, className }: TabsTriggerProps) {
                 'relative inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-all cursor-pointer',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
                 'disabled:pointer-events-none disabled:opacity-50',
-                isActive ? 'text-white' : 'hover:text-white/80',
+                isActive ? 'text-foreground' : 'hover:text-foreground/80',
                 className
             )}
         >
             {isActive && (
                 <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-zinc-800 rounded-md shadow-sm"
+                    className="absolute inset-0 bg-muted rounded-md shadow-sm"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
             )}

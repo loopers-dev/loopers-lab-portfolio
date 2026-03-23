@@ -110,18 +110,18 @@ function ImagePlaceholder({
     className?: string;
 }) {
     return (
-        <div className={`group relative rounded-[2rem] bg-black/40 backdrop-blur-xl border border-white/10 overflow-hidden flex flex-col items-center justify-center min-h-[320px] lg:min-h-[400px] transition-all duration-700 hover:-translate-y-2 card-glow ${className}`}>
+        <div className={`group relative rounded-[2rem] bg-background/40 backdrop-blur-xl border border-border overflow-hidden flex flex-col items-center justify-center min-h-[320px] lg:min-h-[400px] transition-all duration-700 hover:-translate-y-2 card-glow ${className}`}>
             <div className="absolute inset-0 grid-pattern opacity-30" />
             <div className="absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: 'linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-primary) 50%, transparent), transparent)' }} />
             <div className="relative mb-8 z-10 transition-transform duration-700 group-hover:scale-110">
                 <div className="absolute inset-0 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700" style={{ background: 'var(--accent-primary)' }} />
                 <div className="relative w-24 h-24 rounded-[1.8rem] bg-white/[0.02] border border-white/10 flex items-center justify-center transition-all duration-700 group-hover:border-white/20 group-hover:bg-white/[0.05] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
                     <div style={{ filter: 'drop-shadow(0 0 10px var(--accent-primary))' }}>
-                        <Icon className="w-10 h-10 text-white/40 transition-colors duration-700 group-hover:text-white" />
+                        <Icon className="w-10 h-10 text-foreground/40 transition-colors duration-700 group-hover:text-foreground" />
                     </div>
                 </div>
             </div>
-            <p className="relative z-10 text-white/30 text-[10px] uppercase font-mono tracking-[0.2em] text-center max-w-[260px] leading-relaxed px-4 transition-colors duration-700 group-hover:text-white/50">{description}</p>
+            <p className="relative z-10 text-foreground/30 text-[10px] uppercase font-mono tracking-[0.2em] text-center max-w-[260px] leading-relaxed px-4 transition-colors duration-700 group-hover:text-foreground/50">{description}</p>
         </div>
     );
 }
@@ -141,13 +141,13 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
                     <span className="w-8 h-px bg-white/20 transition-all duration-500 group-hover/content:w-16" style={{ background: 'linear-gradient(90deg, var(--accent-primary), transparent)' }} />
                     <span className="text-sm font-black text-transparent bg-clip-text tracking-[0.2em]" style={{ backgroundImage: 'var(--accent-gradient)' }}>{service.number}</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-black text-white tracking-[-0.03em] mb-4 leading-[1.15] transition-colors duration-500">
+                <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-black text-foreground tracking-[-0.03em] mb-4 leading-[1.15] transition-colors duration-500">
                     {service.title}
                 </h2>
                 <p className="text-base font-medium italic mb-6 shadow-sm" style={{ color: 'var(--accent-secondary)' }}>
                     {service.slogan}
                 </p>
-                <p className="text-white/55 leading-relaxed text-[16px] md:text-[18px]">
+                <p className="text-foreground/55 leading-relaxed text-[16px] md:text-[18px]">
                     {service.content}
                 </p>
             </div>
@@ -185,7 +185,7 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
 function LogoPlaceholder() {
     return (
         <div className="w-24 h-12 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/20">
-            <Award className="w-5 h-5 text-white/20" />
+            <Award className="w-5 h-5 text-foreground/20" />
         </div>
     );
 }
@@ -193,7 +193,7 @@ function LogoPlaceholder() {
 export default function ServicesPageClient() {
     return (
         <Layout>
-            <div className="pt-32 pb-20 relative overflow-hidden bg-[#09090B]">
+            <div className="pt-32 pb-20 relative overflow-hidden bg-background">
                 <div className="absolute inset-0 glow-bg-red opacity-30" />
                 <div className="absolute inset-0 grid-pattern opacity-40" />
                 <motion.div
@@ -214,12 +214,12 @@ export default function ServicesPageClient() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                             <div>
                                 <ScrollReveal animation="fadeUp">
-                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-[1.1]">
+                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-6 leading-[1.1]">
                                         <GradientText>Software Services</GradientText> for teams that need design, systems, and long-term support.
                                     </h1>
                                 </ScrollReveal>
                                 <ScrollReveal animation="fadeUp" delay={0.1}>
-                                    <p className="text-lg md:text-xl text-white/50 leading-relaxed">
+                                    <p className="text-lg md:text-xl text-foreground/50 leading-relaxed">
                                         Web design, system architecture, hosting, maintenance, AI automation, analytics, and content operations in one delivery stack.
                                     </p>
                                 </ScrollReveal>
@@ -248,7 +248,7 @@ export default function ServicesPageClient() {
                     <div className="absolute inset-0 glow-bg-mixed opacity-40 pointer-events-none" />
                     <div className="max-w-4xl mx-auto text-center relative">
                         <ScrollReveal animation="scale">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-8 leading-tight">
                                 Need one team for <GradientText>design, delivery, and support</GradientText>?
                             </h2>
                             <Link href="/contact">
@@ -258,7 +258,7 @@ export default function ServicesPageClient() {
                                 </GlowButton>
                             </Link>
                             <div className="mt-16">
-                                <p className="text-xs text-white/25 uppercase tracking-widest mb-6">Systems We Commonly Support</p>
+                                <p className="text-xs text-foreground/25 uppercase tracking-widest mb-6">Systems We Commonly Support</p>
                                 <div className="flex flex-wrap items-center justify-center gap-4">
                                     {[1, 2, 3, 4, 5].map((i) => <LogoPlaceholder key={i} />)}
                                 </div>

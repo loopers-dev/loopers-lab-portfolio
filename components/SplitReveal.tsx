@@ -168,13 +168,13 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
                     >
                         {/* ── Split panels ── */}
                         <motion.div
-                            className="absolute top-0 left-0 right-0 h-1/2 bg-black"
+                            className="absolute top-0 left-0 right-0 h-1/2 bg-background"
                             initial={{ y: 0 }}
                             animate={{ y: isRevealed ? '-100%' : 0 }}
                             transition={{ duration: 1.2, ease: SPLIT_EASING }}
                         />
                         <motion.div
-                            className="absolute bottom-0 left-0 right-0 h-1/2 bg-black"
+                            className="absolute bottom-0 left-0 right-0 h-1/2 bg-background"
                             initial={{ y: 0 }}
                             animate={{ y: isRevealed ? '100%' : 0 }}
                             transition={{ duration: 1.2, ease: SPLIT_EASING }}

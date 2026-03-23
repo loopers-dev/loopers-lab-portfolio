@@ -159,7 +159,7 @@ const FeatureCard = ({
                     left: '3.2px',
                     right: '3.2px',
                     bottom: '3.2px',
-                    background: 'linear-gradient(rgba(2, 3, 3, 0.7), rgba(2, 3, 3, 0.7))',
+                    background: 'linear-gradient(rgba(var(--color-background-rgb), 0.7), rgba(var(--color-background-rgb), 0.7))',
                     zIndex: -1,
                 }}
             />
@@ -190,13 +190,13 @@ const FeatureCard = ({
                             }}
                         />
                         <step.icon
-                            className="relative z-10 text-white drop-shadow-md"
+                            className="relative z-10 text-foreground drop-shadow-md"
                             style={{ width: '28.8px', height: '28.8px' }}
                         />
                     </div>
 
                     <h3
-                        className="font-bold text-white tracking-tight"
+                        className="font-bold text-foreground tracking-tight"
                         style={{
                             fontSize: '32px',
                             lineHeight: '1.1',
@@ -211,7 +211,7 @@ const FeatureCard = ({
                     style={{
                         fontSize: '18px',
                         lineHeight: '1.4',
-                        color: 'rgb(156, 163, 175)',
+                        color: 'var(--color-muted-foreground)',
                     }}
                 >
                     {step.description}
@@ -306,7 +306,7 @@ const ImplementBlock = () => {
                     left: '3.2px',
                     right: '3.2px',
                     bottom: '3.2px',
-                    background: 'linear-gradient(rgba(2, 3, 3, 0.7), rgba(2, 3, 3, 0.7))',
+                    background: 'linear-gradient(rgba(var(--color-background-rgb), 0.7), rgba(var(--color-background-rgb), 0.7))',
                     zIndex: -1,
                 }}
             />
@@ -331,14 +331,14 @@ const ImplementBlock = () => {
             >
                 <div className="flex flex-col gap-4 max-w-xl">
                     <div className="flex items-center gap-3">
-                        <Clock className="w-6 h-6 text-white" />
-                        <span className="text-white font-semibold" style={{ fontSize: '14px', letterSpacing: '0.1em' }}>
+                        <Clock className="w-6 h-6 text-foreground" />
+                        <span className="text-foreground font-semibold" style={{ fontSize: '14px', letterSpacing: '0.1em' }}>
                             ONGOING SUPPORT
                         </span>
                     </div>
 
                     <h3
-                        className="font-bold text-white tracking-tight"
+                        className="font-bold text-foreground tracking-tight"
                         style={{
                             fontSize: 'clamp(2rem, 4vw, 3rem)',
                             lineHeight: '1.1',
@@ -360,7 +360,7 @@ const ImplementBlock = () => {
                         style={{
                             fontSize: '18px',
                             lineHeight: '1.5',
-                            color: 'rgb(156, 163, 175)',
+                            color: 'var(--color-muted-foreground)',
                         }}
                     >
                         We stay involved with maintenance, monitoring, backups, deployment safety, content updates, and
@@ -388,12 +388,12 @@ const ImplementBlock = () => {
  * Stat Item for support block
  */
 const StatItem = ({ icon: Icon, value, label }: { icon: typeof Zap; value: string; label: string }) => (
-    <div className="flex flex-col items-center gap-2 p-4 rounded-lg" style={{ background: 'rgba(255,255,255,0.05)' }}>
+    <div className="flex flex-col items-center gap-2 p-4 rounded-lg" style={{ background: 'rgba(var(--color-foreground-rgb), 0.05)' }}>
         <Icon className="w-5 h-5" style={{ color: 'var(--accent-primary)' }} />
-        <span className="font-bold text-white" style={{ fontSize: '24px' }}>
+        <span className="font-bold text-foreground" style={{ fontSize: '24px' }}>
             {value}
         </span>
-        <span className="text-gray-400" style={{ fontSize: '14px' }}>
+        <span className="text-muted-foreground" style={{ fontSize: '14px' }}>
             {label}
         </span>
     </div>
@@ -514,17 +514,17 @@ export default function ProcessSection() {
     }, []);
 
     return (
-        <section id="section-features" className="relative overflow-hidden" style={{ backgroundColor: '#020303' }}>
+        <section id="section-features" className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-background)' }}>
             <div
                 className="absolute inset-0"
                 style={{
-                    background: 'radial-gradient(ellipse at top, rgba(39, 39, 42, 0.4), #020303, #020303)',
+                    background: 'radial-gradient(ellipse at top, rgba(39, 39, 42, 0.4), var(--color-background), var(--color-background))',
                 }}
             />
 
             <div className="relative max-w-[1440px] mx-auto px-6 lg:px-8 py-32">
                 <ScrollReveal animation="fadeUp" className="mb-32 text-center relative z-10">
-                    <h2 className="font-black text-white tracking-tighter" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+                    <h2 className="font-black text-foreground tracking-tighter" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
                         How We{' '}
                         <span
                             className="text-transparent bg-clip-text"
