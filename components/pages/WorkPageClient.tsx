@@ -158,10 +158,10 @@ export default function WorkPageClient() {
 
                     <motion.div layout className="grid md:grid-cols-2 gap-8">
                         {filteredProjects.map((project, index) => (
-                            <motion.div key={project.id} id={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }}>
-                                <TiltCard tiltAmount={6} scale={1.01}>
-                                    <Card className="h-full overflow-hidden group border-border hover:border-primary/30">
-                                        <div className="h-56 relative overflow-hidden">
+                            <motion.div key={project.id} id={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }} className="h-full">
+                                <TiltCard tiltAmount={6} scale={1.01} className="h-full flex flex-col">
+                                    <Card className="h-full flex flex-col overflow-hidden group border-border hover:border-primary/30">
+                                        <div className="h-56 relative overflow-hidden shrink-0">
                                             {project.image ? (
                                                 <Image
                                                     src={project.image}
@@ -188,23 +188,23 @@ export default function WorkPageClient() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="relative">
-                                            <div className={`absolute inset-0 bg-gradient-to-tl ${project.color} opacity-20`} />
+                                        <div className="relative flex flex-col flex-grow">
+                                            <div className={`absolute inset-0 bg-gradient-to-tl ${project.color} opacity-20 pointer-events-none`} />
                                             <CardHeader className="relative">
                                                 <CardTitle className="flex items-center justify-between text-2xl">{project.title}</CardTitle>
                                                 <CardDescription className="text-base">{project.description}</CardDescription>
                                             </CardHeader>
-                                            <CardContent className="space-y-4 relative">
-                                                <div className="p-4 rounded-lg bg-muted border border-border">
+                                            <CardContent className="space-y-4 relative flex-grow flex flex-col">
+                                                <div className="p-4 rounded-lg bg-muted border border-border flex-1">
                                                     <h4 className="text-sm font-semibold mb-2 text-primary">Challenge</h4>
                                                     <p className="text-sm text-muted-foreground">{project.challenge}</p>
                                                 </div>
-                                                <div className="p-4 rounded-lg bg-muted border border-border">
+                                                <div className="p-4 rounded-lg bg-muted border border-border flex-1">
                                                     <h4 className="text-sm font-semibold mb-2 text-secondary">Architecture</h4>
                                                     <p className="text-sm text-muted-foreground">{project.architecture}</p>
                                                 </div>
                                             </CardContent>
-                                            <CardFooter className="relative">
+                                            <CardFooter className="relative mt-auto">
                                                 <div className="flex flex-wrap gap-2">
                                                     {project.tags.map((tag) => (
                                                         <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">{tag}</Badge>

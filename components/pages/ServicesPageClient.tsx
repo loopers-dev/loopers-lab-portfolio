@@ -30,6 +30,7 @@ const services = [
             'We design in Figma before we build. That includes UX research, user flows, wireframes, clickable prototypes, brand systems, and reusable design libraries. The goal is not just to make things look good. It is to create interfaces your team can keep extending without visual chaos.',
         imageDescription:
             'A design workflow board showing wireframes, polished UI screens, typography, and reusable components.',
+        image: '/service-page/service-1.jpg',
         layout: 'image-left' as const,
     },
     {
@@ -41,6 +42,7 @@ const services = [
             'We build custom websites and software systems with the structure behind them: API contracts, database schema planning, architecture diagrams, CMS decisions, and technical roadmaps. This is where web development, database design, build tooling, and workflow planning come together as one delivery stream.',
         imageDescription:
             'A technical blueprint showing app screens connected to APIs, database tables, and system diagrams.',
+        image: '/service-page/service-2.jpg',
         layout: 'image-right' as const,
     },
     {
@@ -52,6 +54,7 @@ const services = [
             'We set up hosting the way teams actually need it: VPS or cloud, Dockerized deployment, CI/CD pipelines, reverse proxy, SSL, automated backups, monitoring, and rollback planning. Whether the stack lives on AWS, GCP, Azure, or a lean VPS, we shape it for stability and repeatable releases.',
         imageDescription:
             'A deployment dashboard with pipelines, cloud regions, SSL status, backup history, and monitoring widgets.',
+        image: '/service-page/service-3.jpg',
         layout: 'image-left' as const,
     },
     {
@@ -63,6 +66,7 @@ const services = [
             'Maintenance is not only bug fixing. We handle performance tuning, Core Web Vitals, observability, security hardening, uptime checks, patching, and scale reviews as your stack grows. We can also fold in technical SEO, schema work, and ongoing optimization when the product depends on search visibility.',
         imageDescription:
             'A maintenance panel showing speed scores, uptime checks, patch schedules, and scaling milestones.',
+        image: '/service-page/service-4.jpg',
         layout: 'image-right' as const,
     },
     {
@@ -74,6 +78,7 @@ const services = [
             'We integrate AI where it is useful: support bots, report automation, proposal generation, smart dashboards, custom LLM workflows, and internal assistants connected to your real data. That also includes Zapier, Make, and custom API automations that remove copy-paste operations from the team.',
         imageDescription:
             'An automation canvas connecting AI agents, apps, datasets, and approval steps into one workflow.',
+        image: '/service-page/service-5.jpg',
         layout: 'image-left' as const,
     },
     {
@@ -85,6 +90,7 @@ const services = [
             'We help teams turn operational and product data into something actionable: KPI dashboards, funnel analysis, heatmaps, reporting flows, and monthly insight reviews. Instead of raw numbers sitting in disconnected tools, we shape them into decision-ready reporting for product, marketing, and operations.',
         imageDescription:
             'A reporting screen with funnels, trend charts, segment views, and highlighted KPI callouts.',
+        image: '/service-page/service-6.jpg',
         layout: 'image-right' as const,
     },
     {
@@ -96,86 +102,82 @@ const services = [
             'We support the day-to-day content side too: blog publishing workflows, product updates, landing page refreshes, structured content systems, and AI-assisted content pipelines with review controls. If your team regularly edits content, we design the process so updates are faster, safer, and easier to delegate.',
         imageDescription:
             'A content operations board with CMS entries, publishing stages, AI-assisted drafts, and review checkpoints.',
+        image: '/service-page/service-7.jpg',
         layout: 'image-left' as const,
     },
 ];
 
-function ImagePlaceholder({
-    icon: Icon,
-    description,
-    className = '',
-}: {
-    icon: ComponentType<{ className?: string }>;
-    description: string;
-    className?: string;
-}) {
-    return (
-        <div className={`group relative rounded-[2rem] bg-background/40 backdrop-blur-xl border border-border overflow-hidden flex flex-col items-center justify-center min-h-[320px] lg:min-h-[400px] transition-all duration-700 hover:-translate-y-2 card-glow ${className}`}>
-            <div className="absolute inset-0 grid-pattern opacity-30" />
-            <div className="absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: 'linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-primary) 50%, transparent), transparent)' }} />
-            <div className="relative mb-8 z-10 transition-transform duration-700 group-hover:scale-110">
-                <div className="absolute inset-0 rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700" style={{ background: 'var(--accent-primary)' }} />
-                <div className="relative w-24 h-24 rounded-[1.8rem] bg-white/[0.02] border border-white/10 flex items-center justify-center transition-all duration-700 group-hover:border-white/20 group-hover:bg-white/[0.05] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
-                    <div style={{ filter: 'drop-shadow(0 0 10px var(--accent-primary))' }}>
-                        <Icon className="w-10 h-10 text-foreground/40 transition-colors duration-700 group-hover:text-foreground" />
-                    </div>
-                </div>
-            </div>
-            <p className="relative z-10 text-foreground/30 text-[10px] uppercase font-mono tracking-[0.2em] text-center max-w-[260px] leading-relaxed px-4 transition-colors duration-700 group-hover:text-foreground/50">{description}</p>
-        </div>
-    );
-}
+import Image from 'next/image';
 
 function ServiceSection({ service, index }: { service: (typeof services)[0]; index: number }) {
-    const isImageLeft = service.layout === 'image-left';
-    const imageBlock = (
-        <ScrollReveal animation="fadeUp" delay={0.1}>
-            <ImagePlaceholder icon={service.icon} description={service.imageDescription} />
-        </ScrollReveal>
-    );
-
-    const contentBlock = (
-        <ScrollReveal animation="fadeUp" delay={0.2}>
-            <div className="flex flex-col justify-center h-full group/content cursor-default">
-                <div className="flex items-center gap-3 mb-5">
-                    <span className="w-8 h-px bg-white/20 transition-all duration-500 group-hover/content:w-16" style={{ background: 'linear-gradient(90deg, var(--accent-primary), transparent)' }} />
-                    <span className="text-sm font-black text-transparent bg-clip-text tracking-[0.2em]" style={{ backgroundImage: 'var(--accent-gradient)' }}>{service.number}</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-black text-foreground tracking-[-0.03em] mb-4 leading-[1.15] transition-colors duration-500">
-                    {service.title}
-                </h2>
-                <p className="text-base font-medium italic mb-6 shadow-sm" style={{ color: 'var(--accent-secondary)' }}>
-                    {service.slogan}
-                </p>
-                <p className="text-foreground/55 leading-relaxed text-[16px] md:text-[18px]">
-                    {service.content}
-                </p>
-            </div>
-        </ScrollReveal>
-    );
+    const bgColors = [
+        'bg-[#0f1115]',
+        'bg-[#13161c]',
+        'bg-[#181b21]',
+        'bg-[#1a1e26]',
+        'bg-[#1c212a]',
+        'bg-[#1d232e]',
+        'bg-[#202733]'
+    ];
+    
+    // Reverse content block placement every other slide (left/right)
+    const isEven = index % 2 === 0;
 
     return (
-        <section className="relative px-6 lg:px-8 py-10" id={`service-${index + 1}`}>
-            {index % 2 === 0 && (
-                <motion.div
-                    animate={{ opacity: [0.1, 0.3, 0.1], x: [-50, 0, -50] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute left-[-10rem] top-[50%] h-[40rem] w-[40rem] rounded-full blur-[120px] pointer-events-none -translate-y-1/2"
-                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-primary) 15%, transparent) 0%, transparent 70%)' }}
-                />
-            )}
-            {index % 2 === 1 && (
-                <motion.div
-                    animate={{ opacity: [0.1, 0.3, 0.1], x: [50, 0, 50] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute right-[-10rem] top-[50%] h-[40rem] w-[40rem] rounded-full blur-[120px] pointer-events-none -translate-y-1/2"
-                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-tertiary) 15%, transparent) 0%, transparent 70%)' }}
-                />
-            )}
-            <div className="max-w-6xl mx-auto">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${!isImageLeft ? 'lg:[direction:rtl]' : ''}`}>
-                    <div className={!isImageLeft ? 'lg:[direction:ltr]' : ''}>{isImageLeft ? imageBlock : contentBlock}</div>
-                    <div className={!isImageLeft ? 'lg:[direction:ltr]' : ''}>{isImageLeft ? contentBlock : imageBlock}</div>
+        <section 
+            className={`sticky top-0 h-screen w-full flex items-center overflow-hidden border-t border-border ${bgColors[index % bgColors.length]} shadow-[0_-20px_50px_rgba(0,0,0,0.5)] group`}
+            style={{ zIndex: index + 10 }}
+            id={`service-${index + 1}`}
+        >
+            {/* FULL-BLEED BACKGROUND IMAGE */}
+            <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+                {service.image ? (
+                    <Image
+                        src={service.image}
+                        alt={service.imageDescription}
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                    />
+                ) : (
+                    <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
+                )}
+            </div>
+
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center h-full">
+                {/* GLASSMORPHIC CONTENT BLOCK */}
+                <div className={`w-full max-w-xl ${isEven ? 'mr-auto' : 'ml-auto'}`}>
+                    <ScrollReveal animation="fadeUp" delay={0.1}>
+                        <div className="glass rounded-[2rem] border border-border p-6 lg:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] relative overflow-hidden bg-card/40 backdrop-blur-xl group-hover:bg-card/50 transition-colors duration-700">
+                            
+                            {/* Decorative Top Glow */}
+                            <div className="absolute inset-x-0 top-0 h-[2px] opacity-60 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                            
+                            <div className="flex items-center gap-4 mb-5">
+                                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 shadow-inner">
+                                    <service.icon className="w-6 h-6 text-primary" />
+                                </div>
+                                <span className="text-xl font-black text-transparent bg-clip-text tracking-[0.2em]" style={{ backgroundImage: 'var(--accent-gradient)' }}>
+                                    {service.number}
+                                </span>
+                            </div>
+                            
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-5 leading-[1.05]">
+                                {service.title}
+                            </h2>
+                            
+                            <p className="text-lg md:text-xl font-medium italic mb-6 shadow-sm" style={{ color: 'var(--accent-secondary)' }}>
+                                {service.slogan}
+                            </p>
+                            
+                            <div className="pt-5 border-t border-border/50">
+                                <p className="text-foreground/75 leading-relaxed text-base">
+                                    {service.content}
+                                </p>
+                            </div>
+
+                        </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>
@@ -193,79 +195,96 @@ function LogoPlaceholder() {
 export default function ServicesPageClient() {
     return (
         <Layout>
-            <div className="pt-32 pb-20 relative overflow-hidden bg-background">
-                <div className="absolute inset-0 glow-bg-red opacity-30" />
-                <div className="absolute inset-0 grid-pattern opacity-40" />
-                <motion.div
-                    animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute left-[-20rem] top-[-10rem] h-[50rem] w-[50rem] rounded-full blur-[100px] pointer-events-none"
-                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-tertiary) 15%, transparent) 0%, transparent 70%)' }}
-                />
-                <motion.div
-                    animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.05, 1] }}
-                    transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                    className="absolute right-[-10rem] top-[40rem] h-[40rem] w-[40rem] rounded-full blur-[100px] pointer-events-none"
-                    style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-primary) 15%, transparent) 0%, transparent 70%)' }}
-                />
+            <div className="relative bg-background">
+                
+                {/* HERO SECTION - Normal Scroll */}
+                <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 px-6 lg:px-8 overflow-hidden z-0">
+                    <div className="absolute inset-0 glow-bg-red opacity-30" />
+                    <div className="absolute inset-0 grid-pattern opacity-40 mix-blend-overlay" />
+                    
+                    <motion.div
+                        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
+                        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+                        className="absolute left-[-20rem] top-[-10rem] h-[50rem] w-[50rem] rounded-full blur-[100px] pointer-events-none"
+                        style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent-tertiary) 15%, transparent) 0%, transparent 70%)' }}
+                    />
 
-                <section className="relative px-6 lg:px-8 mb-24 lg:mb-32">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                            <div>
-                                <ScrollReveal animation="fadeUp">
-                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-6 leading-[1.1]">
-                                        <GradientText>Software Services</GradientText> for teams that need design, systems, and long-term support.
-                                    </h1>
-                                </ScrollReveal>
-                                <ScrollReveal animation="fadeUp" delay={0.1}>
-                                    <p className="text-lg md:text-xl text-foreground/50 leading-relaxed">
-                                        Web design, system architecture, hosting, maintenance, AI automation, analytics, and content operations in one delivery stack.
-                                    </p>
-                                </ScrollReveal>
+                    <div className="relative z-10 max-w-6xl mx-auto text-center">
+                        <ScrollReveal animation="fadeUp">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                <span className="text-xs font-mono uppercase tracking-widest text-foreground/70">Full-Stack Solutions</span>
                             </div>
-                            <ScrollReveal animation="fadeUp" delay={0.2}>
-                                <ImagePlaceholder
-                                    icon={Monitor}
-                                    description="A software services overview spanning design systems, app architecture, deployment pipelines, analytics, and content operations."
-                                />
-                            </ScrollReveal>
-                        </div>
+                        </ScrollReveal>
+                        
+                        <ScrollReveal animation="fadeUp" delay={0.1}>
+                            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-foreground tracking-[-0.04em] mb-8 leading-[0.95]">
+                                Software Delivery <br className="hidden md:block" />
+                                <GradientText>End-To-End</GradientText>.
+                            </h1>
+                        </ScrollReveal>
+                        
+                        <ScrollReveal animation="fadeUp" delay={0.2}>
+                            <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-3xl mx-auto mb-12">
+                                We don't just write code. We build the architecture, design the interfaces, set up the deployments, and handle long-term scalability.
+                            </p>
+                        </ScrollReveal>
+                        
+                        <ScrollReveal animation="fadeUp" delay={0.3}>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                                <Link href="#service-1">
+                                    <GlowButton size="lg" rounded="full" className="px-8 py-4 text-lg">
+                                        Explore Our Process
+                                    </GlowButton>
+                                </Link>
+                                <Link href="/contact" className="text-foreground/70 hover:text-foreground transition-colors font-medium underline underline-offset-4 decoration-white/20 hover:decoration-white/80">
+                                    Book a Strategy Call
+                                </Link>
+                            </div>
+                        </ScrollReveal>
                     </div>
+                    
+                    {/* Scroll Down Indicator */}
+                    <motion.div 
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
+                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                    >
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 font-mono">Scroll</span>
+                        <div className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent" />
+                    </motion.div>
                 </section>
 
-                <div className="space-y-24 lg:space-y-32 mb-24 lg:mb-32">
+                {/* STICKY SERVICES STACK */}
+                <div className="relative w-full" id="service-1">
                     {services.map((service, index) => (
                         <ServiceSection key={service.number} service={service} index={index} />
                     ))}
                 </div>
 
-                <div className="max-w-6xl mx-auto px-6 lg:px-8 mb-24 lg:mb-32">
-                    <div className="line-glow" />
-                </div>
-
-                <section className="relative px-6 lg:px-8">
+                {/* CALL TO ACTION - Final sticky slide or normal flow */}
+                <section className="relative z-50 px-6 lg:px-8 py-32 bg-background border-t border-white/5 shadow-[0_-30px_60px_rgba(0,0,0,0.8)]">
                     <div className="absolute inset-0 glow-bg-mixed opacity-40 pointer-events-none" />
                     <div className="max-w-4xl mx-auto text-center relative">
                         <ScrollReveal animation="scale">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-8 leading-tight">
-                                Need one team for <GradientText>design, delivery, and support</GradientText>?
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-8 leading-tight">
+                                Ready to build the <GradientText>next big thing</GradientText>?
                             </h2>
                             <Link href="/contact">
-                                <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2 mx-auto">
+                                <GlowButton size="lg" rounded="full" className="inline-flex items-center gap-3 px-8 py-5 text-xl font-bold mx-auto transition-transform hover:scale-105">
                                     Book a Consultation
-                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                    <ArrowRight className="h-6 w-6" />
                                 </GlowButton>
                             </Link>
-                            <div className="mt-16">
-                                <p className="text-xs text-foreground/25 uppercase tracking-widest mb-6">Systems We Commonly Support</p>
-                                <div className="flex flex-wrap items-center justify-center gap-4">
+                            <div className="mt-20">
+                                <p className="text-xs text-foreground/30 uppercase tracking-[0.2em] font-mono mb-8">Systems We Currently Support</p>
+                                <div className="flex flex-wrap items-center justify-center gap-4 opacity-70">
                                     {[1, 2, 3, 4, 5].map((i) => <LogoPlaceholder key={i} />)}
                                 </div>
                             </div>
                         </ScrollReveal>
                     </div>
                 </section>
+                
             </div>
         </Layout>
     );
