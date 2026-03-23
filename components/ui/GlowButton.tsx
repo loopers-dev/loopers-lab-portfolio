@@ -19,11 +19,11 @@ const sizeStyles = {
     xl: 'px-10 py-5 text-lg',
 };
 
-const roundedStyles = {
-    sm: '0.25rem',
-    md: '0.5rem',
-    lg: '0.75rem',
-    full: '9999px',
+const roundedMap = {
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    full: 'rounded-full',
 };
 
 export function GlowButton({
@@ -47,48 +47,48 @@ export function GlowButton({
         }
     };
 
-    const borderRadius = roundedStyles[rounded];
-    const innerBorderRadius = `calc(${borderRadius} - 1px)`;
+    const roundedClass = roundedMap[rounded];
 
     const content = (
         <div
             ref={containerRef}
             className={cn(
-                "button-cta group relative flex justify-center items-center overflow-hidden transition-all duration-300",
+                "button-cta group relative flex justify-center items-center p-px transition-all duration-300",
+                roundedClass,
                 className
             )}
-            style={{
-                padding: '1px',
-                borderRadius: borderRadius,
-                backgroundColor: 'transparent',
-            }}
             onMouseMove={handleMouseMove}
         >
-            {/* Border-gradient - Spinning gradient border */}
+            {/* Spinning gradient border — uses ::before via CSS */}
             <div
-                className="border-gradient absolute pointer-events-none"
-                style={{
-                    width: '110%',
-                    aspectRatio: '1',
-                    top: '50%',
-                    left: '50%',
-                    marginTop: '-55%',
-                    marginLeft: '-55%',
-                    background: 'conic-gradient(from 0deg at 50% 50%, var(--color-background) 100deg, var(--accent-primary) 180deg, var(--color-background) 260deg)',
-                    animation: 'spin 3s linear infinite',
-                    opacity: 1,
-                    zIndex: 0,
-                }}
-            />
+                className={cn(
+                    "glow-button-border absolute inset-0 overflow-hidden",
+                    roundedClass
+                )}
+                aria-hidden
+            >
+                <div
+                    className="absolute pointer-events-none"
+                    style={{
+                        width: '200%',
+                        paddingBottom: '200%',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        background: 'conic-gradient(from 0deg at 50% 50%, var(--color-background) 100deg, var(--accent-primary) 180deg, var(--color-background) 260deg)',
+                        animation: 'spin 3s linear infinite',
+                    }}
+                />
+            </div>
 
-            {/* Button-cta-bg - Inner background */}
+            {/* Inner background */}
             <div
                 className={cn(
                     "button-cta-bg relative flex justify-center items-center overflow-hidden transition-all duration-500",
+                    roundedClass,
                     sizeStyles[size]
                 )}
                 style={{
-                    borderRadius: innerBorderRadius,
                     backgroundColor: 'var(--color-background)',
                     zIndex: 1,
                 }}
@@ -134,5 +134,3 @@ export function GlowButton({
 }
 
 export default GlowButton;
-
-
