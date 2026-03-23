@@ -162,7 +162,7 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     return (
         <>
             {/* Site content – hidden behind overlay until reveal */}
-            <div className="split-reveal-content" style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
+            <div className="split-reveal-content" suppressHydrationWarning style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
                 {children}
             </div>
 
