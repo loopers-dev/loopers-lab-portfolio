@@ -133,6 +133,14 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     const prefersReducedMotion = useReducedMotion();
     const letters = useMemo(() => BRAND_TEXT.split(''), []);
 
+    // Skip animation entirely for reduced-motion users (runs client-side only → no hydration mismatch)
+    useEffect(() => {
+        if (prefersReducedMotion) {
+            setIsRevealed(true);
+            setShouldRender(false);
+        }
+    }, [prefersReducedMotion]);
+
     // Orchestrate the reveal sequence once content is ready
     useEffect(() => {
         if (!isContentReady || prefersReducedMotion) return;
@@ -154,12 +162,12 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     return (
         <>
             {/* Site content – hidden behind overlay until reveal */}
-            <div style={{ visibility: prefersReducedMotion || isRevealed ? 'visible' : 'hidden' }}>
+            <div style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
                 {children}
             </div>
 
             <AnimatePresence>
-                {shouldRender && !prefersReducedMotion && (
+                {shouldRender && (
                     <div
                         className="fixed inset-0 z-[9999]"
                         style={{ pointerEvents: isRevealed ? 'none' : 'auto' }}

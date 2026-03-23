@@ -74,7 +74,7 @@ export function GlowButton({
                     left: '50%',
                     marginTop: '-55%',
                     marginLeft: '-55%',
-                    background: 'conic-gradient(from 0deg at 50% 50%, var(--color-background) 100deg, var(--accent-primary) 180deg, var(--color-background) 260deg)',
+                    background: 'conic-gradient(from 0deg at 50% 50%, #06090A 100deg, var(--accent-primary) 180deg, #06090A 260deg)',
                     animation: 'spin 3s linear infinite',
                     opacity: 1,
                     zIndex: 0,
@@ -89,7 +89,7 @@ export function GlowButton({
                 )}
                 style={{
                     borderRadius: innerBorderRadius,
-                    backgroundColor: 'var(--color-background)',
+                    backgroundColor: 'var(--greyscale-950, #020303)',
                     zIndex: 1,
                 }}
             >
@@ -109,7 +109,7 @@ export function GlowButton({
 
                 {/* Text content */}
                 <span
-                    className="relative text-foreground font-semibold"
+                    className="relative text-white font-semibold"
                     style={{ zIndex: 1 }}
                 >
                     {children}
