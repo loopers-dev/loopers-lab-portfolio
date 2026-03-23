@@ -285,7 +285,7 @@ export default function HomeHeroSection() {
                     animate="visible"
                     className="mt-12"
                 >
-                    <GlowButton href="/contact" size="lg" rounded="full" className="min-w-[14rem]">
+                    <GlowButton href="/contact" size="lg" rounded="full">
                         Start a Project
                     </GlowButton>
                 </motion.div>
