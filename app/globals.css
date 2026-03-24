@@ -260,17 +260,26 @@
 /* ===== REDUCED MOTION ===== */
 /* Pure CSS override — works instantly, no JS delay, no hydration mismatch */
 @media (prefers-reduced-motion: reduce) {
-  /* Immediately show site content */
+  /* Immediately show site content when reduce-motion is active */
   .split-reveal-content {
     visibility: visible !important;
   }
 
-  /* Immediately hide the loading overlay */
+  /* Immediately hide the loading overlay to avoid stalling UX. */
   .split-reveal-overlay {
     display: none !important;
   }
 
-  /* Kill all animations globally to prevent jank */
+  /* Force the welcome reveal path when we explicitly override system reduced motion */
+  .split-reveal-force-animate .split-reveal-content {
+    visibility: visible !important;
+  }
+
+  .split-reveal-force-animate .split-reveal-overlay {
+    display: block !important;
+  }
+
+  /* Kill all animations globally to prevent jank (override in forced mode so welcome animation can run) */
   *,
   *::before,
   *::after {
@@ -278,5 +287,13 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .split-reveal-force-animate *,
+  .split-reveal-force-animate *::before,
+  .split-reveal-force-animate *::after {
+    animation-duration: initial !important;
+    animation-iteration-count: initial !important;
+    transition-duration: initial !important;
   }
 }

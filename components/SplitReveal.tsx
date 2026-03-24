@@ -1,7 +1,7 @@
 'use client';
 
-import { memo, useState, useEffect, useMemo, useCallback } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { memo, useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence, MotionConfig, useReducedMotion } from 'framer-motion';
 import { useLoading } from '@/context/LoadingContext';
 
 // ─────────────────────────────────────────────────────────────
@@ -126,20 +126,19 @@ const Particle = memo(function Particle({ data }: { data: (typeof PARTICLES)[num
 // ─── Main component ─────────────────────────────────────────
 
 export default function SplitReveal({ children }: { children: React.ReactNode }) {
-    const [isRevealed, setIsRevealed] = useState(false);
-    const [shouldRender, setShouldRender] = useState(true);
-    const [showFlash, setShowFlash] = useState(false);
     const { isContentReady } = useLoading();
-    const prefersReducedMotion = useReducedMotion();
-    const letters = useMemo(() => BRAND_TEXT.split(''), []);
+    const osPrefersReducedMotion = useReducedMotion();
 
-    // Skip animation entirely for reduced-motion users (runs client-side only → no hydration mismatch)
-    useEffect(() => {
-        if (prefersReducedMotion) {
-            setIsRevealed(true);
-            setShouldRender(false);
-        }
-    }, [prefersReducedMotion]);
+    // Force the split-reveal flow regardless of OS-level prefers-reduced-motion.
+    // Set to false if you prefer to respect user motion preferences.
+    const ignoreSystemReducedMotion = true;
+    const prefersReducedMotion = ignoreSystemReducedMotion ? false : osPrefersReducedMotion;
+
+    const [isRevealed, setIsRevealed] = useState(prefersReducedMotion);
+    const [shouldRender, setShouldRender] = useState(!prefersReducedMotion);
+    const [showFlash, setShowFlash] = useState(false);
+
+    const letters = useMemo(() => BRAND_TEXT.split(''), []);
 
     // Orchestrate the reveal sequence once content is ready
     useEffect(() => {
@@ -160,13 +159,14 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
     }, [prefersReducedMotion]);
 
     return (
-        <>
-            {/* Site content – hidden behind overlay until reveal */}
-            <div className="split-reveal-content" suppressHydrationWarning style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
-                {children}
-            </div>
+        <MotionConfig reducedMotion="never">
+            <div className={ignoreSystemReducedMotion ? 'split-reveal-force-animate' : ''}>
+                {/* Site content – hidden behind overlay until reveal */}
+                <div className="split-reveal-content" suppressHydrationWarning style={{ visibility: isRevealed ? 'visible' : 'hidden' }}>
+                    {children}
+                </div>
 
-            <AnimatePresence>
+                <AnimatePresence>
                 {shouldRender && (
                     <div
                         className="split-reveal-overlay fixed inset-0 z-[9999]"
@@ -330,6 +330,7 @@ export default function SplitReveal({ children }: { children: React.ReactNode })
                     </div>
                 )}
             </AnimatePresence>
-        </>
+        </div>
+        </MotionConfig>
     );
 }
