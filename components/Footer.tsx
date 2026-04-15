@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { GradientText } from '@/components/custom/GradientText';
+import { Logo } from '@/components/ui/Logo';
 
 const footerLinks = [
     { label: 'Services', path: '/services' },
@@ -20,13 +21,9 @@ export default function Footer() {
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
                     <div>
                         <Link href="/" className="mb-4 flex items-center gap-3">
-                            <div className="relative h-8 w-8">
-                                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary to-secondary" />
-                                <div className="absolute inset-[2px] flex items-center justify-center rounded-[6px] bg-background">
-                                    <span className="text-[9px] font-black tracking-tight text-primary">LL</span>
-                                </div>
+                            <div className="relative flex items-center">
+                                <Logo className="h-16 md:h-20 w-auto" />
                             </div>
-                            <span className="text-lg font-bold tracking-tight">Loopers Lab</span>
                         </Link>
                         <p className="max-w-xs text-sm leading-relaxed text-foreground/40">
                             Design systems. Deployment. Maintenance.

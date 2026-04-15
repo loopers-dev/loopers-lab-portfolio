@@ -38,9 +38,9 @@ export const metadata: Metadata = {
         telephone: false,
     },
     icons: {
-        icon: '/favicon.svg',
-        shortcut: '/favicon.svg',
-        apple: '/favicon.svg',
+        icon: '/logo-4.svg',
+        shortcut: '/logo-4.svg',
+        apple: '/logo-4.svg',
     },
     robots: {
         index: true,

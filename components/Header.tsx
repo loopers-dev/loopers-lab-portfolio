@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useTheme } from '@/context/ThemeContext';
 import { GlowButton } from '@/components/ui/GlowButton';
+import { Logo } from '@/components/ui/Logo';
 import { Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
@@ -236,16 +237,12 @@ export default function Header() {
                             {/* Logo */}
                             <Link aria-label="Loopers Lab home" href="/" className="flex items-center gap-3 group" onClick={(e) => { e.preventDefault(); cycleColorTheme(); navigate.push('/'); }}>
                                 <motion.div
-                                    className="relative h-10 w-10"
-                                    whileHover={{ rotate: 180, scale: 1.1 }}
-                                    transition={{ duration: 0.5 }}
+                                    className="relative flex items-center"
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ duration: 0.3 }}
                                 >
-                                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-secondary glow-red" />
-                                    <div className="absolute inset-[2px] rounded-[10px] bg-background flex items-center justify-center">
-                                        <span className="text-xl font-black text-primary">∞</span>
-                                    </div>
+                                    <Logo className="h-14 md:h-18 w-auto" />
                                 </motion.div>
-                                <span className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">Loopers Lab</span>
                             </Link>
 
                             {/* Desktop Navigation */}

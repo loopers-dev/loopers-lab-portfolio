@@ -95,7 +95,7 @@ export function createOrganizationJsonLd() {
         '@id': absoluteUrl('/#organization'),
         name: siteConfig.name,
         url: siteConfig.url,
-        logo: absoluteUrl('/favicon.svg'),
+        logo: absoluteUrl('/Logo-1.svg'),
         description: siteConfig.description,
         email: siteConfig.email,
         serviceArea: {
