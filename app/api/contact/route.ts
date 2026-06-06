@@ -293,7 +293,7 @@ export async function POST(req: NextRequest) {
 
         if (serviceAccountEmail && privateKey && spreadsheetId) {
             try {
-                const formattedPrivateKey = privateKey.replace(/\\n/g, '\n');
+                const formattedPrivateKey = privateKey.replace(/^"+|"+$/g, '').replace(/\\n/g, '\n');
 
                 const auth = new google.auth.JWT({
                     email: serviceAccountEmail,
