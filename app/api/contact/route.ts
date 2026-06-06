@@ -472,7 +472,19 @@ ${message}
     } catch (error: any) {
         console.error('Contact API handler error:', error);
         return NextResponse.json(
-            { error: 'An unexpected internal server error occurred.' },
+            { 
+                error: 'An unexpected internal server error occurred.',
+                message: error.message,
+                stack: error.stack,
+                debugEnv: {
+                    hasServiceAccountEmail: !!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+                    hasPrivateKey: !!process.env.GOOGLE_PRIVATE_KEY,
+                    hasSpreadsheetId: !!process.env.GOOGLE_SPREADSHEET_ID,
+                    hasSmtpHost: !!process.env.SMTP_HOST,
+                    hasSmtpUser: !!process.env.SMTP_USER,
+                    hasSmtpPass: !!process.env.SMTP_PASS,
+                }
+            },
             { status: 500 }
         );
     }
