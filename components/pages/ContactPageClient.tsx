@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea, Label } from '@/components/ui/Input';
@@ -8,20 +8,95 @@ import { ScrollReveal, StaggerList, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
 
+const SERVICE_OPTIONS = [
+    'Web Design & UX Systems',
+    'Website Building & System Architecture',
+    'Hosting, DevOps & Infrastructure',
+    'Maintenance & Performance',
+    'AI Agents & Workflow Automation',
+    'Data Analysis & Reporting',
+    'Content Operations & CMS',
+    'Other',
+];
+
+const BUDGET_OPTIONS = [
+    { label: 'Under $1,000', value: '<$1K' },
+    { label: '$1,000 – $5,000', value: '$1K-5K' },
+    { label: '$5,000 – $10,000', value: '$5K-10K' },
+    { label: '$10,000+', value: '$10K+' },
+    { label: 'Not sure yet', value: 'TBD' },
+];
+
 export default function ContactPageClient() {
-    const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        budget: '',
+        message: '',
+        // Honeypot field - hidden from real users, bots will fill it
+        website: '',
+    });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const formStartTime = useRef(Date.now());
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+        setSubmitError(null);
+
+        // Anti-spam: check honeypot field
+        if (formData.website) {
+            // Bot detected - fake success
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setIsSubmitted(true);
+            setIsSubmitting(false);
+            return;
+        }
+
+        // Anti-spam: check if form was filled too quickly (< 3 seconds)
+        const timeSpent = Date.now() - formStartTime.current;
+        if (timeSpent < 3000) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setIsSubmitted(true);
+            setIsSubmitting(false);
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    company: formData.company,
+                    service: formData.service,
+                    budget: formData.budget,
+                    message: formData.message,
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok && result.success) {
+                setIsSubmitted(true);
+            } else {
+                setSubmitError(result.error || 'Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Contact form submission error:', error);
+            setSubmitError('Failed to send message. Please check your connection and try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
@@ -78,22 +153,80 @@ export default function ContactPageClient() {
                                         </CardContent>
                                     </Card>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div>
-                                            <Label htmlFor="name">Name</Label>
-                                            <Input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder="Your name" className="mt-2" />
-                                        </div>
-                                        <div>
-                                            <Label htmlFor="email">Email</Label>
-                                            <Input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="you@company.com" className="mt-2" />
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        {submitError && (
+                                            <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                                                {submitError}
+                                            </div>
+                                        )}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <Label htmlFor="name">Name</Label>
+                                                <Input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder="Your name" className="mt-2" />
+                                            </div>
+                                            <div>
+                                                <Label htmlFor="email">Email</Label>
+                                                <Input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="you@company.com" className="mt-2" />
+                                            </div>
                                         </div>
                                         <div>
                                             <Label htmlFor="company">Company <span className="text-foreground/30">(optional)</span></Label>
                                             <Input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company" className="mt-2" />
                                         </div>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <Label htmlFor="service">Service Interest</Label>
+                                                <select
+                                                    id="service"
+                                                    name="service"
+                                                    value={formData.service}
+                                                    onChange={handleChange}
+                                                    className="mt-2 flex h-11 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer"
+                                                    style={{
+                                                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                                                        backgroundPosition: 'right 0.5rem center',
+                                                        backgroundRepeat: 'no-repeat',
+                                                        backgroundSize: '1.5em 1.5em',
+                                                        paddingRight: '2.5rem',
+                                                    }}
+                                                >
+                                                    <option value="" className="bg-background text-muted-foreground">Select a service...</option>
+                                                    {SERVICE_OPTIONS.map((service) => (
+                                                        <option key={service} value={service} className="bg-background text-foreground">{service}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <Label htmlFor="budget">Budget Range <span className="text-foreground/30">(optional)</span></Label>
+                                                <select
+                                                    id="budget"
+                                                    name="budget"
+                                                    value={formData.budget}
+                                                    onChange={handleChange}
+                                                    className="mt-2 flex h-11 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer"
+                                                    style={{
+                                                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                                                        backgroundPosition: 'right 0.5rem center',
+                                                        backgroundRepeat: 'no-repeat',
+                                                        backgroundSize: '1.5em 1.5em',
+                                                        paddingRight: '2.5rem',
+                                                    }}
+                                                >
+                                                    <option value="" className="bg-background text-muted-foreground">Select range...</option>
+                                                    {BUDGET_OPTIONS.map((opt) => (
+                                                        <option key={opt.value} value={opt.value} className="bg-background text-foreground">{opt.label}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div>
                                             <Label htmlFor="message">Message</Label>
                                             <Textarea id="message" name="message" required value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." className="mt-2" />
+                                        </div>
+                                        {/* Honeypot field - hidden from real users */}
+                                        <div className="absolute opacity-0 -z-10 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                                            <label htmlFor="website">Website</label>
+                                            <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
                                         </div>
                                         <Button type="submit" variant="gradient" size="lg" loading={isSubmitting} className="w-full">Send Message</Button>
                                     </form>
