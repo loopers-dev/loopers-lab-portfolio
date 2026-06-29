@@ -2,8 +2,11 @@
 
 import { ScrollReveal, StaggerList, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function PhilosophySection() {
+    const { t } = useLanguage();
+
     return (
         <section className="py-32 px-6 lg:px-8 border-t border-border relative overflow-hidden">
             {/* Background */}
@@ -13,7 +16,7 @@ export default function PhilosophySection() {
                 {/* Header */}
                 <ScrollReveal animation="fadeUp" className="mb-16">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight">
-                        Built for <GradientText>Time</GradientText>
+                        {t('philosophy.title')} <GradientText>{t('philosophy.titleGradient')}</GradientText>
                     </h2>
                 </ScrollReveal>
 
@@ -22,26 +25,21 @@ export default function PhilosophySection() {
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-foreground/70 leading-relaxed">
-                            Most web projects are built to launch. Ours are built to last.
-                            We approach every system with longevity in mind, designing
-                            structures that adapt to change, not collapse under it.
+                            {t('philosophy.p1')}
                         </p>
                     </div>
 
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-foreground/70 leading-relaxed">
-                            A website is not a brochure. It&apos;s infrastructure. We treat design
-                            decisions as architectural ones, every component, every convention
-                            must survive updates, scale with content, and remain stable under maintenance.
+                            {t('philosophy.p2')}
                         </p>
                     </div>
 
                     <div className="relative pl-8">
                         <PulsingDot className="absolute left-0 top-2" size="sm" />
                         <p className="text-lg text-foreground/70 leading-relaxed">
-                            We don&apos;t chase trends. We build systems that stay coherent over
-                            years, not weeks. The goal isn&apos;t novelty. It&apos;s durability.
+                            {t('philosophy.p3')}
                         </p>
                     </div>
                 </StaggerList>
@@ -54,3 +52,4 @@ export default function PhilosophySection() {
         </section>
     );
 }
+

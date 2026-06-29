@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal, SplitText } from '@/components/animations';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function CTASection() {
+    const { t } = useLanguage();
+
     return (
         <section className="py-32 px-6 lg:px-8 relative overflow-hidden">
             {/* Background effects */}
@@ -16,15 +19,15 @@ export default function CTASection() {
                 <ScrollReveal animation="scale">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-8">
                         <SplitText animation="fadeUp" splitBy="words">
-                            Let&apos;s Build Something That Lasts
+                            {t('cta.title')}
                         </SplitText>
                     </h2>
                     <p className="text-lg text-foreground/50 max-w-xl mx-auto mb-12">
-                        If you&apos;re ready to invest in structure over shortcuts, we should talk.
+                        {t('cta.subtitle')}
                     </p>
                     <Link href="/contact">
                         <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">
-                            Start a Conversation
+                            {t('cta.button')}
                             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </GlowButton>
                     </Link>
@@ -33,3 +36,4 @@ export default function CTASection() {
         </section>
     );
 }
+

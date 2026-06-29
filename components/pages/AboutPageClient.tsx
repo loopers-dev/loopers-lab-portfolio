@@ -8,9 +8,11 @@ import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
+import { useLanguage } from '@/context/LanguageContext';
 
 const cylinders = [
     {
+        key: 'ux',
         id: 1, title: 'Strategy', description: 'Data-driven decisions. We analyze market opportunities and architect solutions that align business goals with technical feasibility.',
         icon: TrendingUp, color: 'from-primary to-secondary',
         visual: (
@@ -24,6 +26,7 @@ const cylinders = [
         ),
     },
     {
+        key: 'building',
         id: 2, title: 'Systems', description: 'Infrastructure as code. We build resilient, scalable systems with modern DevOps practices and cloud-native architectures.',
         icon: Terminal, color: 'from-secondary to-primary',
         visual: (
@@ -37,6 +40,7 @@ const cylinders = [
         ),
     },
     {
+        key: 'hosting',
         id: 3, title: 'Product', description: 'Design systems that scale. We craft user experiences that are beautiful, accessible, and consistent across platforms.',
         icon: Palette, color: 'from-primary/80 to-secondary/80',
         visual: (
@@ -56,13 +60,15 @@ const cylinders = [
 ];
 
 const values = [
-    { title: 'Transparency', description: 'Clear communication at every step' },
-    { title: 'Quality', description: 'Clean, tested, maintainable code' },
-    { title: 'Ownership', description: 'Your success is our success' },
-    { title: 'Innovation', description: 'Latest technologies and practices' },
+    { key: 'transparency', title: 'Transparency', description: 'Clear communication at every step' },
+    { key: 'quality', title: 'Quality', description: 'Clean, tested, maintainable code' },
+    { key: 'ownership', title: 'Ownership', description: 'Your success is our success' },
+    { key: 'innovation', title: 'Innovation', description: 'Latest technologies and practices' },
 ];
 
 export default function AboutPageClient() {
+    const { t } = useLanguage();
+
     return (
         <Layout>
             <main className="pt-32 pb-24 relative">
@@ -70,16 +76,16 @@ export default function AboutPageClient() {
                 <div className="absolute inset-0 grid-pattern" />
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-24">
-                        <Badge variant="outline" className="mb-8 border-primary/30 bg-primary/10 text-primary">The Team</Badge>
+                        <Badge variant="outline" className="mb-8 border-primary/30 bg-primary/10 text-primary">{t('about.badge')}</Badge>
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6">
-                            Powered by <GradientText>Expertise</GradientText>
+                            {t('about.title')} <GradientText>{t('about.titleGradient')}</GradientText>
                         </h1>
-                        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">We&apos;re a remote-first team of engineers, architects, and designers united by a passion for building exceptional software.</p>
+                        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t('about.subtitle')}</p>
                     </motion.div>
                     <div className="mb-28">
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                            <h2 className="text-3xl sm:text-4xl font-black mb-4">The Engine</h2>
-                            <p className="text-muted-foreground">Three pillars working in perfect harmony</p>
+                            <h2 className="text-3xl sm:text-4xl font-black mb-4">{t('about.engineTitle')}</h2>
+                            <p className="text-muted-foreground">{t('about.engineSubtitle')}</p>
                         </motion.div>
                         <div className="relative flex items-center justify-center mb-16">
                             <div className="relative flex gap-6 sm:gap-10">
@@ -92,7 +98,7 @@ export default function AboutPageClient() {
                                             </div>
                                         </motion.div>
                                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110%] h-4 bg-muted rounded-lg" />
-                                        <div className="text-center mt-6"><div className="font-bold">{cylinder.title}</div></div>
+                                        <div className="text-center mt-6"><div className="font-bold">{t(`about.cylinders.${cylinder.key}.title`)}</div></div>
                                     </motion.div>
                                 ))}
                             </div>
@@ -105,8 +111,8 @@ export default function AboutPageClient() {
                                             <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${cylinder.color} mb-6`}>
                                                 <cylinder.icon className="h-6 w-6 text-white" />
                                             </div>
-                                            <h3 className="text-2xl font-black mb-3">{cylinder.title}</h3>
-                                            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{cylinder.description}</p>
+                                            <h3 className="text-2xl font-black mb-3">{t(`about.cylinders.${cylinder.key}.title`)}</h3>
+                                            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{t(`about.cylinders.${cylinder.key}.description`)}</p>
                                             <div className="p-4 rounded-xl bg-muted/30 border border-border">{cylinder.visual}</div>
                                         </CardContent>
                                     </Card>
@@ -116,8 +122,8 @@ export default function AboutPageClient() {
                     </div>
                     <div className="mb-20">
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-                            <h2 className="text-3xl sm:text-4xl font-black mb-4">Our Values</h2>
-                            <p className="text-muted-foreground">The principles that guide everything we do</p>
+                            <h2 className="text-3xl sm:text-4xl font-black mb-4">{t('about.valuesTitle')}</h2>
+                            <p className="text-muted-foreground">{t('about.valuesSubtitle')}</p>
                         </motion.div>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                             {values.map((value, index) => (
@@ -125,8 +131,8 @@ export default function AboutPageClient() {
                                     <Card className="h-full text-center border-border hover:border-primary/30">
                                         <CardContent className="p-8">
                                             <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-2xl font-black text-primary">{index + 1}</div>
-                                            <h3 className="font-bold text-lg mb-2">{value.title}</h3>
-                                            <p className="text-sm text-muted-foreground">{value.description}</p>
+                                            <h3 className="font-bold text-lg mb-2">{t(`about.values.${value.key}.title`)}</h3>
+                                            <p className="text-sm text-muted-foreground">{t(`about.values.${value.key}.description`)}</p>
                                         </CardContent>
                                     </Card>
                                 </motion.div>
@@ -136,11 +142,11 @@ export default function AboutPageClient() {
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center p-16 rounded-2xl border border-border bg-card relative overflow-hidden">
                         <div className="absolute inset-0 glow-bg-mixed opacity-30" />
                         <div className="relative">
-                            <h2 className="text-3xl sm:text-4xl font-black mb-4">Join the Engine</h2>
-                            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Ready to work with a team that cares as much about your product as you do?</p>
+                            <h2 className="text-3xl sm:text-4xl font-black mb-4">{t('about.joinTitle')}</h2>
+                            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t('about.joinSubtitle')}</p>
                             <Link href="/contact">
                                 <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">
-                                    Start a Conversation <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                    {t('about.joinButton')} <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                                 </GlowButton>
                             </Link>
                         </div>
@@ -150,3 +156,4 @@ export default function AboutPageClient() {
         </Layout>
     );
 }
+

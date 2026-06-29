@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { useTheme } from '@/context/ThemeContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Logo } from '@/components/ui/Logo';
 import { Sun, Moon } from 'lucide-react';
@@ -34,7 +35,19 @@ export default function Header() {
     const pathname = usePathname();
     const navigate = useRouter();
     const { cycleColorTheme, mode, toggleMode } = useTheme();
+    const { language, setLanguage, t } = useLanguage();
     const isMobileMenuOpen = mobileMenuRoute === pathname;
+
+    const getLocalizedLabel = (href: string, defaultLabel: string) => {
+        switch (href) {
+            case '/': return t('nav.home');
+            case '/services': return t('nav.services');
+            case '/work': return t('nav.work');
+            case '/process': return t('nav.process');
+            case '/about': return t('nav.about');
+            default: return defaultLabel;
+        }
+    };
 
     // GSAP ScrollTrigger for navbar shrink effect
     useEffect(() => {
@@ -249,6 +262,7 @@ export default function Header() {
                             <div ref={linksContainerRef} className="hidden md:flex items-center gap-1 relative">
                                 {navLinks.map((link, index) => {
                                     const isActive = pathname === link.href;
+                                    const localizedLabel = getLocalizedLabel(link.href, link.label);
                                     return (
                                         <Link
                                             key={link.href}
@@ -260,8 +274,8 @@ export default function Header() {
                                                 isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                                             )}
                                         >
-                                            <span className="nav-link-text" data-text={link.label}>
-                                                {link.label}
+                                            <span className="nav-link-text" data-text={localizedLabel}>
+                                                {localizedLabel}
                                             </span>
                                         </Link>
                                     );
@@ -279,6 +293,17 @@ export default function Header() {
 
                             {/* Right side */}
                             <div className="flex items-center gap-3">
+                                {/* Language Toggle Button */}
+                                <button
+                                    onClick={() => setLanguage(language === 'en' ? 'vi' : 'en')}
+                                    className="relative px-2.5 py-1 text-xs font-semibold rounded-full border border-foreground/10 bg-foreground/[0.03] backdrop-blur-sm hover:border-foreground/20 hover:bg-foreground/[0.08] active:scale-95 transition-all duration-200 flex items-center gap-1 text-foreground"
+                                    aria-label="Toggle language"
+                                >
+                                    <span className={cn("transition-opacity duration-200", language === 'en' ? "opacity-100 font-bold text-primary" : "opacity-40")}>EN</span>
+                                    <span className="opacity-20 text-[10px]">|</span>
+                                    <span className={cn("transition-opacity duration-200", language === 'vi' ? "opacity-100 font-bold text-primary" : "opacity-40")}>VI</span>
+                                </button>
+
                                 {/* Theme Toggle */}
                                 <button
                                     onClick={toggleMode}
@@ -291,7 +316,7 @@ export default function Header() {
                                 {/* CTA Button using GlowButton component */}
                                 <Link href="/contact" className="hidden sm:block">
                                     <GlowButton size="sm" rounded="sm">
-                                        Start a Project
+                                        {t('nav.startProject')}
                                     </GlowButton>
                                 </Link>
 
@@ -367,7 +392,7 @@ export default function Header() {
                                                     isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground hover:pl-2'
                                                 )}
                                             >
-                                                {link.label}
+                                                {getLocalizedLabel(link.href, link.label)}
                                             </Link>
                                         </motion.div>
                                     );
@@ -383,7 +408,7 @@ export default function Header() {
                                         className="mt-8 block"
                                     >
                                         <GlowButton size="md" rounded="md" className="w-full">
-                                            Start a Project
+                                            {t('nav.startProject')}
                                         </GlowButton>
                                     </Link>
                                 </motion.div>

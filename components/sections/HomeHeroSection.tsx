@@ -4,6 +4,7 @@ import { useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { GradientText } from '@/components/custom/GradientText';
 import { GlowButton } from '@/components/ui/GlowButton';
+import { useLanguage } from '@/context/LanguageContext';
 
 /* ─── Particle system ─── */
 interface Particle {
@@ -167,8 +168,12 @@ export default function HomeHeroSection() {
         mouseRef.current.active = false;
     };
 
+    const { language, t } = useLanguage();
+
     /* ─── Headline words ─── */
-    const headlineWords = ['Design,', 'build,', 'and', 'support'];
+    const headlineWords = language === 'vi'
+        ? ['Thiết kế,', 'xây dựng,', 'và', 'vận hành']
+        : ['Design,', 'build,', 'and', 'support'];
 
     return (
         <section
@@ -245,7 +250,7 @@ export default function HomeHeroSection() {
                         }}
                     />
                     <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-foreground/55">
-                        Software Support Studio
+                        {t('hero.badge')}
                     </span>
                 </motion.div>
 
@@ -262,7 +267,7 @@ export default function HomeHeroSection() {
                         </motion.span>
                     ))}
                     <motion.span variants={wordVariants} className="inline-block w-full mt-2">
-                        <GradientText>software that keeps moving.</GradientText>
+                        <GradientText>{t('hero.headlineGradient')}</GradientText>
                     </motion.span>
                 </motion.h1>
 
@@ -274,7 +279,7 @@ export default function HomeHeroSection() {
                     animate="visible"
                     className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-foreground/50 md:text-xl"
                 >
-                    From design to deployment — one connected stack for web, automation, and AI.
+                    {t('hero.subtitle')}
                 </motion.p>
 
                 {/* CTA */}
@@ -286,7 +291,7 @@ export default function HomeHeroSection() {
                     className="mt-12"
                 >
                     <GlowButton href="/contact" size="lg" rounded="full">
-                        Start a Project
+                        {t('hero.button')}
                     </GlowButton>
                 </motion.div>
             </div>

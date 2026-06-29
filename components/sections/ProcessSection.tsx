@@ -8,6 +8,7 @@ import { ScrollReveal } from '@/components/animations';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { cn } from '@/lib/utils';
 import { Search, Layout, Code2, ShieldCheck, ArrowRight, Clock, Zap, Shield } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +61,7 @@ const FeatureCard = ({
 }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const lightRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
 
     useEffect(() => {
         const card = cardRef.current;
@@ -202,7 +204,7 @@ const FeatureCard = ({
                             lineHeight: '1.1',
                         }}
                     >
-                        {step.title}
+                        {t(`process.steps.step${parseInt(step.number)}.title`)}
                     </h3>
                 </div>
 
@@ -214,7 +216,7 @@ const FeatureCard = ({
                         color: 'var(--color-muted-foreground)',
                     }}
                 >
-                    {step.description}
+                    {t(`process.steps.step${parseInt(step.number)}.description`)}
                 </p>
             </div>
         </div>
@@ -227,6 +229,7 @@ const FeatureCard = ({
 const ImplementBlock = () => {
     const blockRef = useRef<HTMLDivElement>(null);
     const lightRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
 
     useEffect(() => {
         const block = blockRef.current;
@@ -333,7 +336,7 @@ const ImplementBlock = () => {
                     <div className="flex items-center gap-3">
                         <Clock className="w-6 h-6 text-foreground" />
                         <span className="text-foreground font-semibold" style={{ fontSize: '14px', letterSpacing: '0.1em' }}>
-                            ONGOING SUPPORT
+                            {t('process.support.badge')}
                         </span>
                     </div>
 
@@ -344,14 +347,14 @@ const ImplementBlock = () => {
                             lineHeight: '1.1',
                         }}
                     >
-                        Launch once.{' '}
+                        {t('process.support.title')}{' '}
                         <span
                             className="text-transparent bg-clip-text"
                             style={{
                                 backgroundImage: 'linear-gradient(to right, var(--accent-primary), var(--accent-secondary))',
                             }}
                         >
-                            Improve continuously.
+                            {t('process.support.titleGradient')}
                         </span>
                     </h3>
 
@@ -363,19 +366,18 @@ const ImplementBlock = () => {
                             color: 'var(--color-muted-foreground)',
                         }}
                     >
-                        We stay involved with maintenance, monitoring, backups, deployment safety, content updates, and
-                        performance reviews so the stack keeps moving after release.
+                        {t('process.support.description')}
                     </p>
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-6">
-                    <StatItem icon={Zap} value="24/7" label="Monitoring" />
-                    <StatItem icon={Shield} value="CI/CD" label="Safer Deploys" />
+                    <StatItem icon={Zap} value="24/7" label={t('process.support.monitoring')} />
+                    <StatItem icon={Shield} value="CI/CD" label={t('process.support.saferDeploys')} />
                 </div>
 
                 <Link href="/contact">
                     <GlowButton size="md" rounded="md" className="inline-flex items-center gap-2">
-                        Discuss Support
+                        {t('process.support.button')}
                         <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
                     </GlowButton>
                 </Link>
@@ -424,13 +426,13 @@ export default function ProcessSection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const pathRef = useRef<SVGPathElement>(null);
     const pathLightRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
 
     useEffect(() => {
-        const path = pathRef.current;
         const container = containerRef.current;
+        const path = pathRef.current;
         const pathLight = pathLightRef.current;
-
-        if (!path || !container || !pathLight) return;
+        if (!container || !path || !pathLight) return;
 
         const length = path.getTotalLength();
 
@@ -525,7 +527,7 @@ export default function ProcessSection() {
             <div className="relative max-w-[1440px] mx-auto px-6 lg:px-8 py-32">
                 <ScrollReveal animation="fadeUp" className="mb-32 text-center relative z-10">
                     <h2 className="font-black text-foreground tracking-tighter" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-                        How We{' '}
+                        {t('process.title')}{' '}
                         <span
                             className="text-transparent bg-clip-text"
                             style={{
@@ -533,7 +535,7 @@ export default function ProcessSection() {
                                 filter: 'drop-shadow(0 0 20px rgba(var(--accent-primary-rgb), 0.3))',
                             }}
                         >
-                            Work
+                            {t('process.titleGradient')}
                         </span>
                     </h2>
                 </ScrollReveal>

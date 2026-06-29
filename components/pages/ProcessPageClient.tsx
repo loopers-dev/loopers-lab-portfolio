@@ -4,12 +4,14 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FileCode, GitBranch, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/Card';
+import { CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal, StaggerList, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/context/translations';
 
 const phases = [
     {
@@ -43,6 +45,10 @@ const phases = [
 
 function PhaseCard({ phase, index }: { phase: any, index: number }) {
     const cardRef = useRef<HTMLDivElement>(null);
+    const { language } = useLanguage();
+    const t = translations[language].processPage;
+    const localizedPhase = t.phases[`phase${phase.number}` as 'phase1' | 'phase2' | 'phase3'];
+
     const { scrollYProgress } = useScroll({
         target: cardRef,
         offset: ['start 85%', 'center center', 'end 15%'],
@@ -89,15 +95,15 @@ function PhaseCard({ phase, index }: { phase: any, index: number }) {
                         </div>
                         <div>
                             <h3 className="text-2xl font-black mb-2 flex items-center gap-3 justify-start ${index % 2 === 0 ? 'lg:justify-end' : ''}">
-                                Phase {phase.number}: {phase.title}
+                                {t.phase} {phase.number}: {localizedPhase.title}
                             </h3>
-                            <p className="text-muted-foreground">{phase.description}</p>
+                            <p className="text-muted-foreground">{localizedPhase.description}</p>
                         </div>
                     </div>
                     <div className={`mb-6 ${index % 2 === 0 ? 'lg:text-right' : ''}`}>
-                        <h4 className="text-sm font-semibold text-primary mb-4">Deliverables</h4>
+                        <h4 className="text-sm font-semibold text-primary mb-4">{t.deliverablesHeader}</h4>
                         <StaggerList staggerDelay={0.08}>
-                            {phase.deliverables.map((item: string) => (
+                            {localizedPhase.deliverables.map((item: string) => (
                                 <div key={item} className={`group/item flex items-center gap-3 text-sm text-muted-foreground mb-2 transition-colors duration-300 hover:text-foreground ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
                                     onMouseEnter={(e) => {
                                         const svg = e.currentTarget.querySelector('svg');
@@ -147,6 +153,9 @@ function PhaseCard({ phase, index }: { phase: any, index: number }) {
 
 export default function ProcessPageClient() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { language } = useLanguage();
+    const t = translations[language].processPage;
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start center', 'end center'],
@@ -172,13 +181,13 @@ export default function ProcessPageClient() {
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-24">
                         <ScrollReveal animation="fadeUp">
-                            <Badge variant="outline" className="mb-8 border-primary/30 bg-primary/10 text-primary">The SaaS Engine Blueprint</Badge>
+                            <Badge variant="outline" className="mb-8 border-primary/30 bg-primary/10 text-primary">{t.badge}</Badge>
                         </ScrollReveal>
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6">
-                            Our <GradientText className="inline-block">Process</GradientText>
+                            {t.title} <GradientText className="inline-block">{t.titleGradient}</GradientText>
                         </h1>
                         <ScrollReveal delay={0.3} animation="fadeUp">
-                            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">A battle-tested methodology that transforms your vision into a production-ready, scalable SaaS platform.</p>
+                            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t.subtitle}</p>
                         </ScrollReveal>
                     </div>
                     <div ref={containerRef} className="relative max-w-4xl mx-auto z-10">
@@ -201,11 +210,11 @@ export default function ProcessPageClient() {
                         <div className="text-center mt-24 p-16 rounded-2xl border border-border bg-card relative overflow-hidden">
                             <div className="absolute inset-0 glow-bg-mixed opacity-30" />
                             <div className="relative">
-                                <h2 className="text-3xl sm:text-4xl font-black mb-4">Ready to Start Your Project?</h2>
-                                <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Let&apos;s discuss how our process can bring your SaaS vision to life.</p>
+                                <h2 className="text-3xl sm:text-4xl font-black mb-4">{t.ctaTitle}</h2>
+                                <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t.ctaSubtitle}</p>
                                 <Link href="/contact">
                                     <GlowButton size="lg" rounded="md" className="inline-flex items-center gap-2">
-                                        Schedule a Call <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                        {t.ctaButton} <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                                     </GlowButton>
                                 </Link>
                             </div>

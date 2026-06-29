@@ -6,34 +6,41 @@ import { Paintbrush, Database, Cloud, Shield, Bot, BarChart3 } from 'lucide-reac
 import { Card, CardContent } from '@/components/ui/Card';
 import { ScrollReveal, StaggerList, TiltCard, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
+import { useLanguage } from '@/context/LanguageContext';
 
 const services = [
     {
+        key: 'ux',
         icon: Paintbrush,
         title: 'Web Design & UX',
         description: 'Figma workflows, wireframes, prototypes, and interface systems built around clear user journeys.',
     },
     {
+        key: 'building',
         icon: Database,
         title: 'Website Building & Architecture',
         description: 'Web apps, portals, database planning, API flows, and delivery patterns designed for maintainability.',
     },
     {
+        key: 'hosting',
         icon: Cloud,
         title: 'Hosting & CI/CD',
         description: 'Cloud setup, deployment pipelines, backups, SSL, monitoring, and infrastructure that stays predictable.',
     },
     {
+        key: 'maintenance',
         icon: Shield,
         title: 'Maintenance & Scalability',
         description: 'Security patches, performance tuning, observability, and technical support for products that keep evolving.',
     },
     {
+        key: 'automation',
         icon: Bot,
         title: 'AI Agents & Automation',
         description: 'LLM integrations, workflow automation, support bots, and content pipelines that reduce manual work.',
     },
     {
+        key: 'analytics',
         icon: BarChart3,
         title: 'Data Analysis & Reporting',
         description: 'Dashboards, funnel tracking, analytics reviews, and decision-ready reporting for product and ops teams.',
@@ -103,6 +110,7 @@ function AbstractSystemVideo({ scrollYProgress }: { scrollYProgress: MotionValue
 
 export default function ServicesSection() {
     const sectionRef = useRef<HTMLElement>(null);
+    const { t } = useLanguage();
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -121,10 +129,10 @@ export default function ServicesSection() {
             <div className="relative max-w-6xl mx-auto z-10">
                 <ScrollReveal animation="fadeUp" className="mb-20">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-6">
-                        Services We <GradientText>Deliver</GradientText>
+                        {t('services.title')} <GradientText>{t('services.titleGradient')}</GradientText>
                     </h2>
                     <p className="text-lg text-foreground/50 max-w-2xl">
-                        Design, engineering, hosting, automation, and long-term support for software teams that need more than a one-time launch.
+                        {t('services.subtitle')}
                     </p>
                 </ScrollReveal>
 
@@ -134,7 +142,7 @@ export default function ServicesSection() {
                     animation="fadeUp"
                 >
                     {services.map((service) => (
-                        <TiltCard key={service.title} className="h-full" tiltAmount={5} scale={1.02}>
+                        <TiltCard key={service.key} className="h-full" tiltAmount={5} scale={1.02}>
                             <Card className="flex h-full min-h-[18rem] flex-col bg-card/80 p-8 backdrop-blur-sm" hoverable>
                                 <CardContent className="flex h-full p-0">
                                     <div className="flex h-full items-start gap-5">
@@ -144,10 +152,10 @@ export default function ServicesSection() {
                                         </div>
                                         <div className="flex min-w-0 flex-1 flex-col">
                                             <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
-                                                {service.title}
+                                                {t(`services.items.${service.key}.title`)}
                                             </h3>
                                             <p className="text-foreground/40 leading-relaxed">
-                                                {service.description}
+                                                {t(`services.items.${service.key}.description`)}
                                             </p>
                                         </div>
                                     </div>

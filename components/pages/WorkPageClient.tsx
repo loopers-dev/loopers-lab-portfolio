@@ -12,6 +12,8 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { ScrollReveal, TiltCard } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/context/translations';
 
 interface Project {
     id: string; title: string; category: string; description: string;
@@ -31,7 +33,23 @@ const projects: Project[] = [
 const categories = ['All', 'EdTech', 'E-commerce', 'Real Estate', 'Enterprise Training', 'Internal Tools', 'IT & Cybersecurity'];
 
 export default function WorkPageClient() {
+    const { language } = useLanguage();
+    const t = translations[language].work;
     const [activeCategory, setActiveCategory] = useState('All');
+
+    const getLocalizedCategory = (cat: string) => {
+        switch (cat) {
+            case 'All': return t.categories.all;
+            case 'EdTech': return t.categories.edtech;
+            case 'E-commerce': return t.categories.ecommerce;
+            case 'Real Estate': return t.categories.realestate;
+            case 'Enterprise Training': return t.categories.enterprise;
+            case 'Internal Tools': return t.categories.internal;
+            case 'IT & Cybersecurity': return t.categories.cybersecurity;
+            default: return cat;
+        }
+    };
+
     const filteredProjects = activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory);
 
     return (
@@ -68,11 +86,11 @@ export default function WorkPageClient() {
                                 <div className="mb-3 flex items-center gap-3 text-primary">
                                     <Layers className="h-4 w-4" />
                                     <span className="text-[11px] uppercase tracking-[0.24em] text-foreground/40">
-                                        Cross-Vertical
+                                        {t.badgeCrossVertical}
                                     </span>
                                 </div>
                                 <p className="text-sm leading-relaxed text-foreground/70">
-                                    Case studies across EdTech, FinTech, commerce, and infrastructure systems.
+                                    {t.descCrossVertical}
                                 </p>
                             </div>
                         </motion.div>
@@ -87,11 +105,11 @@ export default function WorkPageClient() {
                                 <div className="mb-3 flex items-center gap-3 text-primary">
                                     <Shield className="h-4 w-4" />
                                     <span className="text-[11px] uppercase tracking-[0.24em] text-white/40">
-                                        Architecture-Led
+                                        {t.badgeArchitectureLed}
                                     </span>
                                 </div>
                                 <p className="text-sm leading-relaxed text-white/70">
-                                    Product stories focused on systems, resilience, and scale rather than templates.
+                                    {t.descArchitectureLed}
                                 </p>
                             </div>
                         </motion.div>
@@ -107,20 +125,19 @@ export default function WorkPageClient() {
                                         boxShadow: '0 0 30px color-mix(in srgb, var(--accent-primary, #ff4444) 25%, transparent)',
                                     }}
                                 >
-                                    Case Studies
+                                    {t.badge}
                                 </motion.div>
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.08} animation="fadeUp">
                                 <h1 className="text-5xl font-black leading-[0.95] tracking-[-0.04em] text-foreground sm:text-6xl lg:text-[5.5rem]">
-                                    Our <GradientText className="mt-2 inline-block">Work</GradientText>
+                                    {t.title} <GradientText className="mt-2 inline-block">{t.titleGradient}</GradientText>
                                 </h1>
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.18} animation="fadeUp">
                                 <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-foreground/60 md:text-2xl">
-                                    Real projects, real impact. Explore how we&apos;ve helped founders build and
-                                    scale their SaaS platforms.
+                                    {t.subtitle}
                                 </p>
                             </ScrollReveal>
 
@@ -145,7 +162,7 @@ export default function WorkPageClient() {
                                             <TabsList className="border border-border bg-muted/80">
                                                 {categories.map((category) => (
                                                     <TabsTrigger key={category} value={category}>
-                                                        {category}
+                                                        {getLocalizedCategory(category)}
                                                     </TabsTrigger>
                                                 ))}
                                             </TabsList>
@@ -157,74 +174,77 @@ export default function WorkPageClient() {
                     </section>
 
                     <motion.div layout className="grid md:grid-cols-2 gap-8">
-                        {filteredProjects.map((project, index) => (
-                            <motion.div key={project.id} id={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }} className="h-full">
-                                <TiltCard tiltAmount={6} scale={1.01} className="h-full flex flex-col">
-                                    <Card className="h-full flex flex-col overflow-hidden group border-border hover:border-primary/30">
-                                        <div className="h-56 relative overflow-hidden shrink-0">
-                                            {project.image ? (
-                                                <Image
-                                                    src={project.image}
-                                                    alt={`${project.title} ${project.category} case study preview`}
-                                                    fill
-                                                    className="object-cover"
-                                                    sizes="(min-width: 768px) 50vw, 100vw"
-                                                />
-                                            ) : (
-                                                <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
-                                            )}
+                        {filteredProjects.map((project, index) => {
+                            const localizedProject = t.projects[project.id as keyof typeof t.projects];
+                            return (
+                                <motion.div key={project.id} id={project.id} layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ delay: index * 0.1 }} className="h-full">
+                                    <TiltCard tiltAmount={6} scale={1.01} className="h-full flex flex-col">
+                                        <Card className="h-full flex flex-col overflow-hidden group border-border hover:border-primary/30">
+                                            <div className="h-56 relative overflow-hidden shrink-0">
+                                                {project.image ? (
+                                                    <Image
+                                                        src={project.image}
+                                                        alt={`${project.title} ${project.category} case study preview`}
+                                                        fill
+                                                        className="object-cover"
+                                                        sizes="(min-width: 768px) 50vw, 100vw"
+                                                    />
+                                                ) : (
+                                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
+                                                )}
 
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <motion.div whileHover={{ scale: 1.1, rotate: 5 }} className="p-8 rounded-2xl bg-card/80 backdrop-blur-sm border border-border glow-primary">
-                                                    <project.icon className="h-12 w-12 text-primary" />
-                                                </motion.div>
-                                            </div>
-                                            <div className="absolute top-4 left-4">
-                                                <Badge variant="outline" className="bg-card/80 backdrop-blur-sm text-foreground border-border">{project.category}</Badge>
-                                            </div>
-                                            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <div className="p-2 rounded-lg bg-card/80 backdrop-blur-sm border border-border">
-                                                    <ArrowUpRight className="h-4 w-4" />
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.div whileHover={{ scale: 1.1, rotate: 5 }} className="p-8 rounded-2xl bg-card/80 backdrop-blur-sm border border-border glow-primary">
+                                                        <project.icon className="h-12 w-12 text-primary" />
+                                                    </motion.div>
+                                                </div>
+                                                <div className="absolute top-4 left-4">
+                                                    <Badge variant="outline" className="bg-card/80 backdrop-blur-sm text-foreground border-border">{getLocalizedCategory(project.category)}</Badge>
+                                                </div>
+                                                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <div className="p-2 rounded-lg bg-card/80 backdrop-blur-sm border border-border">
+                                                        <ArrowUpRight className="h-4 w-4" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="relative flex flex-col flex-grow">
-                                            <div className={`absolute inset-0 bg-gradient-to-tl ${project.color} opacity-20 pointer-events-none`} />
-                                            <CardHeader className="relative">
-                                                <CardTitle className="flex items-center justify-between text-2xl">{project.title}</CardTitle>
-                                                <CardDescription className="text-base">{project.description}</CardDescription>
-                                            </CardHeader>
-                                            <CardContent className="space-y-4 relative flex-grow flex flex-col">
-                                                <div className="p-4 rounded-lg bg-muted border border-border flex-1">
-                                                    <h4 className="text-sm font-semibold mb-2 text-primary">Challenge</h4>
-                                                    <p className="text-sm text-muted-foreground">{project.challenge}</p>
-                                                </div>
-                                                <div className="p-4 rounded-lg bg-muted border border-border flex-1">
-                                                    <h4 className="text-sm font-semibold mb-2 text-secondary">Architecture</h4>
-                                                    <p className="text-sm text-muted-foreground">{project.architecture}</p>
-                                                </div>
-                                            </CardContent>
-                                            <CardFooter className="relative mt-auto">
-                                                <div className="flex flex-wrap gap-2">
-                                                    {project.tags.map((tag) => (
-                                                        <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">{tag}</Badge>
-                                                    ))}
-                                                </div>
-                                            </CardFooter>
-                                        </div>
-                                    </Card>
-                                </TiltCard>
-                            </motion.div>
-                        ))}
+                                            <div className="relative flex flex-col flex-grow">
+                                                <div className={`absolute inset-0 bg-gradient-to-tl ${project.color} opacity-20 pointer-events-none`} />
+                                                <CardHeader className="relative">
+                                                    <CardTitle className="flex items-center justify-between text-2xl">{project.title}</CardTitle>
+                                                    <CardDescription className="text-base">{localizedProject?.description || project.description}</CardDescription>
+                                                </CardHeader>
+                                                <CardContent className="space-y-4 relative flex-grow flex flex-col">
+                                                    <div className="p-4 rounded-lg bg-muted border border-border flex-1">
+                                                        <h4 className="text-sm font-semibold mb-2 text-primary">{t.challenge}</h4>
+                                                        <p className="text-sm text-muted-foreground">{localizedProject?.challenge || project.challenge}</p>
+                                                    </div>
+                                                    <div className="p-4 rounded-lg bg-muted border border-border flex-1">
+                                                        <h4 className="text-sm font-semibold mb-2 text-secondary">{t.architecture}</h4>
+                                                        <p className="text-sm text-muted-foreground">{localizedProject?.architecture || project.architecture}</p>
+                                                    </div>
+                                                </CardContent>
+                                                <CardFooter className="relative mt-auto">
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {project.tags.map((tag) => (
+                                                            <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">{tag}</Badge>
+                                                        ))}
+                                                    </div>
+                                                </CardFooter>
+                                            </div>
+                                        </Card>
+                                    </TiltCard>
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                     <ScrollReveal animation="scale" delay={0.2}>
                         <div className="text-center mt-24 p-16 rounded-2xl border border-border bg-card relative overflow-hidden">
                             <div className="absolute inset-0 glow-bg-red opacity-30" />
                             <div className="relative">
-                                <h2 className="text-3xl sm:text-4xl font-black mb-4">Want to see your project here?</h2>
-                                <p className="text-muted-foreground mb-8 max-w-md mx-auto">Let&apos;s discuss how we can bring your SaaS vision to life.</p>
+                                <h2 className="text-3xl sm:text-4xl font-black mb-4">{t.ctaTitle}</h2>
+                                <p className="text-muted-foreground mb-8 max-w-md mx-auto">{t.ctaSubtitle}</p>
                                 <Link href="/contact">
-                                    <GlowButton size="lg" rounded="md">Start Your Project</GlowButton>
+                                    <GlowButton size="lg" rounded="md">{t.ctaButton}</GlowButton>
                                 </Link>
                             </div>
                         </div>

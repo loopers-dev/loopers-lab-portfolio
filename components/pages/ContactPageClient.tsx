@@ -7,27 +7,29 @@ import { Input, Textarea, Label } from '@/components/ui/Input';
 import { ScrollReveal, StaggerList, PulsingDot } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
+import { useLanguage } from '@/context/LanguageContext';
 
 const SERVICE_OPTIONS = [
-    'Web Design & UX Systems',
-    'Website Building & System Architecture',
-    'Hosting, DevOps & Infrastructure',
-    'Maintenance & Performance',
-    'AI Agents & Workflow Automation',
-    'Data Analysis & Reporting',
-    'Content Operations & CMS',
-    'Other',
+    { key: 'ux', value: 'Web Design & UX Systems' },
+    { key: 'building', value: 'Website Building & System Architecture' },
+    { key: 'hosting', value: 'Hosting, DevOps & Infrastructure' },
+    { key: 'maintenance', value: 'Maintenance & Performance' },
+    { key: 'automation', value: 'AI Agents & Workflow Automation' },
+    { key: 'analytics', value: 'Data Analysis & Reporting' },
+    { key: 'cms', value: 'Content Operations & CMS' },
+    { key: 'other', value: 'Other' },
 ];
 
 const BUDGET_OPTIONS = [
-    { label: 'Under $1,000', value: '<$1K' },
-    { label: '$1,000 – $5,000', value: '$1K-5K' },
-    { label: '$5,000 – $10,000', value: '$5K-10K' },
-    { label: '$10,000+', value: '$10K+' },
-    { label: 'Not sure yet', value: 'TBD' },
+    { key: 'under_1k', value: '<$1K' },
+    { key: '1k_5k', value: '$1K-5K' },
+    { key: '5k_10k', value: '$5K-10K' },
+    { key: '10k_plus', value: '$10K+' },
+    { key: 'tbd', value: 'TBD' },
 ];
 
 export default function ContactPageClient() {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -109,12 +111,12 @@ export default function ContactPageClient() {
                     <div className="max-w-4xl mx-auto">
                         <ScrollReveal animation="fadeUp">
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground tracking-tight mb-8">
-                                <GradientText>Contact</GradientText>
+                                <GradientText>{t('contact.title')}</GradientText>
                             </h1>
                         </ScrollReveal>
                         <ScrollReveal animation="fadeUp" delay={0.1}>
-                            <p className="text-xl text-foreground/50 leading-relaxed mb-2">Have a project in mind? Or just a question?</p>
-                            <p className="text-xl text-foreground/50 leading-relaxed">We&apos;d like to hear from you.</p>
+                            <p className="text-xl text-foreground/50 leading-relaxed mb-2">{t('contact.subtitle1')}</p>
+                            <p className="text-xl text-foreground/50 leading-relaxed">{t('contact.subtitle2')}</p>
                         </ScrollReveal>
                     </div>
                 </section>
@@ -123,18 +125,18 @@ export default function ContactPageClient() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                             <ScrollReveal animation="fadeRight" delay={0.2}>
                                 <div className="mb-12">
-                                    <h2 className="text-lg font-bold text-foreground/90 mb-4">Email</h2>
+                                    <h2 className="text-lg font-bold text-foreground/90 mb-4">{t('contact.emailHeader')}</h2>
                                     <a href="mailto:hello@looperslab.com" className="text-2xl gradient-text hover:opacity-80 transition-opacity">
                                         hello@looperslab.com
                                     </a>
                                 </div>
                                 <Card className="p-8" hoverable glow>
                                     <CardContent className="p-0">
-                                        <h3 className="text-lg font-bold text-foreground/90 mb-6">What to Expect</h3>
+                                        <h3 className="text-lg font-bold text-foreground/90 mb-6">{t('contact.expectHeader')}</h3>
                                         <StaggerList className="space-y-4" staggerDelay={0.1}>
-                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />We respond within 2 business days.</div>
-                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />If there&apos;s a fit, we&apos;ll schedule a short discovery call.</div>
-                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />From there, we&apos;ll determine next steps together.</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />{t('contact.expect1')}</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />{t('contact.expect2')}</div>
+                                            <div className="flex items-start gap-3 text-foreground/50"><PulsingDot className="mt-1.5" size="sm" />{t('contact.expect3')}</div>
                                         </StaggerList>
                                     </CardContent>
                                 </Card>
@@ -148,8 +150,8 @@ export default function ContactPageClient() {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
-                                            <h3 className="text-2xl font-bold text-foreground mb-3">Message sent</h3>
-                                            <p className="text-foreground/50">We&apos;ll be in touch within 2 business days.</p>
+                                            <h3 className="text-2xl font-bold text-foreground mb-3">{t('contact.messageSent')}</h3>
+                                            <p className="text-foreground/50">{t('contact.sentSuccess')}</p>
                                         </CardContent>
                                     </Card>
                                 ) : (
@@ -161,21 +163,21 @@ export default function ContactPageClient() {
                                         )}
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                             <div>
-                                                <Label htmlFor="name">Name</Label>
-                                                <Input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder="Your name" className="mt-2" />
+                                                <Label htmlFor="name">{t('contact.form.name')}</Label>
+                                                <Input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder={t('contact.form.namePlaceholder')} className="mt-2" />
                                             </div>
                                             <div>
-                                                <Label htmlFor="email">Email</Label>
-                                                <Input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="you@company.com" className="mt-2" />
+                                                <Label htmlFor="email">{t('contact.form.email')}</Label>
+                                                <Input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder={t('contact.form.emailPlaceholder')} className="mt-2" />
                                             </div>
                                         </div>
                                         <div>
-                                            <Label htmlFor="company">Company <span className="text-foreground/30">(optional)</span></Label>
-                                            <Input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company" className="mt-2" />
+                                            <Label htmlFor="company">{t('contact.form.company')} <span className="text-foreground/30">{t('contact.form.companyOptional')}</span></Label>
+                                            <Input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder={t('contact.form.companyPlaceholder')} className="mt-2" />
                                         </div>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                             <div>
-                                                <Label htmlFor="service">Service Interest</Label>
+                                                <Label htmlFor="service">{t('contact.form.service')}</Label>
                                                 <select
                                                     id="service"
                                                     name="service"
@@ -190,14 +192,14 @@ export default function ContactPageClient() {
                                                         paddingRight: '2.5rem',
                                                     }}
                                                 >
-                                                    <option value="" className="bg-background text-muted-foreground">Select a service...</option>
-                                                    {SERVICE_OPTIONS.map((service) => (
-                                                        <option key={service} value={service} className="bg-background text-foreground">{service}</option>
+                                                    <option value="" className="bg-background text-muted-foreground">{t('contact.form.serviceSelect')}</option>
+                                                    {SERVICE_OPTIONS.map((opt) => (
+                                                        <option key={opt.key} value={opt.value} className="bg-background text-foreground">{t(`contact.services.${opt.key}`)}</option>
                                                     ))}
                                                 </select>
                                             </div>
                                             <div>
-                                                <Label htmlFor="budget">Budget Range <span className="text-foreground/30">(optional)</span></Label>
+                                                <Label htmlFor="budget">{t('contact.form.budget')} <span className="text-foreground/30">{t('contact.form.budgetOptional')}</span></Label>
                                                 <select
                                                     id="budget"
                                                     name="budget"
@@ -212,23 +214,23 @@ export default function ContactPageClient() {
                                                         paddingRight: '2.5rem',
                                                     }}
                                                 >
-                                                    <option value="" className="bg-background text-muted-foreground">Select range...</option>
+                                                    <option value="" className="bg-background text-muted-foreground">{t('contact.form.budgetSelect')}</option>
                                                     {BUDGET_OPTIONS.map((opt) => (
-                                                        <option key={opt.value} value={opt.value} className="bg-background text-foreground">{opt.label}</option>
+                                                        <option key={opt.key} value={opt.value} className="bg-background text-foreground">{t(`contact.budgetOptions.${opt.key}`)}</option>
                                                     ))}
                                                 </select>
                                             </div>
                                         </div>
                                         <div>
-                                            <Label htmlFor="message">Message</Label>
-                                            <Textarea id="message" name="message" required value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." className="mt-2" />
+                                            <Label htmlFor="message">{t('contact.form.message')}</Label>
+                                            <Textarea id="message" name="message" required value={formData.message} onChange={handleChange} placeholder={t('contact.form.messagePlaceholder')} className="mt-2" />
                                         </div>
                                         {/* Honeypot field - hidden from real users */}
                                         <div className="absolute opacity-0 -z-10 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
                                             <label htmlFor="website">Website</label>
                                             <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
                                         </div>
-                                        <Button type="submit" variant="gradient" size="lg" loading={isSubmitting} className="w-full">Send Message</Button>
+                                        <Button type="submit" variant="gradient" size="lg" loading={isSubmitting} className="w-full">{isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}</Button>
                                     </form>
                                 )}
                             </ScrollReveal>

@@ -12,13 +12,14 @@ import {
     Bot,
     BarChart3,
     BookOpen,
-    Monitor,
     Award,
 } from 'lucide-react';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { ScrollReveal } from '@/components/animations';
 import { GradientText } from '@/components/custom/GradientText';
 import Layout from '@/components/Layout';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/context/translations';
 
 const services = [
     {
@@ -110,6 +111,22 @@ const services = [
 import Image from 'next/image';
 
 function ServiceSection({ service, index }: { service: (typeof services)[0]; index: number }) {
+    const { language } = useLanguage();
+    const t = translations[language].servicesPage;
+    
+    const keyMap: Record<string, string> = {
+        '01': 'ux',
+        '02': 'building',
+        '03': 'hosting',
+        '04': 'maintenance',
+        '05': 'automation',
+        '06': 'analytics',
+        '07': 'cms',
+    };
+    
+    const key = keyMap[service.number];
+    const localizedItem = t.items[key as keyof typeof t.items];
+
     const bgColors = [
         'bg-[#0f1115]',
         'bg-[#13161c]',
@@ -163,16 +180,16 @@ function ServiceSection({ service, index }: { service: (typeof services)[0]; ind
                             </div>
                             
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-5 leading-[1.05]">
-                                {service.title}
+                                {localizedItem.title}
                             </h2>
                             
                             <p className="text-lg md:text-xl font-medium italic mb-6 shadow-sm" style={{ color: 'var(--accent-secondary)' }}>
-                                {service.slogan}
+                                {localizedItem.slogan}
                             </p>
                             
                             <div className="pt-5 border-t border-border/50">
                                 <p className="text-foreground/75 leading-relaxed text-base">
-                                    {service.content}
+                                    {localizedItem.description}
                                 </p>
                             </div>
 
@@ -193,6 +210,9 @@ function LogoPlaceholder() {
 }
 
 export default function ServicesPageClient() {
+    const { language } = useLanguage();
+    const t = translations[language].servicesPage;
+
     return (
         <Layout>
             <div className="relative bg-background">
@@ -213,20 +233,20 @@ export default function ServicesPageClient() {
                         <ScrollReveal animation="fadeUp">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
                                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                <span className="text-xs font-mono uppercase tracking-widest text-foreground/70">Full-Stack Solutions</span>
+                                <span className="text-xs font-mono uppercase tracking-widest text-foreground/70">{t.badge}</span>
                             </div>
                         </ScrollReveal>
                         
                         <ScrollReveal animation="fadeUp" delay={0.1}>
                             <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-foreground tracking-[-0.04em] mb-8 leading-[0.95]">
-                                Software Delivery <br className="hidden md:block" />
-                                <GradientText>End-To-End</GradientText>.
+                                {t.heroTitlePrefix} <br className="hidden md:block" />
+                                <GradientText>{t.heroTitleGradient}</GradientText>.
                             </h1>
                         </ScrollReveal>
                         
                         <ScrollReveal animation="fadeUp" delay={0.2}>
                             <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-3xl mx-auto mb-12">
-                                We don't just write code. We build the architecture, design the interfaces, set up the deployments, and handle long-term scalability.
+                                {t.heroSubtitle}
                             </p>
                         </ScrollReveal>
                         
@@ -234,11 +254,11 @@ export default function ServicesPageClient() {
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                                 <Link href="#service-1">
                                     <GlowButton size="lg" rounded="full" className="px-8 py-4 text-lg">
-                                        Explore Our Process
+                                        {t.heroButton}
                                     </GlowButton>
                                 </Link>
                                 <Link href="/contact" className="text-foreground/70 hover:text-foreground transition-colors font-medium underline underline-offset-4 decoration-white/20 hover:decoration-white/80">
-                                    Book a Strategy Call
+                                    {t.heroLink}
                                 </Link>
                             </div>
                         </ScrollReveal>
@@ -267,16 +287,16 @@ export default function ServicesPageClient() {
                     <div className="max-w-4xl mx-auto text-center relative">
                         <ScrollReveal animation="scale">
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-8 leading-tight">
-                                Ready to build the <GradientText>next big thing</GradientText>?
+                                {t.ctaTitlePrefix} <GradientText>{t.ctaTitleGradient}</GradientText>?
                             </h2>
                             <Link href="/contact">
                                 <GlowButton size="lg" rounded="full" className="inline-flex items-center gap-3 px-8 py-5 text-xl font-bold mx-auto transition-transform hover:scale-105">
-                                    Book a Consultation
+                                    {t.ctaButton}
                                     <ArrowRight className="h-6 w-6" />
                                 </GlowButton>
                             </Link>
                             <div className="mt-20">
-                                <p className="text-xs text-foreground/30 uppercase tracking-[0.2em] font-mono mb-8">Systems We Currently Support</p>
+                                <p className="text-xs text-foreground/30 uppercase tracking-[0.2em] font-mono mb-8">{t.systemsSupported}</p>
                                 <div className="flex flex-wrap items-center justify-center gap-4 opacity-70">
                                     {[1, 2, 3, 4, 5].map((i) => <LogoPlaceholder key={i} />)}
                                 </div>
@@ -289,3 +309,4 @@ export default function ServicesPageClient() {
         </Layout>
     );
 }
+
