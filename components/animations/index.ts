@@ -1,6 +1,6 @@
 export { SplitText } from "./SplitText";
 export { ScrollReveal } from "./ScrollReveal";
-export { TiltCard } from "./TiltCard";
+export { TiltCard, ParallaxLayer, AmbiGlow } from "./TiltCard";
 export { PulsingDot } from "./PulsingDot";
 export { StaggerList } from "./StaggerList";
 export { AnimatedCounter } from "./AnimatedCounter";
