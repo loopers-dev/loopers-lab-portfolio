@@ -437,6 +437,7 @@ function LayeredCard({
     sv: MotionValue<number>;
     t: ServicesPageT;
 }) {
+    const { mode } = useTheme();
     const key   = keyMap[service.number];
     const item  = t.items[key as keyof ServicesPageT['items']];
     const Icon  = service.icon;
@@ -526,7 +527,7 @@ function LayeredCard({
                             aria-hidden
                             className="absolute -inset-4 rounded-[2.5rem]"
                             style={{
-                                background: 'rgba(0,0,0,0.82)',
+                                background: mode === 'light' ? 'rgba(0,0,0,0.14)' : 'rgba(0,0,0,0.82)',
                                 filter: 'blur(28px)',
                             }}
                         />
@@ -549,8 +550,9 @@ function LayeredCard({
                                 aria-hidden
                                 className="absolute inset-0"
                                 style={{
-                                    background:
-                                        'linear-gradient(108deg, rgba(4,4,10,0.99) 0%, rgba(4,4,10,0.93) 34%, rgba(4,4,10,0.56) 61%, rgba(4,4,10,0.08) 100%)',
+                                    background: mode === 'light'
+                                        ? 'linear-gradient(108deg, rgba(240,240,244,0.99) 0%, rgba(240,240,244,0.93) 34%, rgba(240,240,244,0.56) 61%, rgba(240,240,244,0.08) 100%)'
+                                        : 'linear-gradient(108deg, rgba(4,4,10,0.99) 0%, rgba(4,4,10,0.93) 34%, rgba(4,4,10,0.56) 61%, rgba(4,4,10,0.08) 100%)',
                                 }}
                             />
                         </div>
@@ -562,10 +564,12 @@ function LayeredCard({
                             aria-hidden
                             className="absolute inset-0 rounded-[2rem]"
                             style={{
-                                background:
-                                    'linear-gradient(160deg, rgba(255,255,255,0.038) 0%, rgba(255,255,255,0.004) 100%)',
-                                boxShadow:
-                                    '0 2px 0 0 rgba(255,255,255,0.07) inset, 0 0 0 1px rgba(255,255,255,0.07)',
+                                background: mode === 'light'
+                                    ? 'linear-gradient(160deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%)'
+                                    : 'linear-gradient(160deg, rgba(255,255,255,0.038) 0%, rgba(255,255,255,0.004) 100%)',
+                                boxShadow: mode === 'light'
+                                    ? '0 2px 0 0 rgba(255,255,255,0.6) inset, 0 0 0 1px rgba(0,0,0,0.06)'
+                                    : '0 2px 0 0 rgba(255,255,255,0.07) inset, 0 0 0 1px rgba(255,255,255,0.07)',
                             }}
                         />
                         {/* Gradient top edge */}
@@ -610,9 +614,9 @@ function LayeredCard({
                                     key={tag}
                                     className="px-2.5 py-[3px] rounded-full text-[9px] font-mono tracking-wider uppercase"
                                     style={{
-                                        background: `${service.from}14`,
-                                        border: `1px solid ${service.from}2e`,
-                                        color: `${service.from}bb`,
+                                        background: mode === 'light' ? `${service.from}0d` : `${service.from}14`,
+                                        border: mode === 'light' ? `1px solid ${service.from}3a` : `1px solid ${service.from}2e`,
+                                        color: mode === 'light' ? service.from : `${service.from}bb`,
                                     }}
                                 >
                                     {tag}
@@ -626,14 +630,16 @@ function LayeredCard({
                         <div className="absolute inset-0 flex flex-col justify-center pl-[3.5rem] pr-8 md:pr-[38%] py-14">
                             <h2
                                 className="text-[1.6rem] sm:text-[1.9rem] md:text-[2.25rem] font-black tracking-tight leading-[1.07] mb-2.5"
-                                style={{ color: 'rgba(250,250,250,0.97)' }}
+                                style={{ color: mode === 'light' ? 'rgba(15,15,20,0.96)' : 'rgba(250,250,250,0.97)' }}
                             >
                                 {item?.title ?? `Service ${service.number}`}
                             </h2>
                             <p
                                 className="text-[13px] sm:text-[13.5px] font-medium italic leading-snug mb-5"
                                 style={{
-                                    background: `linear-gradient(135deg, ${service.from}cc, ${service.to}cc)`,
+                                    background: mode === 'light'
+                                        ? `linear-gradient(135deg, ${service.from}, ${service.to})`
+                                        : `linear-gradient(135deg, ${service.from}cc, ${service.to}cc)`,
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     backgroundClip: 'text',
@@ -643,7 +649,7 @@ function LayeredCard({
                             </p>
                             <p
                                 className="text-[12.5px] sm:text-[13px] leading-[1.72]"
-                                style={{ color: 'rgba(250,250,250,0.50)' }}
+                                style={{ color: mode === 'light' ? 'rgba(15,15,20,0.60)' : 'rgba(250,250,250,0.50)' }}
                             >
                                 {item?.description ?? ''}
                             </p>
@@ -666,14 +672,25 @@ function LayeredCard({
                             <div
                                 className="relative flex items-center justify-center w-[68px] h-[68px] rounded-2xl"
                                 style={{
-                                    background: `linear-gradient(135deg, ${service.from}28, ${service.to}28)`,
-                                    border: `1px solid ${service.from}55`,
-                                    boxShadow: `
-                                        0 0 0 1px ${service.from}1e,
-                                        0 10px 40px ${service.from}66,
-                                        0 0 60px ${service.from}1e inset,
-                                        0 2px 0 0 rgba(255,255,255,0.10) inset
-                                    `,
+                                    background: mode === 'light'
+                                        ? `linear-gradient(135deg, ${service.from}18, ${service.to}18)`
+                                        : `linear-gradient(135deg, ${service.from}28, ${service.to}28)`,
+                                    border: mode === 'light'
+                                        ? `1px solid ${service.from}3a`
+                                        : `1px solid ${service.from}55`,
+                                    boxShadow: mode === 'light'
+                                        ? `
+                                            0 0 0 1px ${service.from}12,
+                                            0 8px 24px ${service.from}28,
+                                            0 0 40px ${service.from}0d inset,
+                                            0 2px 0 0 rgba(255,255,255,0.5) inset
+                                          `
+                                        : `
+                                            0 0 0 1px ${service.from}1e,
+                                            0 10px 40px ${service.from}66,
+                                            0 0 60px ${service.from}1e inset,
+                                            0 2px 0 0 rgba(255,255,255,0.10) inset
+                                          `,
                                 }}
                             >
                                 <div
