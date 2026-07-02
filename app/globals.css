@@ -44,6 +44,28 @@
     --color-card: #ffffff;
     --color-card-foreground: #09090b;
     --color-border: #e4e4e7;
+
+    /* Card deck section — light mode surface */
+    --deck-bg: #f0f0f4;
+    --deck-text-muted: rgba(0, 0, 0, 0.35);
+    --deck-text-dim: rgba(0, 0, 0, 0.22);
+    --deck-text-dimmer: rgba(0, 0, 0, 0.18);
+    --deck-divider-base: rgba(0, 0, 0, 0.08);
+    --deck-watermark-stroke: rgba(0, 0, 0, 0.05);
+    --deck-grid-color: rgba(0, 0, 0, 0.06);
+    --deck-grid-blend: normal;
+  }
+
+  /* Dark theme deck vars (default) */
+  :root {
+    --deck-bg: #04040A;
+    --deck-text-muted: rgba(255, 255, 255, 0.30);
+    --deck-text-dim: rgba(255, 255, 255, 0.28);
+    --deck-text-dimmer: rgba(255, 255, 255, 0.18);
+    --deck-divider-base: rgba(255, 255, 255, 0.08);
+    --deck-watermark-stroke: rgba(255, 255, 255, 0.04);
+    --deck-grid-color: rgba(255, 255, 255, 0.07);
+    --deck-grid-blend: overlay;
   }
 
   /* Red Theme (default) */
@@ -172,8 +194,8 @@
 
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      linear-gradient(var(--deck-grid-color, rgba(255, 255, 255, 0.07)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--deck-grid-color, rgba(255, 255, 255, 0.07)) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 

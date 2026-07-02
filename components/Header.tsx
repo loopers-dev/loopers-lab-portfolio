@@ -49,45 +49,6 @@ export default function Header() {
         }
     };
 
-    // GSAP ScrollTrigger for navbar shrink effect
-    useEffect(() => {
-        const nav = navRef.current;
-        const navInner = navInnerRef.current;
-        const scrollTriggerRoot = document.documentElement;
-        if (!nav || !navInner) return;
-
-        gsap.set(navInner, {
-            transformOrigin: 'top center',
-        });
-
-        const ctx = gsap.context(() => {
-            const navTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: scrollTriggerRoot,
-                    start: 'top top',
-                    end: '200 top',
-                    scrub: 0.8,
-                    onUpdate: (self) => {
-                        if (self.progress > 0.1) {
-                            navInner.classList.add('nav-scrolled');
-                        } else {
-                            navInner.classList.remove('nav-scrolled');
-                        }
-                    }
-                }
-            });
-
-            navTl.to(navInner, {
-                y: 10,
-                scale: 0.92,
-                borderRadius: '999px',
-                ease: 'none',
-            }, 0);
-
-        }, nav);
-
-        return () => ctx.revert();
-    }, []);
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
@@ -239,7 +200,7 @@ export default function Header() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="fixed top-0 left-0 right-0 z-50"
+                className="absolute top-0 left-0 right-0 z-50"
             >
                 <nav aria-label="Primary" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div
@@ -254,7 +215,7 @@ export default function Header() {
                                     whileHover={{ scale: 1.02 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <Logo className="h-14 md:h-18 w-auto" />
+                                    <Logo className="h-10 md:h-14 w-auto" />
                                 </motion.div>
                             </Link>
 

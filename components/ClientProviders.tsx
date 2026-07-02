@@ -3,7 +3,7 @@
 import { LoadingProvider } from '@/context/LoadingContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
-import SplitReveal from '@/components/SplitReveal';
+// import SplitReveal from '@/components/SplitReveal';
 import TopGlowOverlay from '@/components/TopGlowOverlay';
 
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
@@ -11,10 +11,10 @@ export default function ClientProviders({ children }: { children: React.ReactNod
         <LanguageProvider>
             <LoadingProvider>
                 <ThemeProvider>
-                    <SplitReveal>
-                        <TopGlowOverlay />
-                        {children}
-                    </SplitReveal>
+                    {/* <SplitReveal> */}
+                    <TopGlowOverlay />
+                    {children}
+                    {/* </SplitReveal> */}
                 </ThemeProvider>
             </LoadingProvider>
         </LanguageProvider>
