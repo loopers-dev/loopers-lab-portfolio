@@ -11,53 +11,53 @@ export const translations = {
             startProject: 'Start a Project',
         },
         footer: {
-            tagline: 'Design systems. Deployment. Maintenance.',
-            builtForTime: 'Built for time.',
+            tagline: 'Design Systems. Deployment. Long-term Support.',
+            builtForTime: 'Built to last.',
             navigate: 'Navigate',
-            getInTouch: 'Get in touch',
+            getInTouch: 'Get in Touch',
             allRightsReserved: 'All rights reserved.',
             taglineBottom: 'Systems, not pages.',
         },
         cta: {
-            title: "Let's Build Something That Lasts",
-            subtitle: "If you're ready to invest in structure over shortcuts, we should talk.",
+            title: "Build Software That Holds Up Over Time",
+            subtitle: "If you're ready to invest in structure rather than shortcuts, let's talk about your project.",
             button: 'Start a Conversation',
         },
         hero: {
-            badge: "Studio Phát Triển Phần Mềm & Vận Hành Hệ Thống Chuyên Nghiệp",
-            headlineWords: ['Thiết kế,', 'xây dựng,', 'và', 'vận hành'],
-            headlineGradient: 'hệ thống phần mềm bền vững.',
-            subtitle: 'Giải pháp đồng bộ từ khâu thiết kế đến triển khai: Tối ưu hóa website, tự động hóa quy trình và tích hợp AI chuyên sâu cho doanh nghiệp.',
-            button: 'Bắt đầu dự án',
+            badge: "Professional Software Development & System Operations Studio",
+            headlineWords: ['Design,', 'build,', 'and', 'operate'],
+            headlineGradient: 'software systems built to last.',
+            subtitle: 'End-to-end delivery from architecture to production: web development, workflow automation, and AI integration for businesses that need systems that scale.',
+            button: 'Start a Project',
         },
         services: {
-            title: "Dịch vụ phát triển",
-            titleGradient: "phần mềm",
-            subtitle: "Chúng tôi thiết kế, xây dựng, tối ưu hạ tầng và đồng hành dài hạn cùng doanh nghiệp, giúp hệ thống vận hành ổn định sau khi bàn giao.",
+            title: "Software Development",
+            titleGradient: "Services",
+            subtitle: "We design, build, and maintain the full stack — and stay involved after handoff so the system keeps running the way it should.",
             items: {
                 ux: {
-                    title: "Thiết kế Web & UX",
-                    description: "Thiết kế giao diện Figma chuyên sâu, xây dựng wireframe, prototype và hệ thống UI/UX tối ưu hóa trải nghiệm người dùng trên đa thiết bị."
+                    title: "Web Design & UX",
+                    description: "Figma UI design, wireframes, interactive prototypes, and cross-device UX systems built to improve user experience and support long-term product growth."
                 },
                 building: {
-                    title: "Phát triển Web & Kiến trúc",
-                    description: "Phát triển ứng dụng web, cổng thông tin doanh nghiệp, cơ sở dữ liệu và hệ thống API chuẩn hóa, hướng tới hiệu năng và khả năng bảo trì lâu dài."
+                    title: "Web Development & Architecture",
+                    description: "Custom web applications, enterprise portals, normalized database systems, and API architecture designed for performance and long-term maintainability."
                 },
                 hosting: {
                     title: "Hosting & CI/CD",
-                    description: "Thiết lập hạ tầng đám mây, cấu hình CI/CD tự động, tối ưu hóa bảo mật SSL, tự động sao lưu dữ liệu và giám sát hệ thống 24/7."
+                    description: "Cloud infrastructure setup, automated CI/CD pipelines, SSL security hardening, scheduled data backups, and 24/7 system monitoring."
                 },
                 maintenance: {
-                    title: "Bảo trì & Mở rộng",
-                    description: "Bảo trì định kỳ, vá lỗ hổng bảo mật, tối ưu hiệu suất tải trang (Core Web Vitals) và hỗ trợ kỹ thuật liên tục giúp website luôn hoạt động ổn định."
+                    title: "Maintenance & Scaling",
+                    description: "Scheduled maintenance, security patching, Core Web Vitals performance tuning, and ongoing technical support to keep your site stable under real load."
                 },
                 automation: {
-                    title: "AI Agents & Tự động hóa",
-                    description: "Tích hợp mô hình ngôn ngữ lớn (LLM), xây dựng chatbot AI thông minh và tự động hóa các quy trình vận hành giúp doanh nghiệp tiết kiệm thời gian và chi phí."
+                    title: "AI Agents & Automation",
+                    description: "LLM integration, intelligent AI chatbot development, and operational workflow automation that reduce manual overhead and lower cost per process."
                 },
                 analytics: {
-                    title: "Phân tích Dữ liệu & Báo cáo",
-                    description: "Xây dựng dashboard trực quan, phân tích phễu chuyển đổi và cung cấp báo cáo đo lường chi tiết để tối ưu hóa hiệu quả hoạt động kinh doanh."
+                    title: "Data Analytics & Reporting",
+                    description: "Visual dashboards, conversion funnel analysis, and detailed measurement reporting to track KPIs and support data-driven business decisions."
                 }
             }
         },
@@ -67,26 +67,26 @@ export const translations = {
             steps: {
                 step1: {
                     title: "Audit & Scope",
-                    description: "We audit the product, workflow, and constraints first so the scope, risks, and technical priorities are clear before build work starts."
+                    description: "We audit the product, existing workflows, and technical constraints first. Scope, risk surface, and delivery priorities are defined before any build work starts."
                 },
                 step2: {
-                    title: "Design the System",
-                    description: "UX direction, database shape, API boundaries, and automation flows are mapped before build work scales."
+                    title: "System Design",
+                    description: "UX direction, database schema, API contracts, and automation flows are all mapped before implementation scales. Nothing is built without a clear technical plan."
                 },
                 step3: {
                     title: "Build & Integrate",
-                    description: "Web apps, internal tools, integrations, and deployment workflows are delivered as one connected stack."
+                    description: "Web applications, internal tools, third-party integrations, and deployment pipelines are delivered as one connected, tested stack."
                 },
                 step4: {
-                    title: "Support & Improve",
-                    description: "After launch we stay involved with maintenance, monitoring, performance tuning, analytics, and content support."
+                    title: "Support & Iterate",
+                    description: "After launch, we stay involved: maintenance cycles, uptime monitoring, performance reviews, security patching, and feature iteration as the product grows."
                 }
             },
             support: {
                 badge: "ONGOING SUPPORT",
                 title: "Launch once.",
                 titleGradient: "Improve continuously.",
-                description: "We stay involved with maintenance, monitoring, backups, deployment safety, content updates, and performance reviews so the stack keeps moving after release.",
+                description: "We remain involved long after release: maintenance windows, infrastructure monitoring, backup schedules, safe deployment workflows, content updates, and regular performance reviews.",
                 monitoring: "Monitoring",
                 saferDeploys: "Safer Deploys",
                 button: "Discuss Support"
@@ -94,92 +94,92 @@ export const translations = {
         },
         philosophy: {
             title: "Built for",
-            titleGradient: "Time",
-            p1: "Most web projects are built to launch. Ours are built to last. We approach every system with longevity in mind, designing structures that adapt to change, not collapse under it.",
-            p2: "A website is not a brochure. It's infrastructure. We treat design decisions as architectural ones, every component, every convention must survive updates, scale with content, and remain stable under maintenance.",
-            p3: "We don't chase trends. We build systems that stay coherent over years, not weeks. The goal isn't novelty. It's durability."
+            titleGradient: "Longevity",
+            p1: "Most software projects are scoped around launch. We scope around what happens after. Every system we deliver is designed to absorb change without structural collapse — adaptable as the business grows, not brittle when requirements shift.",
+            p2: "A website is not a brochure. It's operational infrastructure. Every design decision is an architectural one: each component and coding convention must hold up through updates, scale with content volume, and remain stable across maintenance cycles.",
+            p3: "We don't optimize for novelty. We build systems that stay coherent over years, not sprints. The goal is durability — software that earns its keep long after the initial handoff."
         },
         about: {
             badge: "The Team",
-            title: "Powered by",
-            titleGradient: "Expertise",
-            subtitle: "We're a remote-first team of engineers, architects, and designers united by a passion for building exceptional software.",
-            engineTitle: "The Engine",
-            engineSubtitle: "Three pillars working in perfect harmony",
+            title: "Driven by",
+            titleGradient: "Deep Expertise",
+            subtitle: "A remote-first team of engineers, system architects, and product designers with a shared focus on building software that performs under real conditions.",
+            engineTitle: "How We Operate",
+            engineSubtitle: "Three core disciplines working in tight coordination",
             cylinders: {
                 ux: {
                     title: "Strategy",
-                    description: "Data-driven decisions. We analyze market opportunities and architect solutions that align business goals with technical feasibility."
+                    description: "Decisions grounded in data. We assess market opportunities and design solutions where business objectives and technical constraints are both accounted for."
                 },
                 building: {
                     title: "Systems",
-                    description: "Infrastructure as code. We build resilient, scalable systems with modern DevOps practices and cloud-native architectures."
+                    description: "Infrastructure as code. We build reliable, scalable systems using modern DevOps workflows and cloud-native architectures designed for long-term operational stability."
                 },
                 hosting: {
                     title: "Product",
-                    description: "Design systems that scale. We craft user experiences that are beautiful, accessible, and consistent across platforms."
+                    description: "Standardized design systems. We build user experiences that are clear, accessible, and consistent across every platform and screen size."
                 }
             },
             valuesTitle: "Our Values",
-            valuesSubtitle: "The principles that guide everything we do",
+            valuesSubtitle: "The principles that shape how we work and what we deliver",
             values: {
                 transparency: {
                     title: "Transparency",
-                    description: "Clear communication at every step"
+                    description: "Direct, clear communication at every project stage"
                 },
                 quality: {
                     title: "Quality",
-                    description: "Clean, tested, maintainable code"
+                    description: "Clean, tested, and maintainable code from day one"
                 },
                 ownership: {
                     title: "Ownership",
-                    description: "Your success is our success"
+                    description: "We treat your product's outcome as our own responsibility"
                 },
                 innovation: {
-                    title: "Innovation",
-                    description: "Latest technologies and practices"
+                    title: "Modern Practice",
+                    description: "Current tooling, proven architectural patterns, no legacy debt"
                 }
             },
-            joinTitle: "Join the Engine",
-            joinSubtitle: "Ready to work with a team that cares as much about your product as you do?",
+            joinTitle: "Work With Us",
+            joinSubtitle: "Ready to work with a team that treats your product with the same care you do?",
             joinButton: "Start a Conversation"
         },
         contact: {
             title: "Contact",
-            subtitle1: "Have a project in mind? Or just a question?",
-            subtitle2: "We'd like to hear from you.",
+            subtitle1: "Have a project in scope? Or just want to explore options?",
+            subtitle2: "Send us a message and we'll take it from there.",
             emailHeader: "Email",
-            expectHeader: "What to Expect",
-            expect1: "We respond within 2 business days.",
-            expect2: "If there's a fit, we'll schedule a short discovery call.",
-            expect3: "From there, we'll determine next steps together.",
+            expectHeader: "What Happens Next",
+            expect1: "We respond within 24 to 48 business hours.",
+            expect2: "If there's a good fit, we'll schedule a short discovery call.",
+            expect3: "From there, we'll map out next steps together.",
             messageSent: "Message sent",
-            sentSuccess: "We'll be in touch within 2 business days.",
+            sentSuccess: "We'll follow up within 2 business days.",
             form: {
-                name: "Name",
+                name: "Full Name",
                 namePlaceholder: "Your name",
                 email: "Email",
                 emailPlaceholder: "you@company.com",
                 company: "Company",
                 companyOptional: "(optional)",
-                companyPlaceholder: "Your company",
-                service: "Service Interest",
+                companyPlaceholder: "Your company name",
+                service: "Service of Interest",
                 serviceSelect: "Select a service...",
                 budget: "Budget Range",
                 budgetOptional: "(optional)",
-                budgetSelect: "Select range...",
+                budgetSelect: "Select a range...",
                 message: "Message",
-                messagePlaceholder: "Tell us about your project...",
+                messagePlaceholder: "Describe your project or question...",
                 submit: "Send Message",
                 sending: "Sending..."
             },
             services: {
                 ux: 'Web Design & UX Systems',
-                building: 'Website Building & System Architecture',
+                building: 'Web Development & System Architecture',
                 hosting: 'Hosting, DevOps & Infrastructure',
                 maintenance: 'Maintenance & Performance',
                 automation: 'AI Agents & Workflow Automation',
-                analytics: 'Data Analysis & Reporting',
+                analytics: 'Data Analytics & Reporting',
                 cms: 'Content Operations & CMS Support',
                 other: 'Other'
             },
@@ -188,23 +188,23 @@ export const translations = {
                 _1k_5k: '$1,000 – $5,000',
                 _5k_10k: '$5,000 – $10,000',
                 _10k_plus: '$10,000+',
-                tbd: 'Not sure yet'
+                tbd: 'Not determined yet'
             }
         },
         processPage: {
             badge: "How We Deliver",
             title: "Engineering",
-            titleGradient: "Rigor",
-            subtitle: "We build with a focus on code design, security boundaries, containerized deployment, and ongoing metrics after launch.",
+            titleGradient: "Discipline",
+            subtitle: "Every build is structured around code architecture, security boundaries, containerized deployment, and post-launch performance measurement.",
             deliverablesHeader: "Deliverables",
             phase: "Phase",
-            ctaTitle: "Ready for a Rigorous Build?",
-            ctaSubtitle: "Let's discuss how we can engineer your product to last, with clear deliverables at every phase.",
+            ctaTitle: "Ready to Build With Discipline?",
+            ctaSubtitle: "Let's talk through how we'd architect your product — with concrete deliverables defined at every phase.",
             ctaButton: "Start a Conversation",
             phases: {
                 phase1: {
-                    title: "Architecture",
-                    description: "We define the foundation. Clean contracts, scalable data models, and technology validation.",
+                    title: "Architecture & Definition",
+                    description: "We establish the technical foundation: clear API contracts, scalable data models, and full stack validation before any code is written.",
                     deliverables: [
                         "Technical requirements document",
                         "API specification (OpenAPI 3.0)",
@@ -214,96 +214,96 @@ export const translations = {
                     ]
                 },
                 phase2: {
-                    title: "Development",
-                    description: "Modular development. Component-driven UI, typed APIs, and rigorous Git workflow.",
+                    title: "Development & Testing",
+                    description: "Modular, component-driven development with typed APIs, strict Git workflows, and PR review at every stage.",
                     deliverables: [
                         "Feature branches with PR reviews",
                         "Component library documentation",
-                        "API implementation with tests",
-                        "Integration test suite",
-                        "Weekly demo deployments"
+                        "API implementation with test coverage",
+                        "Automated integration test suite",
+                        "Weekly staging deployments"
                     ]
                 },
                 phase3: {
-                    title: "DevOps & Scale",
-                    description: "Automated pipelines, containerized deployment, and proactive monitoring ensure resilience.",
+                    title: "DevOps & Operations",
+                    description: "Automated CI/CD pipelines, containerized deployment, and real-time monitoring configured before production goes live.",
                     deliverables: [
                         "CI/CD pipeline configuration",
                         "Docker containerization",
                         "Kubernetes manifests",
                         "Monitoring & alerting setup",
-                        "Performance optimization"
+                        "Performance and traffic optimization"
                     ]
                 }
             }
         },
         servicesPage: {
-            badge: "OUR CAPABILITIES",
-            title: "Full Stack",
-            titleGradient: "Engineering",
-            subtitle: "From branding and layouts to cloud architecture and ongoing updates, we shape code to support your business.",
+            badge: "CAPABILITIES",
+            title: "Full-Stack",
+            titleGradient: "Software Engineering",
+            subtitle: "From UI design and system architecture to cloud infrastructure and long-term maintenance — every layer of the stack, handled as a single delivery.",
             button: "View Details",
             discussSupport: "Discuss Support",
-            heroTitlePrefix: "Software Delivery",
-            heroTitleGradient: "End-To-End",
-            heroSubtitle: "We don't just write code. We build the architecture, design the interfaces, set up the deployments, and handle long-term scalability.",
+            heroTitlePrefix: "End-to-End",
+            heroTitleGradient: "Software Delivery",
+            heroSubtitle: "We don't just write code. We design the architecture, build the interfaces, configure deployment, and own long-term scalability as the product grows.",
             heroButton: "Explore Our Process",
             heroLink: "Book a Strategy Call",
-            ctaTitlePrefix: "Ready to build the",
-            ctaTitleGradient: "next big thing",
+            ctaTitlePrefix: "Ready to build",
+            ctaTitleGradient: "something that scales",
             ctaButton: "Book a Consultation",
             systemsSupported: "Systems We Currently Support",
             items: {
                 ux: {
                     title: "Web Design & UX Systems",
-                    slogan: "Interfaces planned for clarity, conversion, and real workflows.",
-                    description: "We design in Figma before we build. That includes UX research, user flows, wireframes, clickable prototypes, brand systems, and reusable design libraries. The goal is not just to make things look good. It is to create interfaces your team can keep extending without visual chaos."
+                    slogan: "Interfaces designed for clarity, conversion, and real user workflows.",
+                    description: "We design in Figma before writing a line of code. That covers UX research, user flow mapping, wireframes, interactive prototypes, brand systems, and reusable component libraries. The goal is not aesthetics alone. It's to create interfaces your team can extend over time without the design breaking apart."
                 },
                 building: {
-                    title: "Website Building & Architecture",
-                    slogan: "From marketing sites to portals, dashboards, and internal tools.",
-                    description: "We build custom websites and software systems with the structure behind them: API contracts, database schema planning, architecture diagrams, CMS decisions, and technical roadmaps. This is where web development, database design, build tooling, and workflow planning come together as one delivery stream."
+                    title: "Web Development & System Architecture",
+                    slogan: "From marketing sites to portals, dashboards, and custom internal tools.",
+                    description: "We build custom websites and software systems with a clear technical structure behind them: API contracts, database schema planning, infrastructure diagrams, CMS selection, and delivery roadmaps. Web development, data modeling, build tooling, and workflow design are handled as one unified delivery."
                 },
                 hosting: {
-                    title: "Hosting, DevOps & Infrastructure",
-                    slogan: "Deployment pipelines and cloud foundations that stay predictable.",
-                    description: "We set up hosting the way teams actually need it: VPS or cloud, Dockerized deployment, CI/CD pipelines, reverse proxy, SSL, automated backups, monitoring, and rollback planning. Whether the stack lives on AWS, GCP, Azure, or a lean VPS, we shape it for stability and repeatable releases."
+                    title: "Hosting, DevOps & Cloud Infrastructure",
+                    slogan: "Automated deployment pipelines and cloud foundations that stay stable at scale.",
+                    description: "We configure hosting the way engineering teams actually need it: VPS or cloud-managed, Dockerized deployments, CI/CD pipelines, reverse proxy, SSL, automated backup schedules, monitoring, and rollback planning. Whether the stack runs on AWS, GCP, Azure, or a lean VPS, we shape it for predictable, repeatable releases."
                 },
                 maintenance: {
                     title: "Maintenance, Performance & Scalability",
-                    slogan: "Long-term care for software that keeps changing after launch.",
-                    description: "Maintenance is not only bug fixing. We handle performance tuning, Core Web Vitals, observability, security hardening, uptime checks, patching, and scale reviews as your stack grows. We can also fold in technical SEO, schema work, and ongoing optimization when the product depends on search visibility."
+                    slogan: "Long-term technical support for software that keeps evolving after launch.",
+                    description: "Maintenance is not just bug fixes. We cover performance tuning, Core Web Vitals optimization, observability setup, security hardening, uptime checks, dependency patching, and capacity reviews as the stack grows. We also handle technical SEO and structured data when organic search performance is a product requirement."
                 },
                 automation: {
                     title: "AI Agents & Workflow Automation",
-                    slogan: "Automate repetitive work without breaking the stack.",
-                    description: "We integrate AI where it is useful: support bots, report automation, proposal generation, smart dashboards, custom LLM workflows, and internal assistants connected to your real data. That also includes Zapier, Make, and custom API automations that remove copy-paste operations from the team."
+                    slogan: "Automate repetitive operations without disrupting the existing stack.",
+                    description: "We integrate AI where it adds real value: customer support bots, automated reporting pipelines, proposal generation, smart dashboards, custom LLM workflows, and internal assistants connected to your live data. That includes Zapier, Make, and custom API automation flows that eliminate manual, repeated operations from the team."
                 },
                 analytics: {
-                    title: "Data Analysis & Reporting",
-                    slogan: "Dashboards and insights your team can actually use.",
-                    description: "We help teams turn operational and product data into something actionable: KPI dashboards, funnel analysis, heatmaps, reporting flows, and monthly insight reviews. Instead of raw numbers sitting in disconnected tools, we shape them into decision-ready reporting for product, marketing, and operations."
+                    title: "Data Analytics & Reporting",
+                    slogan: "Dashboards and operational insights your team can act on.",
+                    description: "We help teams convert raw operational and product data into decision-ready reporting: KPI dashboards, conversion funnel analysis, heatmaps, automated reporting flows, and monthly performance reviews. Data stops living in disconnected tools and starts informing product, marketing, and operations decisions."
                 },
                 cms: {
                     title: "Content Operations & CMS Support",
-                    slogan: "Keep content moving without manual bottlenecks.",
-                    description: "We support the day-to-day content side too: blog publishing workflows, product updates, landing page refreshes, structured content systems, and AI-assisted content pipelines with review controls. If your team regularly edits content, we design the process so updates are faster, safer, and easier to delegate."
+                    slogan: "Keep content moving without manual bottlenecks slowing the team down.",
+                    description: "We support ongoing content operations: blog publishing workflows, product update pipelines, landing page refreshes, SEO-structured content systems, and AI-assisted drafting with editorial review controls. If your team edits content regularly, we design the process so updates are faster, lower risk, and easier to delegate across the organization."
                 }
             }
         },
         work: {
             badgeCrossVertical: "Cross-Vertical",
-            descCrossVertical: "Case studies across EdTech, FinTech, commerce, and infrastructure systems.",
+            descCrossVertical: "Delivered projects spanning EdTech, FinTech, e-commerce, and cloud infrastructure.",
             badgeArchitectureLed: "Architecture-Led",
-            descArchitectureLed: "Product stories focused on systems, resilience, and scale rather than templates.",
-            title: "Engineered",
-            titleGradient: "Solutions",
-            subtitle: "From platforms for thousands of active users to high-performance real estate databases. We write details, not copy.",
+            descArchitectureLed: "Product case studies focused on system depth, resilience, and scalability — not off-the-shelf templates.",
+            title: "Delivered",
+            titleGradient: "Projects",
+            subtitle: "From platforms serving tens of thousands of active users to high-performance real estate search systems. We document the work in detail, not marketing copy.",
             challenge: "Challenge",
             architecture: "Architecture",
             badge: "Case Studies",
-            ctaTitle: "Want to see your project here?",
-            ctaSubtitle: "Let's discuss how we can bring your SaaS vision to life.",
+            ctaTitle: "Want your project featured here?",
+            ctaSubtitle: "Let's discuss how we'd scope, architect, and deliver your product.",
             ctaButton: "Start Your Project",
             categories: {
                 all: "All",
@@ -316,34 +316,34 @@ export const translations = {
             },
             projects: {
                 academix: {
-                    description: "A comprehensive learning management system with role-based access for instructors and students, featuring automated content generation.",
-                    challenge: "Multi-tenant LMS for 10k+ users with complex role hierarchies and real-time collaboration.",
-                    architecture: "Real-time progress tracking with Socket.io, modular microservices architecture, PostgreSQL with row-level security."
+                    description: "A full-featured learning management system with role-based access control for instructors and students, including automated curriculum content generation.",
+                    challenge: "Multi-tenant LMS platform for 10,000+ concurrent users, with complex role hierarchies and real-time collaborative features.",
+                    architecture: "Real-time progress tracking via Socket.io, modular microservices architecture, PostgreSQL with row-level security for tenant isolation."
                 },
                 ecofit: {
-                    description: "Full-scale e-commerce solution with integrated inventory management and seamless payment processing via Stripe.",
-                    challenge: "High-volume inventory & payment sync across multiple warehouses and sales channels.",
-                    architecture: "Event-driven architecture with message queues for order processing, eventual consistency model."
+                    description: "End-to-end e-commerce platform with integrated inventory management across multiple warehouses and payment processing through Stripe.",
+                    challenge: "High-volume inventory synchronization and payment reconciliation across distributed warehouse locations and sales channels.",
+                    architecture: "Event-driven architecture with message queues for order processing, eventual consistency model for distributed inventory state."
                 },
                 nclake: {
-                    description: "A waterfront property listing platform specializing in lakefront homes and lots in the Blue Ridge Mountain Foothills of North Carolina.",
-                    challenge: "Integrating reliable, real-time MLS data while providing a high-performance visual search experience.",
-                    architecture: "Next.js optimized static builds, headless CMS integration, geographic querying via PostGIS."
+                    description: "A lakefront property listing platform for the Blue Ridge Mountain Foothills region of North Carolina, with real-time MLS data and map-based search.",
+                    challenge: "Integrating live MLS data feeds while maintaining high-performance visual and geographic search at scale.",
+                    architecture: "Next.js static generation for page performance, headless CMS integration for content management, geographic querying via PostGIS."
                 },
                 portalLearning: {
-                    description: "An employee training and compliance management platform with course assignment, phishing simulations, and real-time progress tracking dashboards.",
-                    challenge: "Ensuring strict state compliance and auditability in training modules across thousands of disparate enterprise roles.",
-                    architecture: "Serverless functions for tracking interactions, robust RBAC, multi-tenant separated data architecture."
+                    description: "Employee training and compliance management platform with course assignment, phishing simulation modules, and real-time progress dashboards.",
+                    challenge: "Meeting strict regulatory compliance and full audit trail requirements across thousands of enterprise roles with varied training obligations.",
+                    architecture: "Serverless functions for interaction tracking, granular RBAC implementation, multi-tenant data isolation architecture."
                 },
                 enterpriseCore: {
-                    description: "Legacy-to-Cloud transformation for large scale organizations, moving from WinForms to modern web dashboards.",
-                    challenge: "Migrating a monolithic on-prem application without data loss or downtime during the transition.",
-                    architecture: "Strangler Fig pattern using API gateways, containerized microservices in AWS EKS, parallel database syncing."
+                    description: "Legacy-to-cloud modernization for a large-scale enterprise, migrating WinForms desktop applications to web-based dashboards.",
+                    challenge: "Migrating a monolithic on-premises application to cloud infrastructure without service interruption or data loss during the transition window.",
+                    architecture: "Strangler Fig migration pattern via API gateways, containerized microservices on AWS EKS, parallel database synchronization during cutover."
                 },
                 selecttech: {
-                    description: "AI-powered IT solutions & cybersecurity platform for a 23-year NC-based MSP — covering compliance management, managed IT, PC-Mac-Mobile repair services, and infrastructure.",
-                    challenge: "Consolidating a wide range of services (FTC Safeguards, PCI, HIPAA compliance, device repair, network infrastructure) into one cohesive, modern web presence.",
-                    architecture: "Vite + React SPA with modular service pages, animated UI with Framer Motion, SEO-optimized static output, integrated contact and pricing flows."
+                    description: "AI-powered IT solutions and cybersecurity platform for a 23-year-old NC-based MSP, covering compliance management, managed IT services, device repair, and network infrastructure.",
+                    challenge: "Consolidating a wide service portfolio — FTC Safeguards, PCI, HIPAA compliance, device repair, and network infrastructure — into a single, structured web presence.",
+                    architecture: "Vite and React SPA with modular service pages, Framer Motion UI animations, technically optimized static output for SEO, and integrated contact and pricing flows."
                 }
             }
         }
