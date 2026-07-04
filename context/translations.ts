@@ -24,40 +24,40 @@ export const translations = {
             button: 'Start a Conversation',
         },
         hero: {
-            badge: "Software Support Studio",
-            headlineWords: ['Design,', 'build,', 'and', 'support'],
-            headlineGradient: 'software that keeps moving.',
-            subtitle: 'From design to deployment — one connected stack for web, automation, and AI.',
-            button: 'Start a Project',
+            badge: "Studio Phát Triển Phần Mềm & Vận Hành Hệ Thống Chuyên Nghiệp",
+            headlineWords: ['Thiết kế,', 'xây dựng,', 'và', 'vận hành'],
+            headlineGradient: 'hệ thống phần mềm bền vững.',
+            subtitle: 'Giải pháp đồng bộ từ khâu thiết kế đến triển khai: Tối ưu hóa website, tự động hóa quy trình và tích hợp AI chuyên sâu cho doanh nghiệp.',
+            button: 'Bắt đầu dự án',
         },
         services: {
-            title: "Services We",
-            titleGradient: "Deliver",
-            subtitle: "Design, engineering, hosting, automation, and long-term support for software teams that need more than a one-time launch.",
+            title: "Dịch vụ phát triển",
+            titleGradient: "phần mềm",
+            subtitle: "Chúng tôi thiết kế, xây dựng, tối ưu hạ tầng và đồng hành dài hạn cùng doanh nghiệp, giúp hệ thống vận hành ổn định sau khi bàn giao.",
             items: {
                 ux: {
-                    title: "Web Design & UX",
-                    description: "Figma workflows, wireframes, prototypes, and interface systems built around clear user journeys."
+                    title: "Thiết kế Web & UX",
+                    description: "Thiết kế giao diện Figma chuyên sâu, xây dựng wireframe, prototype và hệ thống UI/UX tối ưu hóa trải nghiệm người dùng trên đa thiết bị."
                 },
                 building: {
-                    title: "Website Building & Architecture",
-                    description: "Web apps, portals, database planning, API flows, and delivery patterns designed for maintainability."
+                    title: "Phát triển Web & Kiến trúc",
+                    description: "Phát triển ứng dụng web, cổng thông tin doanh nghiệp, cơ sở dữ liệu và hệ thống API chuẩn hóa, hướng tới hiệu năng và khả năng bảo trì lâu dài."
                 },
                 hosting: {
                     title: "Hosting & CI/CD",
-                    description: "Cloud setup, deployment pipelines, backups, SSL, monitoring, and infrastructure that stays predictable."
+                    description: "Thiết lập hạ tầng đám mây, cấu hình CI/CD tự động, tối ưu hóa bảo mật SSL, tự động sao lưu dữ liệu và giám sát hệ thống 24/7."
                 },
                 maintenance: {
-                    title: "Maintenance & Scalability",
-                    description: "Security patches, performance tuning, observability, and technical support for products that keep evolving."
+                    title: "Bảo trì & Mở rộng",
+                    description: "Bảo trì định kỳ, vá lỗ hổng bảo mật, tối ưu hiệu suất tải trang (Core Web Vitals) và hỗ trợ kỹ thuật liên tục giúp website luôn hoạt động ổn định."
                 },
                 automation: {
-                    title: "AI Agents & Automation",
-                    description: "LLM integrations, workflow automation, support bots, and content pipelines that reduce manual work."
+                    title: "AI Agents & Tự động hóa",
+                    description: "Tích hợp mô hình ngôn ngữ lớn (LLM), xây dựng chatbot AI thông minh và tự động hóa các quy trình vận hành giúp doanh nghiệp tiết kiệm thời gian và chi phí."
                 },
                 analytics: {
-                    title: "Data Analysis & Reporting",
-                    description: "Dashboards, funnel tracking, analytics reviews, and decision-ready reporting for product and ops teams."
+                    title: "Phân tích Dữ liệu & Báo cáo",
+                    description: "Xây dựng dashboard trực quan, phân tích phễu chuyển đổi và cung cấp báo cáo đo lường chi tiết để tối ưu hóa hiệu quả hoạt động kinh doanh."
                 }
             }
         },
@@ -371,40 +371,40 @@ export const translations = {
             button: 'Bắt đầu thảo luận',
         },
         hero: {
-            badge: "Studio Vận hành & Phát triển Phần mềm",
+            badge: "Studio Phát Triển Phần Mềm & Vận Hành Hệ Thống Chuyên Nghiệp",
             headlineWords: ['Thiết kế,', 'xây dựng,', 'và', 'vận hành'],
-            headlineGradient: 'những phần mềm luôn tiến tới.',
-            subtitle: 'Từ thiết kế đến triển khai — một giải pháp đồng bộ cho web, tự động hóa và AI.',
+            headlineGradient: 'hệ thống phần mềm bền vững.',
+            subtitle: 'Giải pháp đồng bộ từ khâu thiết kế đến triển khai: Tối ưu hóa website, tự động hóa quy trình và tích hợp AI chuyên sâu cho doanh nghiệp.',
             button: 'Bắt đầu dự án',
         },
         services: {
-            title: "Các dịch vụ chúng tôi",
-            titleGradient: "cung cấp",
-            subtitle: "Thiết kế, kỹ thuật, hosting, tự động hóa và hỗ trợ dài hạn cho các đội ngũ phát triển phần mềm cần nhiều hơn là một lần ra mắt.",
+            title: "Dịch vụ phát triển",
+            titleGradient: "phần mềm",
+            subtitle: "Chúng tôi thiết kế, xây dựng, tối ưu hạ tầng và đồng hành dài hạn cùng doanh nghiệp, giúp hệ thống vận hành ổn định sau khi bàn giao.",
             items: {
                 ux: {
                     title: "Thiết kế Web & UX",
-                    description: "Quy trình Figma, wireframe, prototype và hệ thống giao diện xây dựng quanh hành trình trải nghiệm rõ ràng."
+                    description: "Thiết kế giao diện Figma chuyên sâu, xây dựng wireframe, prototype và hệ thống UI/UX tối ưu hóa trải nghiệm người dùng trên đa thiết bị."
                 },
                 building: {
                     title: "Phát triển Web & Kiến trúc",
-                    description: "Ứng dụng web, cổng thông tin, thiết lập database, luồng API và mô hình chuyển giao hướng tới khả năng bảo trì cao."
+                    description: "Phát triển ứng dụng web, cổng thông tin doanh nghiệp, cơ sở dữ liệu và hệ thống API chuẩn hóa, hướng tới hiệu năng và khả năng bảo trì lâu dài."
                 },
                 hosting: {
                     title: "Hosting & CI/CD",
-                    description: "Thiết lập đám mây, pipeline triển khai tự động, sao lưu, SSL, giám sát và hạ tầng luôn vận hành ổn định."
+                    description: "Thiết lập hạ tầng đám mây, cấu hình CI/CD tự động, tối ưu hóa bảo mật SSL, tự động sao lưu dữ liệu và giám sát hệ thống 24/7."
                 },
                 maintenance: {
                     title: "Bảo trì & Mở rộng",
-                    description: "Vá lỗi bảo mật, tối ưu hiệu suất, hệ thống giám sát trạng thái và hỗ trợ kỹ thuật cho các sản phẩm không ngừng phát triển."
+                    description: "Bảo trì định kỳ, vá lỗ hổng bảo mật, tối ưu hiệu suất tải trang (Core Web Vitals) và hỗ trợ kỹ thuật liên tục giúp website luôn hoạt động ổn định."
                 },
                 automation: {
                     title: "AI Agents & Tự động hóa",
-                    description: "Tích hợp LLM, tự động hóa quy trình công việc, chatbot hỗ trợ và hệ thống biên tập nội dung giúp giảm thiểu tác vụ thủ công."
+                    description: "Tích hợp mô hình ngôn ngữ lớn (LLM), xây dựng chatbot AI thông minh và tự động hóa các quy trình vận hành giúp doanh nghiệp tiết kiệm thời gian và chi phí."
                 },
                 analytics: {
                     title: "Phân tích Dữ liệu & Báo cáo",
-                    description: "Dashboard theo dõi, phân tích phễu chuyển đổi, đánh giá chỉ số và báo cáo phân tích phục vụ trực tiếp cho đội ngũ sản phẩm và vận hành."
+                    description: "Xây dựng dashboard trực quan, phân tích phễu chuyển đổi và cung cấp báo cáo đo lường chi tiết để tối ưu hóa hiệu quả hoạt động kinh doanh."
                 }
             }
         },
@@ -413,28 +413,28 @@ export const translations = {
             titleGradient: "làm việc",
             steps: {
                 step1: {
-                    title: "Đánh giá & Xác định quy mô",
-                    description: "Chúng tôi đánh giá sản phẩm, quy trình và các rào cản kỹ thuật để làm rõ phạm vi, rủi ro và các ưu tiên trước khi bắt tay vào lập trình."
+                    title: "Phân tích & Đánh giá",
+                    description: "Khảo sát quy trình và đánh giá rào cản kỹ thuật để xác định rõ phạm vi công việc, hạn chế rủi ro trước khi lập trình."
                 },
                 step2: {
                     title: "Thiết kế Hệ thống",
-                    description: "Định hướng UX, cấu trúc cơ sở dữ liệu, ranh giới API và luồng tự động hóa được thiết lập bản đồ chi tiết trước khi triển khai xây dựng."
+                    description: "Định hình trải nghiệm người dùng (UX), thiết kế kiến trúc cơ sở dữ liệu, chuẩn hóa API và lập bản đồ tự động hóa trước khi triển khai thực tế."
                 },
                 step3: {
                     title: "Xây dựng & Tích hợp",
-                    description: "Ứng dụng web, công cụ nội bộ, các tích hợp và quy trình triển khai được bàn giao đồng bộ như một hệ thống liên kết."
+                    description: "Lập trình ứng dụng web, xây dựng công cụ nội bộ và thiết lập quy trình triển khai tự động, đảm bảo toàn bộ hệ thống hoạt động đồng bộ."
                 },
                 step4: {
                     title: "Hỗ trợ & Cải tiến",
-                    description: "Sau khi ra mắt, chúng tôi tiếp tục đồng hành bảo trì, giám sát, tối ưu hiệu suất, phân tích và hỗ trợ cập nhật nội dung."
+                    description: "Hỗ trợ kỹ thuật sau bàn giao, giám sát uptime, vá lỗi bảo mật, tối ưu tốc độ và đồng hành cùng doanh nghiệp cập nhật các tính năng mới."
                 }
             },
             support: {
                 badge: "HỖ TRỢ LIÊN TỤC",
                 title: "Ra mắt một lần.",
                 titleGradient: "Cải tiến liên tục.",
-                description: "Chúng tôi đồng hành cùng bạn trong việc bảo trì, giám sát, sao lưu, an toàn triển khai, cập nhật nội dung và đánh giá hiệu suất để hệ thống luôn phát triển sau khi phát hành.",
-                monitoring: "Giám sát",
+                description: "Chúng tôi đồng hành lâu dài cùng doanh nghiệp: từ bảo trì, giám sát hệ thống, sao lưu định kỳ đến kiểm tra an toàn triển khai và tối ưu hóa hiệu năng tổng thể.",
+                monitoring: "Giám sát hệ thống",
                 saferDeploys: "Triển khai An toàn",
                 button: "Thảo luận về Hỗ trợ"
             }
@@ -442,29 +442,29 @@ export const translations = {
         philosophy: {
             title: "Xây dựng để",
             titleGradient: "Trường tồn",
-            p1: "Hầu hết các dự án web được xây dựng để ra mắt. Dự án của chúng tôi được xây dựng để tồn tại lâu dài. Chúng tôi tiếp cận mọi hệ thống với tư duy trường tồn, thiết kế các cấu trúc thích ứng với sự thay đổi chứ không sụp đổ vì nó.",
-            p2: "Một trang web không phải là một cuốn brochure quảng cáo. Nó là cơ sở hạ tầng. Chúng tôi đối xử với các quyết định thiết kế như các quyết định kiến trúc: mỗi component, mỗi quy chuẩn đều phải vượt qua các đợt cập nhật, mở rộng quy mô cùng nội dung và giữ vững tính ổn định khi bảo trì.",
-            p3: "Chúng tôi không chạy theo xu hướng. Chúng tôi xây dựng các hệ thống giữ được tính nhất quán qua nhiều năm chứ không phải vài tuần. Mục tiêu không phải là sự mới lạ. Đó là sự bền bỉ."
+            p1: "Đa số các dự án website hiện nay chỉ tập trung vào việc ra mắt nhanh chóng. Chúng tôi chọn hướng đi khác: kiến tạo các hệ thống bền vững theo thời gian. Mọi cấu trúc phần mềm đều được thiết kế linh hoạt, dễ dàng thích ứng với sự thay đổi của công nghệ và quy mô doanh nghiệp mà không bị gián đoạn.",
+            p2: "Website không đơn thuần là một trang thông tin quảng cáo, nó là nền tảng hạ tầng của doanh nghiệp. Chúng tôi đưa ra các quyết định thiết kế dựa trên tư duy kiến trúc hệ thống: từng thành phần (component) và quy chuẩn mã nguồn đều phải đảm bảo tính ổn định cao khi nâng cấp và bảo trì lâu dài.",
+            p3: "Thay vì chạy theo những xu hướng nhất thời, chúng tôi tập trung phát triển các hệ thống giữ được tính nhất quán và hiệu năng tối ưu qua nhiều năm. Giá trị cốt lõi chúng tôi mang lại không chỉ là sự mới mẻ, mà là độ bền bỉ và hiệu quả thực tế."
         },
         about: {
             badge: "Đội ngũ",
             title: "Định hình bởi",
             titleGradient: "Chuyên môn",
-            subtitle: "Chúng tôi là một đội ngũ phát triển làm việc từ xa gồm các kỹ sư, kiến trúc sư và nhà thiết kế được gắn kết bởi niềm đam mê xây dựng những phần mềm xuất sắc.",
+            subtitle: "Chúng tôi là một đội ngũ phát triển làm việc từ xa gồm các kỹ sư, kiến trúc sư và nhà thiết kế tâm huyết, cùng chung sứ mệnh xây dựng những phần mềm xuất sắc.",
             engineTitle: "Động cơ Vận hành",
-            engineSubtitle: "Ba trụ cột hoạt động hài hòa hoàn hảo",
+            engineSubtitle: "Sự phối hợp nhịp nhàng giữa ba trụ cột công nghệ",
             cylinders: {
                 ux: {
                     title: "Chiến lược",
-                    description: "Quyết định dựa trên dữ liệu. Chúng tôi phân tích cơ hội thị trường và thiết kế các giải pháp gắn kết mục tiêu kinh doanh với tính khả thi kỹ thuật."
+                    description: "Đưa ra quyết định dựa trên số liệu thực tế. Chúng tôi phân tích sâu cơ hội thị trường và thiết kế giải pháp cân bằng giữa mục tiêu kinh doanh và tính khả thi về mặt kỹ thuật."
                 },
                 building: {
                     title: "Hệ thống",
-                    description: "Hạ tầng dưới dạng mã nguồn (IaC). Chúng tôi xây dựng các hệ thống bền bỉ, dễ mở rộng bằng các quy chuẩn DevOps hiện đại và kiến trúc điện toán đám mây."
+                    description: "Quản lý hạ tầng dưới dạng mã nguồn (IaC). Chúng tôi phát triển các hệ thống ổn định, dễ mở rộng nhờ ứng dụng quy trình DevOps hiện đại và kiến trúc Cloud-native."
                 },
                 hosting: {
                     title: "Sản phẩm",
-                    description: "Hệ thống thiết kế có thể mở rộng. Chúng tôi tạo ra các trải nghiệm người dùng đẹp mắt, dễ tiếp cận và nhất quán trên các nền tảng."
+                    description: "Xây dựng hệ thống thiết kế (Design System) chuẩn hóa. Chúng tôi mang đến trải nghiệm người dùng trực quan, thẩm mỹ và nhất quán trên mọi nền tảng."
                 }
             },
             valuesTitle: "Giá trị cốt lõi",
@@ -496,12 +496,12 @@ export const translations = {
             subtitle1: "Bạn có dự án cần triển khai? Hay chỉ là một câu hỏi?",
             subtitle2: "Chúng tôi luôn sẵn sàng lắng nghe từ bạn.",
             emailHeader: "Email",
-            expectHeader: "Những gì bạn có thể kỳ vọng",
-            expect1: "Chúng tôi phản hồi trong vòng 2 ngày làm việc.",
+            expectHeader: "Quy trình tiếp nhận & xử lý thông tin",
+            expect1: "Phản hồi nhanh chóng trong vòng 24 - 48 giờ làm việc.",
             expect2: "Nếu phù hợp, chúng ta sẽ lên lịch một cuộc trao đổi ngắn.",
             expect3: "Từ đó, chúng ta sẽ cùng xác định các bước đi tiếp theo.",
-            messageSent: "Tin nhắn đã gửi",
-            sentSuccess: "Chúng tôi sẽ liên hệ lại với bạn trong vòng 2 ngày làm việc.",
+            messageSent: "Tin nhắn đã gửi thành công",
+            sentSuccess: "Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
             form: {
                 name: "Họ và tên",
                 namePlaceholder: "Tên của bạn",
@@ -516,7 +516,7 @@ export const translations = {
                 budgetOptional: "(tùy chọn)",
                 budgetSelect: "Chọn mức ngân sách...",
                 message: "Nội dung tin nhắn",
-                messagePlaceholder: "Mô tả về dự án của bạn...",
+                messagePlaceholder: "Mô tả sơ lược về dự án của bạn...",
                 submit: "Gửi tin nhắn",
                 sending: "Đang gửi..."
             },
@@ -550,8 +550,8 @@ export const translations = {
             ctaButton: "Bắt đầu cuộc trò chuyện",
             phases: {
                 phase1: {
-                    title: "Kiến trúc",
-                    description: "Xác định nền tảng. Hợp đồng API sạch, mô hình dữ liệu có thể mở rộng và xác thực tính khả thi của công nghệ.",
+                    title: "Kiến trúc & Định hình",
+                    description: "Thiết lập nền tảng vững chắc thông qua việc xác định rõ yêu cầu nghiệp vụ, thiết kế cấu trúc dữ liệu và thống nhất tiêu chuẩn API.",
                     deliverables: [
                         "Tài liệu yêu cầu kỹ thuật chi tiết",
                         "Đặc tả hợp đồng API (OpenAPI 3.0)",
@@ -561,8 +561,8 @@ export const translations = {
                     ]
                 },
                 phase2: {
-                    title: "Phát triển",
-                    description: "Phát triển theo mô-đun. Giao diện người dùng hướng thành phần, API có kiểu dữ liệu chặt chẽ và quy trình quản lý Git bài bản.",
+                    title: "Phát triển & Kiểm thử",
+                    description: "Phát triển theo kiến trúc mô-đun hóa. Xây dựng giao diện UI tái sử dụng, viết API với kiểu dữ liệu chặt chẽ và kiểm soát mã nguồn chặt chẽ qua Git.",
                     deliverables: [
                         "Các nhánh tính năng kèm kiểm duyệt code (PR reviews)",
                         "Tài liệu hướng dẫn sử dụng thư viện thành phần UI",
@@ -572,8 +572,8 @@ export const translations = {
                     ]
                 },
                 phase3: {
-                    title: "Vận hành & Mở rộng",
-                    description: "Pipeline tự động hóa, triển khai container hóa và hệ thống giám sát chủ động đảm bảo tính bền bỉ của sản phẩm.",
+                    title: "Triển khai & Vận hành",
+                    description: "Tự động hóa vận hành: cấu hình CI/CD, đóng gói ứng dụng (Docker) và thiết lập hệ thống giám sát cảnh báo tức thời để bảo đảm hệ thống vận hành liên tục.",
                     deliverables: [
                         "Thiết lập và cấu hình quy trình CI/CD",
                         "Container hóa ứng dụng sử dụng Docker",
@@ -587,12 +587,12 @@ export const translations = {
         servicesPage: {
             badge: "NĂNG LỰC CỦA CHÚNG TÔI",
             title: "Dịch vụ",
-            titleGradient: "Đồng bộ",
+            titleGradient: "Toàn diện",
             subtitle: "Từ thiết kế thương hiệu và bố cục đến kiến trúc đám mây và cập nhật liên tục, chúng tôi tối ưu mã nguồn để đồng hành cùng doanh nghiệp bạn.",
             button: "Xem chi tiết",
             discussSupport: "Thảo luận hỗ trợ",
-            heroTitlePrefix: "Chuyển giao Phần mềm",
-            heroTitleGradient: "Toàn diện",
+            heroTitlePrefix: "Giải pháp phát triển",
+            heroTitleGradient: "Website & Phần mềm trọn gói",
             heroSubtitle: "Chúng tôi không chỉ lập trình. Chúng tôi thiết lập kiến trúc, thiết kế giao diện, cấu hình triển khai và đảm bảo khả năng mở rộng lâu dài.",
             heroButton: "Khám phá Quy trình",
             heroLink: "Liên hệ thảo luận chiến lược",
@@ -604,37 +604,37 @@ export const translations = {
                 ux: {
                     title: "Thiết kế Web & Hệ thống UX",
                     slogan: "Giao diện được hoạch định rõ ràng, tối ưu chuyển đổi và sát với quy trình thực tế.",
-                    description: "Chúng tôi thiết kế trên Figma trước khi lập trình. Gồm nghiên cứu UX, luồng người dùng, wireframe, bản thử nghiệm tương tác, hệ thống nhận diện thương hiệu và thư viện thiết kế tái sử dụng. Mục tiêu không chỉ là thẩm mỹ, mà là tạo giao diện dễ mở rộng mà không bị rối loạn."
+                    description: "Chúng tôi thiết kế giao diện trên Figma trước khi tiến hành lập trình. Quy trình bao gồm nghiên cứu hành vi người dùng (UX), vẽ luồng trải nghiệm, xây dựng wireframe, thiết kế prototype tương tác và thiết lập hệ thống thiết kế (Design System) nhất quán. Mục tiêu là tạo ra những giao diện trực quan, dễ mở rộng mà không làm rối loạn cấu trúc thiết kế ban đầu."
                 },
                 building: {
                     title: "Phát triển Web & Kiến trúc Hệ thống",
                     slogan: "Từ trang web giới thiệu đến cổng thông tin, bảng điều khiển và công cụ nội bộ.",
-                    description: "Chúng tôi xây dựng các trang web và hệ thống phần mềm tùy chỉnh có cấu trúc bài bản: cam kết API, kế hoạch database, sơ đồ kiến trúc, lựa chọn CMS và lộ trình kỹ thuật. Đây là nơi lập trình, thiết kế dữ liệu, công cụ dựng và lập kế hoạch quy trình kết hợp làm một."
+                    description: "Chúng tôi chuyên phát triển các website và hệ thống phần mềm tùy chỉnh có cấu trúc vững chắc: thiết lập hợp đồng API rõ ràng, thiết kế cơ sở dữ liệu tối ưu, xây dựng sơ đồ kiến trúc hạ tầng và lựa chọn CMS phù hợp. Mọi quy trình lập trình và xây dựng luồng dữ liệu đều được tích hợp đồng bộ."
                 },
                 hosting: {
                     title: "Hosting, DevOps & Cơ sở hạ tầng",
                     slogan: "Quy trình triển khai tự động và nền tảng đám mây luôn vận hành ổn định.",
-                    description: "Chúng tôi thiết lập hosting theo nhu cầu thực tế: VPS hoặc cloud, triển khai Docker hóa, CI/CD pipeline, reverse proxy, SSL, sao lưu tự động, giám sát và kế hoạch rollback. Dù chạy trên AWS, GCP, Azure hay VPS cơ bản, chúng tôi luôn hướng tới tính ổn định."
+                    description: "Thiết lập hệ thống máy chủ và hạ tầng đám mây đáp ứng đúng nhu cầu thực tế của doanh nghiệp: quản lý VPS/Cloud, đóng gói ứng dụng qua Docker, cấu hình pipeline CI/CD tự động, cài đặt reverse proxy, bảo mật SSL, tự động hóa quy trình sao lưu và chuẩn bị phương án khôi phục dữ liệu nhanh chóng."
                 },
                 maintenance: {
                     title: "Bảo trì, Hiệu suất & Khả năng Mở rộng",
                     slogan: "Chăm sóc dài hạn cho phần mềm liên tục thay đổi sau khi ra mắt.",
-                    description: "Bảo trì không chỉ là sửa lỗi. Chúng tôi tối ưu hiệu suất, Core Web Vitals, giám sát vận hành, gia cố bảo mật, kiểm tra uptime, vá lỗi và đánh giá quy mô khi hệ thống lớn mạnh. Chúng tôi cũng tích hợp SEO kỹ thuật, cấu trúc schema và tối ưu hóa liên tục."
+                    description: "Bảo trì không chỉ đơn thuần là sửa lỗi phát sinh. Chúng tôi thực hiện tối ưu hóa hiệu năng, cải thiện các chỉ số Core Web Vitals giúp website đạt tốc độ tải trang cao nhất, vá lỗ hổng bảo mật, giám sát vận hành và nâng cấp hệ thống. Đồng thời, chúng tôi hỗ trợ triển khai SEO kỹ thuật (Technical SEO) và cấu trúc dữ liệu schema để tăng thứ hạng tìm kiếm."
                 },
                 automation: {
                     title: "AI Agents & Tự động hóa Quy trình",
                     slogan: "Tự động hóa các tác vụ lặp đi lặp lại mà không làm ảnh hưởng tới hệ thống.",
-                    description: "Chúng tôi tích hợp AI vào nơi thực sự có ích: bot hỗ trợ, tự động báo cáo, đề xuất tự động, dashboard thông minh, luồng LLM tùy chỉnh và trợ lý nội bộ kết nối trực tiếp với dữ liệu thực. Gồm cả tự động hóa qua Zapier, Make và API tùy chỉnh."
+                    description: "Chúng tôi tích hợp các giải pháp trí tuệ nhân tạo (AI) vào các quy trình phù hợp: xây dựng chatbot hỗ trợ khách hàng, tự động hóa báo cáo định kỳ, phát triển dashboard thông minh và tích hợp các trợ lý ảo nội bộ dựa trên dữ liệu thực của doanh nghiệp. Thiết lập các luồng tự động hóa thông qua Zapier, Make hoặc API tùy chỉnh để loại bỏ các tác vụ thủ công lặp đi lặp lại."
                 },
                 analytics: {
                     title: "Phân tích Dữ liệu & Báo cáo",
                     slogan: "Dashboard và thông tin phân tích giúp đội ngũ của bạn ra quyết định dễ dàng.",
-                    description: "Chúng tôi giúp chuyển đổi dữ liệu sản phẩm và vận hành thành thông tin thực tế: dashboard KPI, phân tích phễu, bản đồ nhiệt, quy trình báo cáo và đánh giá hàng tháng. Thay vì các số liệu rời rạc, chúng tôi gom chúng thành các báo cáo phục vụ trực tiếp cho việc ra quyết định."
+                    description: "Chuyển đổi dữ liệu thô từ hoạt động vận hành và sản phẩm thành những thông tin chi tiết, có giá trị ra quyết định: xây dựng dashboard KPI trực quan, phân tích phễu chuyển đổi, lập bản đồ nhiệt (heatmap) và gửi báo cáo đánh giá định kỳ hàng tháng. Mọi chỉ số sẽ được chuẩn hóa để hỗ trợ đắc lực cho đội ngũ quản lý."
                 },
                 cms: {
                     title: "Vận hành Nội dung & Hỗ trợ CMS",
                     slogan: "Giữ cho luồng nội dung luôn trôi chảy mà không bị nghẽn thủ công.",
-                    description: "Chúng tôi hỗ trợ cả phần vận hành nội dung hàng ngày: quy trình xuất bản blog, cập nhật sản phẩm, làm mới landing page, hệ thống nội dung cấu trúc và pipeline nội dung hỗ trợ bởi AI. Giúp việc chỉnh sửa nội dung nhanh hơn, an toàn và dễ phân quyền."
+                    description: "Hỗ trợ tối ưu hóa quy trình quản lý và cập nhật nội dung hàng ngày: thiết lập luồng xuất bản blog, cập nhật thông tin sản phẩm mới, thiết kế và tối ưu landing page, xây dựng cấu trúc nội dung chuẩn SEO và ứng dụng AI vào việc soạn thảo có kiểm duyệt. Giúp việc chỉnh sửa nội dung diễn ra nhanh chóng, an toàn và dễ dàng phân quyền cho nhân sự."
                 }
             }
         },
@@ -643,9 +643,9 @@ export const translations = {
             descCrossVertical: "Các dự án thực tế trong EdTech, FinTech, E-commerce và hệ thống hạ tầng đám mây.",
             badgeArchitectureLed: "Trọng tâm Kiến trúc",
             descArchitectureLed: "Những sản phẩm thực tế tập trung vào chiều sâu kiến trúc hệ thống, sự bền bỉ và khả năng mở rộng thay vì giao diện có sẵn.",
-            title: "Các dự án",
-            titleGradient: "đã triển khai",
-            subtitle: "Từ các nền tảng phục vụ hàng ngàn người dùng hoạt động đến các hệ thống cơ sở dữ liệu bất động sản hiệu năng cao. Chúng tôi ghi nhận giá trị thực tế.",
+            title: "Giải pháp",
+            titleGradient: "Tiêu biểu",
+            subtitle: "Từ các nền tảng phục vụ hàng chục ngàn người dùng đến hệ thống cơ sở dữ liệu bất động sản hiệu năng cao. Chúng tôi nói bằng kết quả thực tế, không dùng lời sáo rỗng.",
             challenge: "Thách thức",
             architecture: "Kiến trúc",
             badge: "Dự án thực tế",
@@ -664,33 +664,33 @@ export const translations = {
             projects: {
                 academix: {
                     description: "Hệ thống quản lý học tập (LMS) toàn diện phân quyền cho giảng viên và học viên, tích hợp tạo nội dung thông minh tự động.",
-                    challenge: "Hệ thống LMS đa khách thuê (Multi-tenant) cho hơn 10k người dùng với phân cấp vai trò phức tạp và cộng tác thời gian thực.",
-                    architecture: "Theo dõi tiến độ học tập thời gian thực bằng Socket.io, kiến trúc microservices dạng mô-đun, PostgreSQL bảo mật cấp dòng."
+                    challenge: "Xây dựng hệ thống học tập trực tuyến LMS (Multi-tenant) cho hơn 10.000 người dùng với phân cấp vai trò phức tạp và tương tác thời gian thực.",
+                    architecture: "Theo dõi tiến độ học tập thực tế qua Socket.io, phát triển kiến trúc Microservices dạng mô-đun và lưu trữ trên PostgreSQL bảo mật cấp dòng (RLS)."
                 },
                 ecofit: {
                     description: "Giải pháp thương mại điện tử quy mô lớn tích hợp quản lý kho tự động và xử lý thanh toán mượt mà qua Stripe.",
-                    challenge: "Đồng bộ hóa kho hàng và thanh toán lưu lượng lớn qua nhiều kho hàng và kênh bán hàng khác nhau.",
-                    architecture: "Kiến trúc hướng sự kiện (Event-driven) với hàng đợi tin nhắn để xử lý đơn hàng, mô hình nhất quán sau cùng."
+                    challenge: "Đồng bộ hóa dữ liệu tồn kho và xử lý thanh toán trực tuyến lưu lượng lớn qua nhiều kho hàng và kênh phân phối khác nhau.",
+                    architecture: "Kiến trúc hướng sự kiện (Event-driven) với hàng đợi tin nhắn (Message Queue) để xử lý đơn hàng, đảm bảo tính nhất quán dữ liệu sau cùng (Eventual Consistency)."
                 },
                 nclake: {
                     description: "Nền tảng tìm kiếm và giới thiệu bất động sản ven hồ chuyên biệt tại khu vực Blue Ridge Mountain Foothills, Bắc Carolina.",
-                    challenge: "Tích hợp luồng dữ liệu MLS thời gian thực đáng tin cậy đồng thời mang lại trải nghiệm tìm kiếm hình ảnh tốc độ cao.",
-                    architecture: "Tối ưu hóa build tĩnh với Next.js, tích hợp CMS không đầu (headless), thực hiện truy vấn địa lý nâng cao qua PostGIS."
+                    challenge: "Tích hợp luồng dữ liệu bất động sản (MLS) thời gian thực, đồng thời tối ưu hóa trải nghiệm tìm kiếm bản đồ và hình ảnh tốc độ cao.",
+                    architecture: "Tối ưu hóa tải trang tĩnh (Static Site Generation) bằng Next.js, kết nối Headless CMS và thực hiện truy vấn địa lý nâng cao qua PostGIS."
                 },
                 portalLearning: {
                     description: "Nền tảng quản lý đào tạo và tuân thủ nội bộ của nhân viên doanh nghiệp với phân công khóa học, giả lập lừa đảo và dashboard theo dõi tiến độ.",
                     challenge: "Đảm bảo tính tuân thủ nghiêm ngặt và khả năng kiểm toán quy trình đào tạo trên hàng ngàn vai trò nhân sự khác nhau.",
-                    architecture: "Triển khai Serverless functions để ghi nhận tương tác, hệ thống RBAC chặt chẽ, kiến trúc tách biệt dữ liệu đa khách thuê."
+                    architecture: "Triển khai Serverless Functions ghi nhận tương tác, cấu hình hệ thống phân quyền (RBAC) chặt chẽ và tách biệt dữ liệu đa người dùng."
                 },
                 enterpriseCore: {
                     description: "Hiện đại hóa và chuyển đổi đám mây cho các hệ thống doanh nghiệp quy mô lớn, chuyển đổi ứng dụng WinForms cũ sang nền tảng web hiện đại.",
-                    challenge: "Di chuyển cơ sở dữ liệu và mã nguồn ứng dụng nguyên khối mà không làm mất dữ liệu hay gián đoạn dịch vụ.",
-                    architecture: "Áp dụng mô hình Strangler Fig thông qua API gateways, microservices chạy trong AWS EKS, đồng bộ database song song."
+                    challenge: "Di chuyển hệ thống phần mềm doanh nghiệp nguyên khối (Monolith) cũ sang hạ tầng đám mây hiện đại mà không gây gián đoạn dịch vụ.",
+                    architecture: "Áp dụng mô hình chuyển đổi Strangler Fig thông qua API Gateways, chuyển đổi sang Microservices chạy trên AWS EKS và đồng bộ hóa cơ sở dữ liệu song song."
                 },
                 selecttech: {
                     description: "Giải pháp CNTT & nền tảng an ninh mạng hỗ trợ bởi AI cho MSP 23 năm tuổi tại Bắc Carolina — bao gồm quản lý tuân thủ, CNTT, sửa chữa thiết bị và hạ tầng.",
-                    challenge: "Hợp nhất một loạt dịch vụ phức tạp (FTC Safeguards, PCI, HIPAA, sửa chữa thiết bị, hạ tầng mạng) vào một trang web hiện đại, đồng bộ.",
-                    architecture: "Vite + React SPA với các trang dịch vụ dạng mô-đun, hoạt họa UI với Framer Motion, đầu ra tĩnh tối ưu SEO, tích hợp luồng liên hệ và báo giá."
+                    challenge: "Hợp nhất toàn bộ dịch vụ bảo mật và CNTT phức tạp (đáp ứng tiêu chuẩn FTC Safeguards, PCI, HIPAA) vào một trang web hiện đại và đồng bộ.",
+                    architecture: "Phát triển ứng dụng Web SPA bằng Vite và React với các mô-đun dịch vụ linh hoạt, tối ưu hóa SEO kỹ thuật cho mã nguồn tĩnh và tích hợp luồng đăng ký báo giá tự động."
                 }
             }
         }

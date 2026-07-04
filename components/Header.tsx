@@ -32,11 +32,16 @@ export default function Header() {
     const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
     const [mobileMenuRoute, setMobileMenuRoute] = useState<string | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
     const navigate = useRouter();
     const { cycleColorTheme, mode, toggleMode } = useTheme();
     const { language, setLanguage, t } = useLanguage();
     const isMobileMenuOpen = mobileMenuRoute === pathname;
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const getLocalizedLabel = (href: string, defaultLabel: string) => {
         switch (href) {
@@ -271,7 +276,11 @@ export default function Header() {
                                     className="p-2 rounded-full hover:bg-foreground/10 transition-colors"
                                     aria-label="Toggle theme"
                                 >
-                                    {mode === 'light' ? <Moon className="h-5 w-5 text-foreground" /> : <Sun className="h-5 w-5 text-foreground" />}
+                                    {mounted ? (
+                                        mode === 'light' ? <Moon className="h-5 w-5 text-foreground" /> : <Sun className="h-5 w-5 text-foreground" />
+                                    ) : (
+                                        <div className="h-5 w-5" />
+                                    )}
                                 </button>
 
                                 {/* CTA Button using GlowButton component */}

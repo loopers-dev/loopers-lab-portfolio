@@ -516,7 +516,7 @@ function LayeredCard({
                     className="-inset-20 rounded-[4rem]"
                 />
 
-                {/* ════ 6-LAYER CARD ════════════════════════════════════════ */}
+                {/* === 6-LAYER CARD ======================================== */}
                 <div
                     className="relative w-full h-full"
                     style={{ transformStyle: 'preserve-3d' }}
@@ -818,7 +818,7 @@ export default function ServicesPageClient() {
         <Layout>
             <div className="relative bg-background">
 
-                {/* ══ HERO ════════════════════════════════════════════════════ */}
+                {/* === HERO =================================================== */}
                 <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 px-6 lg:px-8 overflow-hidden">
                     <div className="absolute inset-0 glow-bg-red opacity-25 pointer-events-none" />
                     <div className="absolute inset-0 grid-pattern opacity-40 mix-blend-overlay pointer-events-none" />
@@ -887,12 +887,12 @@ export default function ServicesPageClient() {
                     </motion.div>
                 </section>
 
-                {/* ══ CARD DECK ════════════════════════════════════════════════ */}
+                {/* === CARD DECK =============================================== */}
                 <div id="service-deck">
                     <CardDeck />
                 </div>
 
-                {/* ══ CTA ══════════════════════════════════════════════════════ */}
+                {/* === CTA ===================================================== */}
                 <section
                     className="relative z-50 px-6 lg:px-8 py-32 border-t border-foreground/5"
                     style={{
