@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -99,7 +99,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-display), 'Inter', system-ui, sans-serif;
     font-weight: 800;
     letter-spacing: -0.02em;
   }
@@ -239,6 +239,88 @@
 @layer utilities {
   .font-black { font-weight: 900; }
   .tracking-tight { letter-spacing: -0.02em; }
+}
+
+/* ===== IMMERSIVE HERO ===== */
+@keyframes grid-floor-flow {
+  from { background-position: 0 0; }
+  to { background-position: 0 46px; }
+}
+.grid-floor {
+  animation: grid-floor-flow 3.2s linear infinite;
+}
+
+/* infinity loop: a light that travels the ∞ forever */
+@keyframes loop-flow {
+  to { stroke-dashoffset: -100; }
+}
+.loop-comet {
+  animation: loop-flow 3.4s linear infinite;
+}
+
+/* horizontal scroll nudge arrow */
+@keyframes nudge-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+.nudge-x {
+  display: inline-block;
+  animation: nudge-x 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-floor { animation: none; }
+  .loop-comet { animation: none; }
+  .nudge-x { animation: none; }
+}
+
+/* ===== DISPLAY / TERMINAL TYPE ===== */
+.font-display {
+  font-family: var(--font-display), 'Inter', system-ui, sans-serif;
+}
+
+.font-terminal {
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+}
+
+/* Terminal caret blink (has a reduced-motion off-switch below) */
+@keyframes terminal-caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.terminal-caret {
+  display: inline-block;
+  width: 0.55em;
+  animation: terminal-caret 1.05s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret { animation: none; opacity: 1; }
+}
+
+/* ===== SKETCH UTILITIES ===== */
+.font-sketch {
+  font-family: 'Caveat', cursive;
+}
+
+.sketch-paper {
+  background-color: #0F0D0B;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.sketch-grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
 /* ===== ANIMATIONS ===== */

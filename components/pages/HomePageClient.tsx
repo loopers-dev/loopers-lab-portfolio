@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import HomeHeroSection from '@/components/sections/HomeHeroSection';
+import HorizontalHeroSection from '@/components/sections/HorizontalHeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import PhilosophySection from '@/components/sections/PhilosophySection';
@@ -18,7 +18,7 @@ const EndlessScroll = USE_ENDLESS_SCROLL
 export function HomePageClient() {
     return (
         <Layout>
-            {USE_ENDLESS_SCROLL && EndlessScroll ? <EndlessScroll /> : <HomeHeroSection />}
+            {USE_ENDLESS_SCROLL && EndlessScroll ? <EndlessScroll /> : <HorizontalHeroSection />}
             <ServicesSection />
             <ProcessSection />
             <PhilosophySection />

@@ -1,0 +1,4 @@
+# Thả ảnh team vào đây, ví dụ: hung.jpg, dev2.jpg, pm.jpg
+# Rồi mở components/sections/ImmersiveHeroSection.tsx, sửa mảng TEAM:
+#   { role: 'Dev', tag: 'builds', photo: '/team/hung.jpg' }
+# Gợi ý: ảnh dọc tỉ lệ 3:4 (vd 600x800), .jpg hoặc .webp.

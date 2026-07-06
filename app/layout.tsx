@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Bricolage_Grotesque } from 'next/font/google';
 import type { ReactNode } from 'react';
 import './globals.css';
 import ClientProviders from '@/components/ClientProviders';
@@ -16,6 +16,13 @@ const inter = Inter({
     weight: ['300', '400', '500', '600', '700', '800', '900'],
     display: 'swap',
     variable: '--font-inter',
+});
+
+const bricolage = Bricolage_Grotesque({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700', '800'],
+    display: 'swap',
+    variable: '--font-display',
 });
 
 export const metadata: Metadata = {
@@ -91,7 +98,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${inter.variable} relative`}
+            className={`${inter.variable} ${bricolage.variable} relative`}
             data-scroll-behavior="smooth"
             suppressHydrationWarning
         >

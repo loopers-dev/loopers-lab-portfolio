@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { TrendingUp, Terminal, Palette, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import { GlowButton } from '@/components/ui/GlowButton';
-import { GradientText } from '@/components/custom/GradientText';
+import SketchHeroSection from '@/components/sections/SketchHeroSection';
 import Layout from '@/components/Layout';
 
 const cylinders = [
@@ -65,17 +64,11 @@ const values = [
 export default function AboutPageClient() {
     return (
         <Layout>
-            <main className="pt-32 pb-24 relative">
+            <SketchHeroSection context="about" />
+            <main className="pt-20 pb-24 relative">
                 <div className="absolute inset-0 glow-bg-mixed" />
                 <div className="absolute inset-0 grid-pattern" />
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-24">
-                        <Badge variant="outline" className="mb-8 border-primary/30 bg-primary/10 text-primary">The Team</Badge>
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6">
-                            Powered by <GradientText>Expertise</GradientText>
-                        </h1>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">We&apos;re a remote-first team of engineers, architects, and designers united by a passion for building exceptional software.</p>
-                    </motion.div>
                     <div className="mb-28">
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                             <h2 className="text-3xl sm:text-4xl font-black mb-4">The Engine</h2>
