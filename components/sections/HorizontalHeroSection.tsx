@@ -19,7 +19,7 @@ const LOOP_STAGES: { x: number; y: number; t: string; anchor: 'start' | 'middle'
 // ─── Panel 1: The Living Loop ─────────────────────────────────────────────────
 function LoopPanel() {
     return (
-        <div className="relative flex h-screen w-full shrink-0 flex-col items-center justify-center overflow-hidden px-6 lg:w-screen">
+        <div className="relative flex min-h-screen w-full shrink-0 flex-col items-center justify-center overflow-hidden px-6 py-24 lg:h-screen lg:w-screen lg:py-0">
             <div
                 aria-hidden="true"
                 className="grid-pattern absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black_15%,transparent_72%)]"
@@ -168,14 +168,15 @@ function Wire({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: numb
 
 function BlueprintPanel() {
     return (
-        <div className="sketch-paper relative flex h-screen w-full shrink-0 items-center overflow-hidden px-6 lg:w-screen">
-            <div className="mx-auto w-full max-w-5xl">
+        <div className="sketch-paper relative flex w-full shrink-0 items-center overflow-hidden px-6 py-24 lg:h-screen lg:w-screen lg:py-0">
+            <div className="mx-auto w-full max-w-4xl">
                 <p className="font-sketch text-lg text-white/45">how it fits together</p>
-                <h2 className="mt-1 max-w-2xl text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl">
+                <h2 className="mt-1 max-w-2xl text-balance font-display text-[1.9rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white sm:text-4xl">
                     One connected stack — designed, then <span className="text-[#ff4444]">kept running.</span>
                 </h2>
 
-                <svg viewBox="0 0 900 360" className="mt-8 w-full" aria-label="System architecture blueprint: client to web app, API, database, automation, AI, and a monitoring loop back">
+                <div className="mt-6 overflow-x-auto pb-2">
+                <svg viewBox="0 0 900 360" className="mx-auto w-full min-w-[680px] max-w-3xl" aria-label="System architecture blueprint: client to web app, API, database, automation, AI, and a monitoring loop back">
                     {/* wires (drawn first, behind nodes) */}
                     <Wire x1={158} y1={176} x2={230} y2={176} />
                     <Wire x1={362} y1={176} x2={434} y2={176} />
@@ -215,6 +216,7 @@ function BlueprintPanel() {
                         deploy →
                     </text>
                 </svg>
+                </div>
 
                 {/* continue-down hint */}
                 <div className="mt-8 flex items-center gap-3 font-terminal text-[12px] tracking-[0.2em] text-white/35">

@@ -1,5 +1,0 @@
-- generic [active] [ref=e1]:
-  - heading "LOOPERS STUDIO" [level=1] [ref=e6]
-  - button "Open Next.js Dev Tools" [ref=e12] [cursor=pointer]:
-    - img [ref=e13]
-  - alert [ref=e16]
